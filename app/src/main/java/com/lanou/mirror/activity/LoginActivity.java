@@ -3,11 +3,13 @@ package com.lanou.mirror.activity;
 import com.lanou.mirror.R;
 import com.lanou.mirror.base.BaseActivity;
 
-public class MainActivity extends BaseActivity {
-
+/**
+ * Created by Yi on 16/3/29.
+ */
+public class LoginActivity extends BaseActivity {
     @Override
     protected int setContent() {
-        return R.layout.activity_main;
+        return R.layout.activity_login;
     }
 
     @Override
