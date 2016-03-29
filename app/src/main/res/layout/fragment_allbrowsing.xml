@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bg"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="@color/allBrowsing_title"
+            android:textSize="@dimen/fragment_allBrowsing_textColor"
+            android:layout_marginTop="@dimen/fragment_allBrowsing_tv_marinTop"
+            android:layout_marginLeft="@dimen/fragment_allBrowsing_tv_marinLeft"
+            android:text="@string/AllBrowsing_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             />
+
+        <ImageView
+            android:background="@mipmap/iv_drop_down_arrow"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/fragment_allBrowsing_iv_marinTop"
+            android:layout_marginLeft="@dimen/fragment_allBrowsing_iv_marinLeft"
+            android:layout_height="wrap_content"
+             />
+
+    </LinearLayout>
+
+    <ImageView
+        android:background="@mipmap/iv_line_below_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/fragment_allBrowsing_iv_line_below_title_marinLeft"
+        android:layout_marginTop="@dimen/fragment_allBrowsing_iv_line_below_title_marinTop"
+         />
+
+    <TextView
+        android:text="@string/allBrowsing_content"
+        android:textColor="@color/allBrowsing_title"
+        android:layout_marginTop="@dimen/fragment_allBrowsing_tv_marinTop"
+        android:layout_marginLeft="@dimen/fragment_allBrowsing_tv_marinLeft"
+        android:textSize="@dimen/fragment_allBrowsing_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fragment_allbrowsing_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
+</LinearLayout>
