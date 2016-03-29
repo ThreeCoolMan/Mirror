@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Mirror</string>
+    <string name="activity_register_tv_createnumber">创建账号</string>
+    <string name="activity_register_tv_phonenumber">手机号</string>
+    <string name="activity_register_tv_verification">验证码</string>
+    <string name="activity_register_tv_send_verification">发送验证码</string>
+    <string name="activity_register_tv_set_password">设置密码</string>
+    <string name="activity_register_btn_creatnumber">创建账号</string>
+
 </resources>
