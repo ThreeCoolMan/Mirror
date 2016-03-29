@@ -2,22 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F1F1"
+    android:background="@color/login_linearLayout_background_color"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/login_allItem_horizontal_margin"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="账号登录"
-            android:textColor="#000000"
-            android:textSize="30sp" />
+            android:text="@string/login_title_textView_text"
+            android:textColor="@color/login_allTextView_colour"
+            android:textSize="@dimen/login_title_textView_size" />
 
         <View
             android:layout_width="0dp"
@@ -33,38 +33,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_margin="@dimen/login_allItem_horizontal_margin"
         android:background="@mipmap/iv_line_below_create"
         android:orientation="vertical" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="手机号"
-        android:textColor="#000000"
-        android:textSize="20sp" />
+        android:layout_margin="@dimen/login_allItem_horizontal_margin"
+        android:text="@string/login_phoneNumber_textView_text"
+        android:textColor="@color/login_allTextView_colour"
+        android:textSize="@dimen/login_phoneNumber_textView_size" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/login_allItem_horizontal_margin"
         android:background="@mipmap/iv_verification_code"
         android:minLines="1" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="密码"
-        android:textColor="#000000"
-        android:textSize="20sp" />
+        android:layout_margin="@dimen/login_allItem_horizontal_margin"
+        android:text="@string/login_passWord_textView_text"
+        android:textColor="@color/login_allTextView_colour"
+        android:textSize="@dimen/login_phoneNumber_textView_size" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/login_allItem_horizontal_margin"
         android:background="@mipmap/iv_verification_code"
         android:minLines="1"
         android:password="true" />
@@ -72,31 +71,32 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/login_allItem_horizontal_margin"
         android:background="@mipmap/btn_notavailable"
         android:gravity="center"
-        android:text="登录" />
+        android:text="@string/login_btn_text" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/login_allItem_horizontal_margin"
         android:background="@drawable/btn_create_selector"
-        android:text="创建账号" />
+        android:text="@string/login_btn_register" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="使用社交账号"
-            android:textColor="#000000"
-            android:textSize="20sp" />
+            android:layout_margin="@dimen/login_allItem_horizontal_margin"
+            android:text="@string/login_social_textView_text"
+            android:textColor="@color/login_allTextView_colour"
+            android:textSize="@dimen/login_phoneNumber_textView_size" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -127,7 +127,6 @@
                     android:layout_height="wrap_content"
                     android:background="@mipmap/iv_blog_icon" />
             </LinearLayout>
-
 
         </LinearLayout>
 
