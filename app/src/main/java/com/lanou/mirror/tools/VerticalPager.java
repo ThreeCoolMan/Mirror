@@ -3,10 +3,12 @@ package com.lanou.mirror.tools;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 public class VerticalPager extends ViewPager {
+    private float startX, startY, moveX, moveY;
 
     public VerticalPager(Context context) {
         super(context);
@@ -23,7 +25,7 @@ public class VerticalPager extends ViewPager {
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
 
-    private class VerticalPageTransformer implements ViewPager.PageTransformer{
+    private class VerticalPageTransformer implements ViewPager.PageTransformer {
 
         @Override
         public void transformPage(View page, float position) {
@@ -59,6 +61,20 @@ public class VerticalPager extends ViewPager {
     public boolean onInterceptTouchEvent(MotionEvent event) {
         boolean intercepted = super.onInterceptTouchEvent(swapXY(event));
         swapXY(event);
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                startX = event.getX();
+                startY = event.getY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                moveX = event.getX();
+                moveY = event.getY();
+                if (Math.abs(moveY - startY) - Math.abs(moveX - startX) > 0) {
+                    return true;
+                }
+                break;
+        }
+
         return intercepted;
     }
 
