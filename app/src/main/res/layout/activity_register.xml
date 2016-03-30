@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F1F1"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_register_linearlayout_marginleft"
+        android:layout_marginRight="@dimen/activity_register_linearlayout_marginright"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_register_tv_createnumber_margintop"
+                android:gravity="bottom"
+                android:text="@string/activity_register_tv_createnumber"
+                android:textColor="@color/color_activity_register_tv_createnumber"
+                android:textSize="@dimen/activity_register_tv_createnumber" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/activity_register_iv_close_marginright"
+                android:layout_marginTop="@dimen/activity_register_iv_close_margintop"
+                android:background="@mipmap/btn_closs" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_register_iv_line_bellowtext_margintop"
+            android:background="@mipmap/iv_line_below_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_register_iv_close_margintop"
+            android:text="@string/activity_register_tv_phonenumber"
+            android:textColor="@color/color_activity_register_tv_createnumber"
+            android:textSize="@dimen/activity_register_tv_phonenumber" />
+
+        <EditText
+            android:id="@+id/activity_register_et_phonenumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_register_iv_line_bellowtext_margintop"
+            android:background="@mipmap/iv_verification_code" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_register_tv_verification_margintop"
+            android:text="@string/activity_register_tv_verification"
+            android:textColor="@color/color_activity_register_tv_createnumber"
+            android:textSize="@dimen/activity_register_tv_phonenumber" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_register_iv_line_bellowtext_margintop"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/activity_register_et_verification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@mipmap/iv_verification_code" />
+
+            <Button
+                android:id="@+id/activity_register_btn_send_verification"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@mipmap/btn_verification_code_press"
+                android:gravity="center"
+                android:text="@string/activity_register_tv_send_verification"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/activity_register_tv_send_verification" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_register_tv_createnumber_margintop"
+            android:text="@string/activity_register_tv_set_password"
+            android:textColor="@color/color_activity_register_tv_createnumber"
+            android:textSize="@dimen/activity_register_tv_phonenumber" />
+
+        <EditText
+            android:id="@+id/activity_register_et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_register_et_password_margintop"
+            android:background="@mipmap/iv_verification_code" />
+
+        <Button
+            android:id="@+id/activity_register_btn_creatnumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_register_btn_creatnumber_margintop"
+            android:background="@drawable/create_account_selector"
+            android:text="@string/activity_register_btn_creatnumber"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/activity_register_btn_creatnumber" />
+    </LinearLayout>
+</LinearLayout>
