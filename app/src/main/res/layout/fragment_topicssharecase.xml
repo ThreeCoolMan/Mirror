@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="@dimen/fragment_topicsShareCase_relativeLayout_widthSize"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/fragment_topicsShareCase_relativeLayout_margin"
+        android:background="@mipmap/iv_show_background">
+
+        <TextView
+            android:id="@+id/topicsShareCase_subTitle_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/fragment_topicsShareCase_tv_margin"
+            android:layout_marginTop="@dimen/fragment_topicsShareCase_tv_margin"
+            android:text="这是小标题"
+            android:textSize="@dimen/fragment_topicsShareCase_tv_subTitle_size" />
+
+        <TextView
+            android:id="@+id/topicsShareCase_Title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topicsShareCase_subTitle_tv"
+            android:layout_margin="@dimen/fragment_topicsShareCase_tv_margin"
+            android:text="这是标题"
+            android:textSize="@dimen/fragment_topicsShareCase_tv_title_size" />
+
+        <TextView
+            android:id="@+id/topicsShareCase_description_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topicsShareCase_Title_tv"
+            android:layout_marginLeft="@dimen/fragment_topicsShareCase_tv_margin"
+            android:text="巴拉巴拉"
+            android:textSize="@dimen/fragment_topicsShareCase_tv_description_size" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
