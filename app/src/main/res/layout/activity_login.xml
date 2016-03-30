@@ -77,6 +77,7 @@
         android:text="@string/login_btn_text" />
 
     <Button
+        android:id="@+id/activity_login_create_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/login_allItem_horizontal_margin"
