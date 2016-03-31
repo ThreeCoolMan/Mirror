@@ -6,13 +6,15 @@
 
 
     <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="@dimen/activity_product_recycleview_margintop"
         android:id="@+id/activity_peoduct_details_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/activity_product_recycleview_marginleft"
-        android:layout_marginRight="@dimen/activity_product_recycleview_marginright" />
-    <ImageView
+        android:layout_marginRight="@dimen/activity_product_recycleview_marginright"
+        android:layout_marginTop="@dimen/activity_product_recycleview_margintop" />
+
+    <ImageButton
+        android:id="@+id/activity_peoduct_back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|left"
@@ -20,7 +22,8 @@
         android:layout_marginLeft="@dimen/activity_product_iv_back_marginleft"
         android:background="@mipmap/btn_comeback" />
 
-    <ImageView
+    <ImageButton
+        android:id="@+id/activity_peoduct_shoping_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
@@ -29,25 +32,45 @@
         android:background="@mipmap/btn_shopping" />
 
     <LinearLayout
-        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="@dimen/activity_product_ll_marginleft"
         android:layout_marginRight="@dimen/activity_product_ll_marginright"
         android:background="@android:color/white"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_product_tv_show_margintop"
-            android:textColor="@color/color_activity_details_tv"
             android:text="@string/activity_product_tv_show"
+            android:textColor="@color/color_activity_details_tv"
             android:textSize="@dimen/activity_product_tv_show_size" />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_product_iv_line_margintop"
             android:background="@mipmap/iv_line_below_create" />
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/activity_product_newfl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/activity_peoduct_newiv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ff000000" />
+
+        <com.bm.library.PhotoView
+            android:id="@+id/activity_peoduct_newpv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 </FrameLayout>

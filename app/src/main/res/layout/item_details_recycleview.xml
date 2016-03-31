@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/item_details_ll_details">
 
-    <ImageView
+    <com.bm.library.PhotoView
         android:id="@+id/item_details_iv_details"
         android:layout_width="@dimen/item_details_recycleview_iv_width"
         android:layout_height="@dimen/item_details_recycleview_iv_height"

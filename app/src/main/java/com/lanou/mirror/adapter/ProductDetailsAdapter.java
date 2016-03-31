@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
+import com.bm.library.PhotoView;
 import com.lanou.mirror.Interface.ProductDetailsItemListioner;
 import com.lanou.mirror.R;
 
@@ -20,6 +21,12 @@ import com.lanou.mirror.R;
 public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private ProductDetailsItemListioner listioner;
+    private int[] imgs;
+
+    public ProductDetailsAdapter(Context context, int[] imgs) {
+        this.context = context;
+        this.imgs = imgs;
+    }
 
     public void SetDetailsListener( ProductDetailsItemListioner listioner) {
     this.listioner = listioner;
@@ -36,7 +43,7 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ProductDetailsHolder) {
-            ((ProductDetailsHolder) holder).detailsIv.setImageResource(R.mipmap.iv_wechat_icon);
+            ((ProductDetailsHolder) holder).detailsIv.setImageResource(imgs[position]);
         } else if (holder instanceof HeadProductDetailsHolder) {
             ((HeadProductDetailsHolder) holder).detailsVv.getId();
 
@@ -58,7 +65,7 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public int getItemCount() {
-        return 30;
+        return imgs.length;
     }
 
     class ProductDetailsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -66,19 +73,20 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         private int position;
         private LinearLayout linearLayout;
 
-        private ImageView detailsIv;
+        private PhotoView detailsIv;
+
 
         public ProductDetailsHolder(View itemView) {
             super(itemView);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.item_details_ll_details);
-            detailsIv = (ImageView) itemView.findViewById(R.id.item_details_iv_details);
-            linearLayout.setOnClickListener(this);
+            detailsIv = (PhotoView) itemView.findViewById(R.id.item_details_iv_details);
+            detailsIv.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
             if (listioner != null) {
-                listioner.productDetailsItemListioner(getItemViewType());
+                listioner.productDetailsItemListioner(getItemViewType(),v);
                 Log.d("android", getItemViewType() + "");
             }
         }
