@@ -61,6 +61,7 @@ public class VerticalPager extends ViewPager {
     public boolean onInterceptTouchEvent(MotionEvent event) {
         boolean intercepted = super.onInterceptTouchEvent(swapXY(event));
         swapXY(event);
+        //防止冲突
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 startX = event.getX();
@@ -71,25 +72,21 @@ public class VerticalPager extends ViewPager {
                 moveX = event.getX();
                 moveY = event.getY();
                 if (Math.abs(moveY - startY) - Math.abs(moveX - startX) > 0) {
-                    Log.e("拦截", "111111");
                     return true;
                 }
                 break;
         }
-
-                Log.e("111111", "1111" + intercepted);
-                return intercepted;
-
-        }
-
-        @Override
-        public boolean onTouchEvent (MotionEvent event){
-
-
-            Log.e("22222", "2222");
-            return super.onTouchEvent(swapXY(event));
-
-        }
-
+        return intercepted;
 
     }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        
+        return super.onTouchEvent(swapXY(event));
+
+    }
+
+
+}
+

@@ -18,5 +18,19 @@
     <dimen name="login_allItem_horizontal_margin">15dp</dimen>
     <dimen name="login_title_textView_size">17sp</dimen>
     <dimen name="login_phoneNumber_textView_size">20sp</dimen>
-
+    <dimen name="fragment_allBrowsing_textColor">16sp</dimen>
+    <dimen name="fragment_allBrowsing_tv_marinTop">13dp</dimen>
+    <dimen name="fragment_allBrowsing_tv_marinLeft">14dp</dimen>
+    <dimen name="fragment_allBrowsing_iv_marinTop">16dp</dimen>
+    <dimen name="fragment_allBrowsing_iv_marinLeft">4.5dp</dimen>
+    <dimen name="fragment_allBrowsing_content">13sp</dimen>
+    <dimen name="fragment_allBrowsing_iv_line_below_title_marinLeft">14dp</dimen>
+    <dimen name="fragment_allBrowsing_iv_line_below_title_marinTop">7dp</dimen>
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_tv_textSize">14sp</dimen>
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_tv_marinTop">22dp</dimen>
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_layout_marinTop">78dp</dimen>
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_tv_marinBottom">22dp</dimen>
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_iv_marinTop">11dp</dimen>
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_iv_marinLeft">24dp</dimen>
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_tv_marinLeft">24dp</dimen>
 </resources>

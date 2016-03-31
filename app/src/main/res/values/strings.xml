@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Mirror</string>
-
     <string name="activity_register_tv_createnumber">创建账号</string>
     <string name="activity_register_tv_phonenumber">手机号</string>
     <string name="activity_register_tv_verification">验证码</string>
@@ -13,5 +12,9 @@
     <string name="login_btn_register">创建账号</string>
     <string name="login_passWord_textView_text">密码</string>
     <string name="login_social_textView_text">使用社交账号</string>
-
+    <string name="AllBrowsing_tv">浏览所有类别</string>
+    <string name="allBrowsing_content">显示排序为最新推荐</string>
+    <string name="spectacles_tv">浏览平光眼镜</string>
+    <string name="item_fragmentallbrowsing_popuwindow_listview_tv">浏览所有分类</string>
 </resources>
+
