@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+    android:id="@+id/item_fragment_popupwindow_listview_tv"
+    android:layout_marginTop="@dimen/item_fragmentallbrowsing_popuwindow_listview_tv_marinTop"
+    android:layout_marginLeft="@dimen/item_fragmentallbrowsing_popuwindow_listview_tv_marinLeft"
+    android:textSize="@dimen/item_fragmentallbrowsing_popuwindow_listview_tv_textSize"
+    android:textColor="@color/item_fragmentallbrowsing_popuwindow_listview_tv"
+    android:text="@string/item_fragmentallbrowsing_popuwindow_listview_tv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_marginLeft="@dimen/item_fragmentallbrowsing_popuwindow_listview_iv_marinLeft"
+        android:layout_marginTop="@dimen/item_fragmentallbrowsing_popuwindow_listview_iv_marinTop"
+        android:src="@mipmap/iv_line_below_title"
+        android:id="@+id/item_fragment_popupwindow_listview_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

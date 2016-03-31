@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lanou.mirror.R;
@@ -22,7 +23,7 @@ public class FragmentAllBrowsingAdapter extends RecyclerView.Adapter<FragmentAll
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_fragmentallbrowsing,null);
         return new MyViewHolder(view);
     }
 
@@ -39,10 +40,10 @@ public class FragmentAllBrowsingAdapter extends RecyclerView.Adapter<FragmentAll
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView textView;
+
         public MyViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.item_tv);
+
         }
     }
 }

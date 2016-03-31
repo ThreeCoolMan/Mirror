@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="allBrowsing_title">#ffffff</color>
+    <color name="item_fragmentallbrowsing_popuwindow_listview_tv">#fff</color>
 </resources>

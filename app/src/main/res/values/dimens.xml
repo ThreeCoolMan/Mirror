@@ -10,4 +10,12 @@
     <dimen name="fragment_allBrowsing_content">13sp</dimen>
     <dimen name="fragment_allBrowsing_iv_line_below_title_marinLeft">14dp</dimen>
     <dimen name="fragment_allBrowsing_iv_line_below_title_marinTop">7dp</dimen>
+
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_tv_textSize">14sp</dimen>
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_tv_marinTop">22dp</dimen>
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_layout_marinTop">78dp</dimen>
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_tv_marinBottom">22dp</dimen>
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_iv_marinTop">11dp</dimen>
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_iv_marinLeft">24dp</dimen>
+    <dimen name="item_fragmentallbrowsing_popuwindow_listview_tv_marinLeft">24dp</dimen>
 </resources>
