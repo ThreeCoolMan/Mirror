@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <VideoView
+        android:id="@+id/item_details_vv_details"
+        android:layout_width="@dimen/item_details_recycleview_header_vv_width"
+        android:layout_height="@dimen/item_details_recycleview_header_vv_height" />
+</LinearLayout>

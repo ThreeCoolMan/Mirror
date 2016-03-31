@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">Mirror</string>
 
-    <string name="activity_register_tv_createnumber">创建账号</string>
-    <string name="activity_register_tv_phonenumber">手机号</string>
-    <string name="activity_register_tv_verification">验证码</string>
+    <string name="activity_register_tv_createnumber">創建帳號</string>
+    <string name="activity_register_tv_phonenumber">手機號</string>
+    <string name="activity_register_tv_verification">驗證碼</string>
     <string name="activity_register_tv_send_verification">发送验证码</string>
-    <string name="activity_register_tv_set_password">设置密码</string>
-    <string name="activity_register_btn_creatnumber">创建账号</string>
-    <string name="login_title_textView_text">账号登录</string>
-    <string name="login_phoneNumber_textView_text">手机号</string>
-    <string name="login_btn_text">登录</string>
-    <string name="login_btn_register">创建账号</string>
-    <string name="login_passWord_textView_text">密码</string>
-    <string name="login_social_textView_text">使用社交账号</string>
-
+    <string name="activity_register_tv_set_password">設置密碼</string>
+    <string name="activity_register_btn_creatnumber">創建帳號</string>
+    <string name="login_title_textView_text">帳號登陸</string>
+    <string name="login_phoneNumber_textView_text">手機號</string>
+    <string name="login_btn_text">登陸</string>
+    <string name="login_btn_register">創建帳號</string>
+    <string name="login_passWord_textView_text">密碼</string>
+    <string name="login_social_textView_text">使用社交帳號</string>
+    <string name="activity_product_tv_show">商品細節展示</string>
 </resources>

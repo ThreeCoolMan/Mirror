@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="@dimen/activity_product_recycleview_margintop"
+        android:id="@+id/activity_peoduct_details_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/activity_product_recycleview_marginleft"
+        android:layout_marginRight="@dimen/activity_product_recycleview_marginright" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:layout_marginBottom="@dimen/activity_product_iv_back_marginbottom"
+        android:layout_marginLeft="@dimen/activity_product_iv_back_marginleft"
+        android:background="@mipmap/btn_comeback" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="@dimen/activity_product_iv_shop_marginbottom"
+        android:layout_marginRight="@dimen/activity_product_iv_shop_marginright"
+        android:background="@mipmap/btn_shopping" />
+
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginLeft="@dimen/activity_product_ll_marginleft"
+        android:layout_marginRight="@dimen/activity_product_ll_marginright"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_product_tv_show_margintop"
+            android:textColor="@color/color_activity_details_tv"
+            android:text="@string/activity_product_tv_show"
+            android:textSize="@dimen/activity_product_tv_show_size" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_product_iv_line_margintop"
+            android:background="@mipmap/iv_line_below_create" />
+    </LinearLayout>
+</FrameLayout>

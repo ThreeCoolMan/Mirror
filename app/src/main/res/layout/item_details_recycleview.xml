@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/item_details_ll_details">
+
+    <ImageView
+        android:id="@+id/item_details_iv_details"
+        android:layout_width="@dimen/item_details_recycleview_iv_width"
+        android:layout_height="@dimen/item_details_recycleview_iv_height"
+        android:layout_marginTop="@dimen/item_details_recycleview_iv_margintop"
+        android:background="@android:color/holo_blue_light" />
+</LinearLayout>

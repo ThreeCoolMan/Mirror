@@ -18,5 +18,22 @@
     <dimen name="login_allItem_horizontal_margin">15dp</dimen>
     <dimen name="login_title_textView_size">17sp</dimen>
     <dimen name="login_phoneNumber_textView_size">20sp</dimen>
+    <dimen name="item_details_recycleview_header_vv_width">330dp</dimen>
+    <dimen name="item_details_recycleview_header_vv_height">165dp</dimen>
+    <dimen name="item_details_recycleview_iv_height">200dp</dimen>
+    <dimen name="item_details_recycleview_iv_width">330dp</dimen>
+    <dimen name="item_details_recycleview_iv_margintop">10dp</dimen>
+    <dimen name="activity_product_recycleview_margintop">55dp</dimen>
+    <dimen name="activity_product_recycleview_marginleft">15dp</dimen>
+    <dimen name="activity_product_recycleview_marginright">15dp</dimen>
+    <dimen name="activity_product_iv_back_marginleft">20dp</dimen>
+    <dimen name="activity_product_iv_back_marginbottom">20dp</dimen>
+    <dimen name="activity_product_iv_shop_marginbottom">20dp</dimen>
+    <dimen name="activity_product_iv_shop_marginright">20dp</dimen>
+    <dimen name="activity_product_ll_marginright">15dp</dimen>
+    <dimen name="activity_product_ll_marginleft">15dp</dimen>
+    <dimen name="activity_product_tv_show_size">15sp</dimen>
+    <dimen name="activity_product_tv_show_margintop">10dp</dimen>
+    <dimen name="activity_product_iv_line_margintop">10dp</dimen>
 
 </resources>
