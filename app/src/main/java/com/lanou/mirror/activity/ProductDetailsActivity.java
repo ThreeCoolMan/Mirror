@@ -22,7 +22,6 @@ import com.lanou.mirror.base.BaseActivity;
 public class ProductDetailsActivity extends BaseActivity implements ProductDetailsItemListioner, View.OnClickListener {
     private RecyclerView productDetailsRv;
     private ProductDetailsAdapter detailsAdapter;
-    private Context context;
     private int[] imgs = {R.mipmap.iv_money, R.mipmap.ic_launcher, R.mipmap.iv_show_frame, R.mipmap.iv_blog_icon, R.mipmap.iv_display_page};
     private View newFl;
     private View newIv;
@@ -57,7 +56,7 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
 
         in.setDuration(300);
         out.setDuration(300);
-        detailsAdapter = new ProductDetailsAdapter(context, imgs);
+        detailsAdapter = new ProductDetailsAdapter(this, imgs);
         ibBack = bindView(R.id.activity_peoduct_back_btn);
         ibShopping = bindView(R.id.activity_peoduct_shoping_btn);
         newFl = bindView(R.id.activity_product_newfl);
@@ -110,7 +109,6 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
                 break;
             case R.id.activity_peoduct_shoping_btn:
                 Toast.makeText(ProductDetailsActivity.this, "购买按键", Toast.LENGTH_SHORT).show();
-
                 break;
         }
     }

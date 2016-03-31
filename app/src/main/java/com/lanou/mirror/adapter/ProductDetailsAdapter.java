@@ -19,12 +19,12 @@ import com.lanou.mirror.R;
  * Created by dllo on 16/3/30.
  */
 public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private Context context;
+    //private Context context;
     private ProductDetailsItemListioner listioner;
     private int[] imgs;
 
     public ProductDetailsAdapter(Context context, int[] imgs) {
-        this.context = context;
+       // this.context = context;
         this.imgs = imgs;
     }
 
