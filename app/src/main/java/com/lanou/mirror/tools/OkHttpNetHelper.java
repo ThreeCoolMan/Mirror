@@ -1,0 +1,72 @@
+package com.lanou.mirror.tools;
+
+import com.google.gson.Gson;
+import com.lanou.mirror.listener.OkHttpNetHelperListener;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+/**
+ * Created by Yi on 16/3/31.
+ */
+public class OkHttpNetHelper {
+
+    public static OkHttpNetHelper okHttpNetHelper;//静态类对象
+    private OkHttpClient okHttpClient;//okHttp 对象
+    private Request request; //请求对象
+    private Gson gson;
+    private FormEncodingBuilder formEncodingBuilder;//编码形式建立对象
+    private String result;
+
+    //私有化构造方法
+    private OkHttpNetHelper() {
+        okHttpClient = new OkHttpClient();
+        gson = new Gson();
+        formEncodingBuilder = new FormEncodingBuilder();
+    }
+
+    //单例
+    public OkHttpNetHelper getOkHttpNetHelper() {
+        if (okHttpNetHelper == null) {
+            synchronized (OkHttpNetHelper.class) {
+                if (okHttpNetHelper == null) {
+                    okHttpNetHelper = new OkHttpNetHelper();
+                }
+            }
+        }
+        return okHttpNetHelper;
+    }
+
+    //Post 网络请求
+    public <T> void postRequest(String url, HashMap<String, String> param, final Class<T> clazz, final OkHttpNetHelperListener listener) {
+
+        // Set<String> set = param.keySet();
+        //使用增强 for 循环遍历参数 map 集合 ,增强 for 循环不能直接遍历集合对象必须转换成 set 对象
+        for (String key : param.keySet()) {
+            formEncodingBuilder.add(key, param.get(key));
+        }
+
+        request = new Request.Builder().url(url).post(formEncodingBuilder.build()).build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                listener.requestFailed("网络请求失败");
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+
+                result = response.body().string();//成功请求获得结果
+                T bean = gson.fromJson(result, clazz);//解析结果到实体类
+                listener.requestSucceed(result, bean);//接口传递结果和实体类
+            }
+        });
+
+    }
+
+}
