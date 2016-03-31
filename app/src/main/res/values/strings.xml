@@ -16,5 +16,6 @@
     <string name="allBrowsing_content">显示排序为最新推荐</string>
     <string name="spectacles_tv">浏览平光眼镜</string>
     <string name="item_fragmentallbrowsing_popuwindow_listview_tv">浏览所有分类</string>
+    <string name="activity_main_login_tv">登录</string>
 </resources>
 

@@ -20,12 +20,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void initView() {
         createBtn = bindView(R.id.activity_login_create_btn);
+        createBtn.setOnClickListener(this);
 
     }
 
     @Override
     protected void initData() {
-        createBtn.setOnClickListener(this);
+
 
 
     }

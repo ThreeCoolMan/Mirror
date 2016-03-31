@@ -8,7 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/login_allItem_horizontal_margin"
+        android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
+        android:layout_marginTop="@dimen/login_allItem_horizontal_creat_marginTop"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -25,6 +26,7 @@
             android:layout_weight="1" />
 
         <ImageView
+            android:layout_marginRight="23dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/btn_close" />
@@ -33,14 +35,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/login_allItem_horizontal_margin"
+
+        android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
+        android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
+        android:layout_marginTop="@dimen/login_allItem_horizontal_marginTop"
         android:background="@mipmap/iv_line_below_create"
         android:orientation="vertical" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/login_allItem_horizontal_margin"
+        android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
+        android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
+        android:layout_marginTop="@dimen/login_allItem_horizontal_phonenumber_marginTop"
         android:text="@string/login_phoneNumber_textView_text"
         android:textColor="@color/login_allTextView_colour"
         android:textSize="@dimen/login_phoneNumber_textView_size" />
@@ -48,14 +55,18 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/login_allItem_horizontal_margin"
+        android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
+        android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
+        android:layout_marginTop="@dimen/login_allItem_horizontal_marginTop"
         android:background="@mipmap/iv_verification_code"
         android:minLines="1" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/login_allItem_horizontal_margin"
+        android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
+        android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
+        android:layout_marginTop="@dimen/login_allItem_horizontal_password_marginTop"
         android:text="@string/login_passWord_textView_text"
         android:textColor="@color/login_allTextView_colour"
         android:textSize="@dimen/login_phoneNumber_textView_size" />
@@ -63,7 +74,9 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/login_allItem_horizontal_margin"
+        android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
+        android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
+        android:layout_marginTop="@dimen/login_allItem_horizontal_marginTop"
         android:background="@mipmap/iv_verification_code"
         android:minLines="1"
         android:password="true" />
@@ -71,17 +84,25 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/login_allItem_horizontal_margin"
+        android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
+        android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
+        android:layout_marginTop="@dimen/login_allItem_horizontal_login_marginTop"
         android:background="@mipmap/btn_notavailable"
         android:gravity="center"
+        android:textSize="17sp"
+        android:textColor="@color/login_all_login_colour"
         android:text="@string/login_btn_text" />
 
     <Button
         android:id="@+id/activity_login_create_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/login_allItem_horizontal_margin"
+        android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
+        android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
+        android:layout_marginTop="@dimen/login_allItem_horizontal_creat_marginTop"
         android:background="@drawable/btn_create_selector"
+        android:textColor="@color/login_all_creat_colour"
+        android:textSize="17sp"
         android:text="@string/login_btn_register" />
 
     <LinearLayout
@@ -94,24 +115,30 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/login_allItem_horizontal_margin"
+            android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
+            android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
+            android:layout_marginTop="@dimen/login_allItem_horizontal_marginTop"
             android:text="@string/login_social_textView_text"
             android:textColor="@color/login_allTextView_colour"
-            android:textSize="@dimen/login_phoneNumber_textView_size" />
+            android:textSize="@dimen/login_share_textView_size" />
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
 
             <LinearLayout
+                android:layout_marginTop="@dimen/login_allItem_horizontal_weixin_marginTop"
+                android:layout_marginBottom="@dimen/login_allItem_horizontal_weixin_marginBottom"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center">
 
                 <ImageView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@mipmap/iv_wechat_icon" />

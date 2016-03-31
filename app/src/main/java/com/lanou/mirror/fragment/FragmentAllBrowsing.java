@@ -19,7 +19,7 @@ import com.lanou.mirror.base.BaseFragment;
 import java.util.ArrayList;
 
 /**
- * Created by dllo on 16/3/29.
+ * Created by 何伟东 on 16/3/29.
  */
 public class FragmentAllBrowsing extends BaseFragment {
     private ArrayList<String> data;

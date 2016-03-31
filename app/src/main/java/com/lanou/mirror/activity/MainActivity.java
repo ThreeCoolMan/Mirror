@@ -2,6 +2,8 @@ package com.lanou.mirror.activity;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.view.View;
+import android.widget.TextView;
 
 import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.VerticalPagerAdapter;
@@ -11,10 +13,11 @@ import com.lanou.mirror.tools.VerticalPager;
 
 import java.util.ArrayList;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
     private VerticalPager verticalPager;
     private ArrayList<Fragment> data;
     private VerticalPagerAdapter adapter;
+    private TextView loginTv;
 
     @Override
     protected int setContent() {
@@ -24,6 +27,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         verticalPager = bindView(R.id.verticalpager);
+        loginTv = bindView(R.id.activity_main_login_tv);
+        //登录
+        loginTv.setOnClickListener(this);
     }
 
 
@@ -47,5 +53,14 @@ public class MainActivity extends BaseActivity {
         verticalPager.setCurrentItem(list);
 
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.activity_main_login_tv:
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+        }
     }
 }

@@ -13,7 +13,7 @@ import com.lanou.mirror.R;
 import com.lanou.mirror.activity.MainActivity;
 
 /**
- * Created by dllo on 16/3/30.
+ * Created by 何伟东 on 16/3/30.
  */
 public class PopupwindowListViewAdapter extends BaseAdapter {
     String [] titles = {"浏览所有分类","浏览平光眼镜","浏览太阳眼镜","专题分享","我的购物车","返回首页","退出"};

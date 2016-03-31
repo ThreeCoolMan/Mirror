@@ -12,7 +12,7 @@ import com.lanou.mirror.R;
 import java.util.ArrayList;
 
 /**
- * Created by dllo on 16/3/29.
+ * Created by 何伟东 on 16/3/29.
  */
 public class FragmentAllBrowsingAdapter extends RecyclerView.Adapter<FragmentAllBrowsingAdapter.MyViewHolder> {
     private ArrayList<String> data;

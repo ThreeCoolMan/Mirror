@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <com.lanou.mirror.tools.VerticalPager
         android:id="@+id/verticalpager"
@@ -12,4 +15,28 @@
         android:layout_height="match_parent">
 
     </com.lanou.mirror.tools.VerticalPager>
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_marginLeft="@dimen/activity_main_iv_marginLeft"
+            android:layout_marginBottom="@dimen/activity_main_iv_marginBottom"
+            android:layout_alignParentBottom="true"
+            android:src="@mipmap/iv_mirror"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/activity_main_tv_marginBottom"
+            android:layout_marginRight="@dimen/activity_main_tv_marginRight"
+            android:textColor="@color/mainActivity_login_tv"
+            android:text="@string/activity_main_login_tv"
+            android:id="@+id/activity_main_login_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    </FrameLayout>
+</RelativeLayout>

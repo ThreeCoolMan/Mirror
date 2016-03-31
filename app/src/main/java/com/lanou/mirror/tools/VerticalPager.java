@@ -82,7 +82,7 @@ public class VerticalPager extends ViewPager {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        
+
         return super.onTouchEvent(swapXY(event));
 
     }
