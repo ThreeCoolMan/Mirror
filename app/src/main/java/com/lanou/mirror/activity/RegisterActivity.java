@@ -3,7 +3,6 @@ package com.lanou.mirror.activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.lanou.mirror.base.BaseActivity;
 import com.lanou.mirror.R;
 /**
