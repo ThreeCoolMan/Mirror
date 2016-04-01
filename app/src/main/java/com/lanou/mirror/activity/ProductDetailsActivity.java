@@ -1,6 +1,5 @@
 package com.lanou.mirror.activity;
 
-import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.Toast;
 
 import com.bm.library.Info;
 import com.bm.library.PhotoView;
-import com.lanou.mirror.Interface.ProductDetailsItemListioner;
+import com.lanou.mirror.listener.ProductDetailsItemListioner;
 import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.ProductDetailsAdapter;
 import com.lanou.mirror.base.BaseActivity;
