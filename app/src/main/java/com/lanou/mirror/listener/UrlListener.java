@@ -53,7 +53,6 @@ public interface UrlListener {
     String PAY_WX_ORDER_QUERY_URL = SERVER_SIDE_URL + "index.php/pay/wx_orderquery";
     //物流信息查询 编码 m018
 
-
     //我的订单详情 编码 m019
     String ORDER_INFO_URL = SERVER_SIDE_URL + "index.php/order/info";
 
