@@ -4,8 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.lanou.mirror.R;
 
@@ -14,10 +12,10 @@ import java.util.ArrayList;
 /**
  * Created by 何伟东 on 16/3/29.
  */
-public class FragmentAllBrowsingAdapter extends RecyclerView.Adapter<FragmentAllBrowsingAdapter.MyViewHolder> {
+public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsingFragmentAdapter.MyViewHolder> {
     private ArrayList<String> data;
 
-    public FragmentAllBrowsingAdapter(ArrayList<String> data) {
+    public AllBrowsingFragmentAdapter(ArrayList<String> data) {
         this.data = data;
     }
 

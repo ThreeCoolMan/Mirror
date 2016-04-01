@@ -12,7 +12,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 
 import com.lanou.mirror.R;
-import com.lanou.mirror.adapter.FragmentAllBrowsingAdapter;
+import com.lanou.mirror.adapter.AllBrowsingFragmentAdapter;
 import com.lanou.mirror.adapter.PopupwindowListViewAdapter;
 import com.lanou.mirror.base.BaseFragment;
 
@@ -21,9 +21,9 @@ import java.util.ArrayList;
 /**
  * Created by 何伟东 on 16/3/29.
  */
-public class FragmentAllBrowsing extends BaseFragment {
+public class AllBrowsingFragment extends BaseFragment {
     private ArrayList<String> data;
-    private FragmentAllBrowsingAdapter adapter;
+    private AllBrowsingFragmentAdapter adapter;
     private RecyclerView recyclerView;
     private LinearLayout linearLayout;
     private PopupWindow popupWindow;
@@ -47,7 +47,7 @@ public class FragmentAllBrowsing extends BaseFragment {
             data.add(i + "hahahaah");
             data.add(i + "xixixixixi");
         }
-        adapter = new FragmentAllBrowsingAdapter(data);
+        adapter = new AllBrowsingFragmentAdapter(data);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(manager);
