@@ -8,8 +8,11 @@ import com.lanou.mirror.R;
 /**
  * Created by dllo on 16/3/29.
  */
+
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
     private Button createBtn;
+
+
     @Override
     protected int setContent() {
         return R.layout.activity_register;
