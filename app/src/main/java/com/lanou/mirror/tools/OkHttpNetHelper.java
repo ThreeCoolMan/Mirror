@@ -35,7 +35,7 @@ public class OkHttpNetHelper {
     }
 
     //单例
-    public OkHttpNetHelper getOkHttpNetHelper() {
+    public static OkHttpNetHelper getOkHttpNetHelper() {
         if (okHttpNetHelper == null) {
             synchronized (OkHttpNetHelper.class) {
                 if (okHttpNetHelper == null) {
