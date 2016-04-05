@@ -26,8 +26,8 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         this.imgs = imgs;
     }
 
-    public void SetDetailsListener( ProductDetailsItemListioner listioner) {
-    this.listioner = listioner;
+    public void SetDetailsListener(ProductDetailsItemListioner listioner) {
+        this.listioner = listioner;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         @Override
         public void onClick(View v) {
             if (listioner != null) {
-                listioner.productDetailsItemListioner(getItemViewType(),v);
+                listioner.productDetailsItemListioner(getItemViewType(), v);
                 Log.d("android", getItemViewType() + "");
             }
         }

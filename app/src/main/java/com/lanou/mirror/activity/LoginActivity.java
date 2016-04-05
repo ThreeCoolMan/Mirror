@@ -12,6 +12,7 @@ import com.lanou.mirror.base.BaseActivity;
  */
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
     private Button createBtn;
+
     @Override
     protected int setContent() {
         return R.layout.activity_login;
@@ -28,12 +29,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     protected void initData() {
 
 
-
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
 }

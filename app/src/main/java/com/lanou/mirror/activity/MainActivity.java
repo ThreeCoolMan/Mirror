@@ -33,19 +33,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
-
-
-
-
     @Override
     protected void initData() {
         data = new ArrayList<>();
-        for (int i = 0;i < 5;i++){
+        for (int i = 0; i < 5; i++) {
 
             data.add(new AllBrowsingFragment());
         }
 
-        adapter = new VerticalPagerAdapter(getSupportFragmentManager(),data);
+        adapter = new VerticalPagerAdapter(getSupportFragmentManager(), data);
         verticalPager.setAdapter(adapter);
         Intent intent = getIntent();
         int list = intent.getIntExtra("list", 0);
@@ -57,9 +53,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.activity_main_login_tv:
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
         }
     }

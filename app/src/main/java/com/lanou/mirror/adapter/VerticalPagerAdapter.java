@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class VerticalPagerAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> data;
+
     public VerticalPagerAdapter(FragmentManager fm, ArrayList<Fragment> data) {
         super(fm);
         this.data = data;

@@ -21,7 +21,7 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_fragmentallbrowsing,null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_fragmentallbrowsing, null);
         return new MyViewHolder(view);
     }
 
@@ -29,7 +29,6 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
     }
-
 
 
     @Override
