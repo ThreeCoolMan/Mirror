@@ -26,6 +26,7 @@
             android:layout_weight="1" />
 
         <ImageView
+            android:id="@+id/activity_login_close_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="23dp"
@@ -53,6 +54,7 @@
         android:textSize="@dimen/login_phoneNumber_textView_size" />
 
     <EditText
+        android:id="@+id/activity_login_phoneNumber_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
@@ -72,6 +74,7 @@
         android:textSize="@dimen/login_phoneNumber_textView_size" />
 
     <EditText
+        android:id="@+id/activity_login_passWord_ed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
@@ -82,6 +85,7 @@
         android:password="true" />
 
     <Button
+        android:id="@+id/activity_login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"

@@ -29,6 +29,7 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.squareup.okio:okio:1.5.0'
     compile 'com.google.code.gson:gson:2.2.4'
+    compile 'de.greenrobot:eventbus:2.4.0'
     compile files('libs/imageloder.jar')
 
 }

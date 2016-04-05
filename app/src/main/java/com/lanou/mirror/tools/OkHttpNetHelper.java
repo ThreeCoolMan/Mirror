@@ -1,5 +1,6 @@
 package com.lanou.mirror.tools;
 
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;
@@ -64,10 +65,30 @@ public class OkHttpNetHelper {
 
             @Override
             public void onResponse(Response response) throws IOException {
-
                 result = response.body().string();//成功请求获得结果
                 T bean = gson.fromJson(result, clazz);//解析结果到实体类
                 listener.requestSucceed(result, bean);//接口传递结果和实体类
+            }
+        });
+    }
+
+    //返回 String 请求结果 用于手解
+    public void postStringRequest(String url, HashMap<String, String> param, final OkHttpNetHelperListener listener) {
+        for (String key : param.keySet()) {
+            formEncodingBuilder.add(key, param.get(key));
+        }
+
+        request = new Request.Builder().url(url).post(formEncodingBuilder.build()).build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                listener.requestFailed("网络请求失败");
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                result = response.body().string();//成功请求获得结果
+                listener.requestSucceed(result, null);//接口传递结果和实体类
             }
         });
     }

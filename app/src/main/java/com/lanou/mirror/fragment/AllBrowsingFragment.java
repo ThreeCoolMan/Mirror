@@ -1,7 +1,5 @@
 package com.lanou.mirror.fragment;
 
-
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -99,7 +97,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                 false);
         DisplayMetrics dm = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        popupWindow = new PopupWindow(popupWindowView, dm.widthPixels, dm.heightPixels - 300, true);
+        popupWindow = new PopupWindow(popupWindowView, dm.widthPixels, dm.heightPixels - 280, true);
         ListView listView = (ListView) popupWindowView.findViewById(R.id.item_fragment_popupwindow_listview);
         PopupwindowListViewAdapter adapter = new PopupwindowListViewAdapter(getContext());
         listView.setAdapter(adapter);
