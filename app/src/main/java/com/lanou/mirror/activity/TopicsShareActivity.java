@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import de.greenrobot.event.EventBus;
 
 /**
  * Created by Yi on 16/3/30.
@@ -61,11 +60,6 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
         //网络请求
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(STORY_LIST_URL, params, TopicsShareBeans.class, this);
 
-//        for (int i = 0; i < 5; i++) {
-//            //复用 fragment 时进行 bundle 传值
-//            data.add(getTopicsShareCaseFragment());
-//        }
-
         adapter = new TopicsShareAdapter(getSupportFragmentManager(), data);
         verticalPager.setAdapter(adapter);
 
@@ -80,10 +74,6 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
                 //verticalPager 滑动监听,当改变页面时 更换线性布局背景
                 String url = beans.getData().getList().get(listPosition).getStory_data().getImg_array().get(position);
                 OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backIv);
-
-                EventBus.getDefault().post(position);
-
-
             }
 
             @Override
@@ -106,7 +96,7 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
                 for (int i = 0; i < bean.getData().getList().get(listPosition).getStory_data().getImg_array().size(); i++) {
                     //复用 fragment 时进行 bundle 传值
                     data.add(getTopicsShareCaseFragment(i));
-                    adapter.notifyDataSetChanged();
+                    adapter.notifyDataSetChanged();//刷新适配器
                 }
             }
 
@@ -124,8 +114,8 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
 
         Bundle bundle = new Bundle();
         bundle.putParcelable("BEANS", beans);
-        bundle.putInt("POSITION", listPosition);
-       // bundle.putInt("");
+        bundle.putInt("ListPosition", listPosition);
+        bundle.putInt("Position", position);
         Fragment caseFragment = new TopicsShareCaseFragment();
         caseFragment.setArguments(bundle);
         return caseFragment;

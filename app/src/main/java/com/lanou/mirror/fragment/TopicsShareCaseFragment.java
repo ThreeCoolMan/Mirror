@@ -20,7 +20,7 @@ public class TopicsShareCaseFragment extends BaseFragment {
     private TopicsShareBeans beans;//传过来的实体类
     private TextView subTv, titleTv, descriptionTv;
     private int listPosition;
-    private int position = 0;
+    private int position;
 
     @Override
     protected int setContent() {
@@ -39,30 +39,11 @@ public class TopicsShareCaseFragment extends BaseFragment {
 
         Bundle bundle = getArguments();
         beans = bundle.getParcelable("BEANS");
-        listPosition = bundle.getInt("POSITION");
-
-        //注册订阅者为当前activity对象
-        try {
-
-            EventBus.getDefault().register(this);
-        }catch (Exception e){
-
-        }
-        //EventBus 回调事假   不能刷新UI
+        listPosition = bundle.getInt("ListPosition");
+        position = bundle.getInt("Position");
 
         subTv.setText(beans.getData().getList().get(listPosition).getStory_data().getText_array().get(position).getSmallTitle());
         titleTv.setText(beans.getData().getList().get(listPosition).getStory_data().getText_array().get(position).getTitle());
         descriptionTv.setText(beans.getData().getList().get(listPosition).getStory_data().getText_array().get(position).getSubTitle());
-    }
-
-    public void onEvent(int position) {
-        this.position = position;
-    }
-
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
     }
 }
