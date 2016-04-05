@@ -13,6 +13,8 @@ public interface UrlListener {
 
     //用户注册 编码 m001
     String USER_REGISTER_URL = SERVER_SIDE_URL + "index.php/user/reg";
+    //用户登录 编码 m001
+    String USER_LOGIN_URL = SERVER_SIDE_URL + "index.php/user/login";
     //故事列表 编码 m002
     String STORY_LIST_URL = SERVER_SIDE_URL + "index.php/story/story_list";
     //商品列表 编码 m003

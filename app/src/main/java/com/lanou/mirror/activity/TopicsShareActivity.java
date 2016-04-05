@@ -30,9 +30,8 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
     private List<Fragment> data = new ArrayList<>();//这是复用的 fragment 集合测试使用
     private HashMap<String, String> params;//请求参数
     private TopicsShareBeans beans;//实体类
-    private ImageView backIv;//背景 iv
+    private ImageView backgroundIv;//背景 iv
     private int listPosition = 1;//TODO 跳转时传递的 position 用来确认显示的数据集合位置
-
 
     @Override
     protected int setContent() {
@@ -43,7 +42,7 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
     @Override
     protected void initView() {
         verticalPager = bindView(R.id.topicsShare_verticalPager);
-        backIv = bindView(R.id.activity_topicsShare_iv_background);
+        backgroundIv = bindView(R.id.activity_topicsShare_iv_background);
 
 
     }
@@ -73,7 +72,7 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
             public void onPageSelected(int position) {
                 //verticalPager 滑动监听,当改变页面时 更换线性布局背景
                 String url = beans.getData().getList().get(listPosition).getStory_data().getImg_array().get(position);
-                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backIv);
+                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backgroundIv);
             }
 
             @Override
@@ -84,7 +83,6 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
 
     }
 
-
     @Override
     public void requestSucceed(String result, final TopicsShareBeans bean) {
 
@@ -92,7 +90,7 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
             @Override
             public void run() {
                 beans = bean;
-                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(bean.getData().getList().get(1).getStory_data().getImg_array().get(0), backIv);
+                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(bean.getData().getList().get(1).getStory_data().getImg_array().get(0), backgroundIv);
                 for (int i = 0; i < bean.getData().getList().get(listPosition).getStory_data().getImg_array().size(); i++) {
                     //复用 fragment 时进行 bundle 传值
                     data.add(getTopicsShareCaseFragment(i));

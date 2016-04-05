@@ -28,6 +28,7 @@
 
 
             <ImageView
+                android:id="@+id/activity_register_Iv_close"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -85,6 +86,7 @@
                 android:layout_height="match_parent"
                 android:background="@mipmap/btn_verification_code_press"
                 android:gravity="center"
+                android:maxLines="1"
                 android:text="@string/activity_register_tv_send_verification"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/activity_register_tv_send_verification" />
@@ -111,17 +113,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/login_allItem_horizontal_creat_marginTop"
             android:background="@drawable/btn_create_selector"
+            android:text="@string/login_btn_register"
             android:textColor="@color/login_all_creat_colour"
-            android:textSize="@dimen/activity_register_btn_creatnumber"
-            android:text="@string/login_btn_register" />
-        <!--<Button-->
-            <!--android:id="@+id/activity_register_btn_creatnumber"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="@dimen/activity_register_btn_creatnumber_margintop"-->
-            <!--android:background="@drawable/create_account_selector"-->
-            <!--android:text="@string/activity_register_btn_creatnumber"-->
-            <!--android:textColor="@android:color/white"-->
-            <!--android:textSize="@dimen/activity_register_btn_creatnumber" />-->
+            android:textSize="@dimen/activity_register_btn_creatnumber" />
+
     </LinearLayout>
 </LinearLayout>
