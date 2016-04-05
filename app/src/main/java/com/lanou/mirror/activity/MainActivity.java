@@ -1,6 +1,7 @@
 package com.lanou.mirror.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
@@ -37,15 +38,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void initData() {
         data = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
+            AllBrowsingFragment fragmentAllBrowsing = new AllBrowsingFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("position", i);
+            fragmentAllBrowsing.setArguments(bundle);
+            data.add(fragmentAllBrowsing);
 
-            data.add(new AllBrowsingFragment());
         }
 
         adapter = new VerticalPagerAdapter(getSupportFragmentManager(), data);
         verticalPager.setAdapter(adapter);
         Intent intent = getIntent();
         int list = intent.getIntExtra("list", 0);
-
         verticalPager.setCurrentItem(list);
 
 

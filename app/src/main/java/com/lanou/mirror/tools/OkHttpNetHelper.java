@@ -27,7 +27,7 @@ public class OkHttpNetHelper {
     private ImageLoaderHelper imageLoaderHelper;//图片加载工具类
 
     //私有化构造方法
-    private OkHttpNetHelper() {
+    private  OkHttpNetHelper() {
         okHttpClient = new OkHttpClient();
         gson = new Gson();
         formEncodingBuilder = new FormEncodingBuilder();
@@ -35,7 +35,7 @@ public class OkHttpNetHelper {
     }
 
     //单例
-    public OkHttpNetHelper getOkHttpNetHelper() {
+    public static OkHttpNetHelper getOkHttpNetHelper() {
         if (okHttpNetHelper == null) {
             synchronized (OkHttpNetHelper.class) {
                 if (okHttpNetHelper == null) {
@@ -59,7 +59,7 @@ public class OkHttpNetHelper {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-                listener.requestFailed("网络请求失败");
+                listener.requestFailed(String.valueOf(request));
             }
 
             @Override

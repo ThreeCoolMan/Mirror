@@ -1,32 +1,46 @@
 package com.lanou.mirror.fragment;
 
 
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.AllBrowsingFragmentAdapter;
 import com.lanou.mirror.adapter.PopupwindowListViewAdapter;
 import com.lanou.mirror.base.BaseFragment;
+import com.lanou.mirror.bean.GoodsListBean;
+import com.lanou.mirror.listener.OkHttpNetHelperListener;
+import com.lanou.mirror.tools.OkHttpNetHelper;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by 何伟东 on 16/3/29.
  */
-public class AllBrowsingFragment extends BaseFragment {
-    private ArrayList<String> data;
+public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelperListener<GoodsListBean> {
+    //private ArrayList<String> data;
     private AllBrowsingFragmentAdapter adapter;
     private RecyclerView recyclerView;
     private LinearLayout linearLayout;
     private PopupWindow popupWindow;
+    private int position;
+    private SharedPreferences sharedPreferences;
+    private String headUrl = "http://api101.test.mirroreye.cn/";
+    private String classUrl = "index.php/products/goods_list";
+    String[] titles = {"浏览所有分类", "浏览平光眼镜", "浏览太阳眼镜", "专题分享", "我的购物车", "返回首页", "退出"};
+    private TextView titleTv;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected int setContent() {
@@ -37,21 +51,29 @@ public class AllBrowsingFragment extends BaseFragment {
     protected void initView() {
         recyclerView = bindView(R.id.fragment_allbrowsing_recyclerview);
         linearLayout = bindView(R.id.fragment_allbrowsing_title_linearlayout);
-        data = new ArrayList<>();
+        titleTv = bindView(R.id.fragment_allbrowsing_title_tv);
+        //data = new ArrayList<>();
 
+        Bundle bundle = getArguments();
+        position = bundle.getInt("position", 1);
+        Log.e("22222", position + "");
     }
 
     @Override
     protected void initData() {
-        for (int i = 0; i < 20; i++) {
-            data.add(i + "hahahaah");
-            data.add(i + "xixixixixi");
-        }
-        adapter = new AllBrowsingFragmentAdapter(data);
-        LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(adapter);
+//        sharedPreferences = getActivity().getSharedPreferences("JSON_data", Context.MODE_PRIVATE);
+//        //这是操作对象
+//        editor = sharedPreferences.edit();
+        Log.e("111111", "111111");
+        HashMap<String, String> map = new HashMap<>();
+        map.put("device_type", "3");
+        map.put("last_time", "");
+        map.put("token", "");
+        map.put("page", "");
+        map.put("category_id", "");
+        map.put("version", "");
+        Log.e("222222", "2222222");
+        OkHttpNetHelper.getOkHttpNetHelper().postRequest(headUrl + classUrl, map, GoodsListBean.class, this);
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,4 +130,27 @@ public class AllBrowsingFragment extends BaseFragment {
         });
     }
 
+    @Override
+    public void requestSucceed(String result, final GoodsListBean bean) {
+
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+                titleTv.setText(titles[position]);
+                Log.e("android", "pos" + titles[position]);
+                adapter = new AllBrowsingFragmentAdapter(bean, position);
+                LinearLayoutManager manager = new LinearLayoutManager(getContext());
+                manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                recyclerView.setLayoutManager(manager);
+                recyclerView.setAdapter(adapter);
+
+            }
+        });
+    }
+
+    @Override
+    public void requestFailed(String cause) {
+        Log.e("444444", cause);
+    }
 }
