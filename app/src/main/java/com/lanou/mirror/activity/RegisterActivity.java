@@ -1,18 +1,15 @@
 package com.lanou.mirror.activity;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.lanou.mirror.base.BaseActivity;
 import com.lanou.mirror.R;
 import com.lanou.mirror.bean.RegisterFailedBeans;
-import com.lanou.mirror.bean.RegisterSucceedBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
