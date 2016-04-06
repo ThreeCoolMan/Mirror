@@ -95,7 +95,7 @@
         android:gravity="center"
         android:text="@string/login_btn_text"
         android:textColor="@color/login_all_login_colour"
-        android:textSize="17sp" />
+        android:textSize="@dimen/login_activity_btn_textSize" />
 
     <Button
         android:id="@+id/activity_login_create_btn"
@@ -104,11 +104,12 @@
         android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
         android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
         android:layout_marginTop="@dimen/login_allItem_horizontal_creat_marginTop"
-        android:background="@drawable/btn_create_selector"
         android:text="@string/login_btn_register"
-        android:textColor="@color/login_all_creat_colour"
-        android:textSize="17sp" />
+        android:background="@mipmap/btn_create_press"
+        android:textColor="@color/login_all_create_colour"
+        android:textSize="@dimen/login_activity_btn_textSize" />
 
+        <!--android:background="@drawable/btn_create_selector"-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

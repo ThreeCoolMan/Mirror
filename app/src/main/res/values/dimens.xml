@@ -87,4 +87,5 @@
     <dimen name="item_fragmentallbrowsing_des_marinTop">70dp</dimen>
     <dimen name="item_fragmentallbrowsing_des_size">15sp</dimen>
     <dimen name="item_fragmentallbrowsing_des_marinLeft">16dp</dimen>
+    <dimen name="login_activity_btn_textSize">17sp</dimen>
 </resources>

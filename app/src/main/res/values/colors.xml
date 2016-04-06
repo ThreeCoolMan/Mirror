@@ -10,7 +10,7 @@
     <color name="item_fragmentallbrowsing_popuwindow_listview_tv">#fff</color>
     <color name="mainActivity_login_tv">#fff</color>
     <color name="login_all_login_colour">#fff</color>
-    <color name="login_all_creat_colour">#fff</color>
+    <color name="login_all_create_colour">#fff</color>
     <color name="color_activity_details_tv">#000000</color>
     <color name="item_fragmentallbrowsing_price_color">#000</color>
     <color name="item_fragmentallbrowsing_brand_color">#000</color>

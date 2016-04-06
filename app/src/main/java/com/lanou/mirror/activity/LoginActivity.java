@@ -1,6 +1,8 @@
 package com.lanou.mirror.activity;
 
 import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +28,6 @@ import java.util.HashMap;
  */
 
 
-
 public class LoginActivity extends BaseActivity implements View.OnClickListener, UrlListener, OkHttpNetHelperListener<LoginBeans> {
     private Button createBtn, loginBtn;
     private EditText phoneNumberEt, passWordEt;
@@ -41,6 +42,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     protected void initView() {
+        Log.d("!!!", "走这?");
         closeIv = bindView(R.id.activity_login_close_iv);
         closeIv.setOnClickListener(this);
         loginBtn = bindView(R.id.activity_login_btn);
@@ -52,13 +54,69 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         phoneNumberEt.setText(phoneNumber);
         passWordEt = bindView(R.id.activity_login_passWord_ed);
 
+        changeButtonBackground(); //判断输入框都有文字登录按钮就变红,输入框无文字就按钮默认灰色
+
+    }
+
+    private void changeButtonBackground() {
+        //密码EditText编辑改变监听
+        passWordEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (phoneNumberEt.length() == 0 || passWordEt.length() == 0) {
+
+                    loginBtn.setBackground(getDrawable(R.mipmap.btn_notavailable));
+
+                } else {
+                    loginBtn.setBackground(getDrawable(R.mipmap.btn_login_press));
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        //电话EditText 编辑改变监听
+        phoneNumberEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (phoneNumberEt.length() == 0 || passWordEt.length() == 0) {
+
+                    loginBtn.setBackground(getDrawable(R.mipmap.btn_notavailable));
+
+                } else {
+
+                    loginBtn.setBackground(getDrawable(R.mipmap.btn_login_press));
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
     }
 
     @Override
     protected void initData() {
 
     }
-
 
 
     @Override
@@ -85,6 +143,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 finish();
                 break;
         }
+
     }
 
     @Override
@@ -124,4 +183,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         });
 
     }
+
+
 }
