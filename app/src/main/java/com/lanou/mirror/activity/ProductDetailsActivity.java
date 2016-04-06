@@ -35,21 +35,6 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         return R.layout.activity_product_details;
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (newFl.getVisibility() == View.VISIBLE) {
-//            newIv.startAnimation(out);
-//            deailsPv.animaTo(mInfo, new Runnable() {
-//                @Override
-//                public void run() {
-//                    newFl.setVisibility(View.GONE);
-//                }
-//            });
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
-
     @Override
     protected void initView() {
 
@@ -83,17 +68,18 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
 
         mInfo = ((PhotoView) v).getInfo();
         deailsPv.setImageResource(imgs[position]);
-        newIv.startAnimation(in);
+        newIv.startAnimation(in);//背景渐变到黑色
         newFl.setVisibility(View.VISIBLE);
         newFl.startAnimation(in);
         deailsPv.animaFrom(mInfo);
     }
 
 
-    //这里是点击大图变回原来位置
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            //这里是点击大图变回原来位置
             case R.id.activity_product_newfl:
                 newIv.startAnimation(out);
                 deailsPv.animaTo(mInfo, new Runnable() {
@@ -104,10 +90,8 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
                 });
                 break;
             case R.id.activity_peoduct_back_btn:
-                Toast.makeText(ProductDetailsActivity.this, "返回按键", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.activity_peoduct_shoping_btn:
-                Toast.makeText(ProductDetailsActivity.this, "购买按键", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

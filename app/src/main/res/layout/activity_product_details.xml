@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/activity_product_ll_marginBottom"
         android:layout_marginLeft="@dimen/activity_product_ll_marginleft"
         android:layout_marginRight="@dimen/activity_product_ll_marginright"
         android:background="@android:color/white"
@@ -66,7 +66,7 @@
             android:id="@+id/activity_peoduct_newiv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ff000000" />
+            android:background="@color/color_activity_details_iv_line" />
 
         <com.bm.library.PhotoView
             android:id="@+id/activity_peoduct_newpv"

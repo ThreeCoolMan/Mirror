@@ -18,6 +18,7 @@ import java.util.HashMap;
  */
 public class OkHttpNetHelper {
 
+
     public static OkHttpNetHelper okHttpNetHelper;//静态类对象
     private OkHttpClient okHttpClient;//okHttp 对象
     private Request request; //请求对象
@@ -35,7 +36,7 @@ public class OkHttpNetHelper {
     }
 
     //单例
-    public OkHttpNetHelper getOkHttpNetHelper() {
+    public static OkHttpNetHelper getOkHttpNetHelper() {
         if (okHttpNetHelper == null) {
             synchronized (OkHttpNetHelper.class) {
                 if (okHttpNetHelper == null) {

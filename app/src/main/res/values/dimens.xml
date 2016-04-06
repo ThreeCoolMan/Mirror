@@ -60,6 +60,7 @@
     <dimen name="activity_product_iv_back_marginbottom">20dp</dimen>
     <dimen name="activity_product_iv_shop_marginbottom">20dp</dimen>
     <dimen name="activity_product_iv_shop_marginright">20dp</dimen>
+    <dimen name="activity_product_ll_marginBottom">10dp</dimen>
     <dimen name="activity_product_ll_marginright">15dp</dimen>
     <dimen name="activity_product_ll_marginleft">15dp</dimen>
     <dimen name="activity_product_tv_show_size">15sp</dimen>
@@ -71,5 +72,28 @@
     <dimen name="fragment_topicsShareCase_tv_margin">20dp</dimen>
     <dimen name="fragment_topicsShareCase_tv_subTitle_size">11sp</dimen>
     <dimen name="fragment_topicsShareCase_tv_title_size">17sp</dimen>
+    <dimen name="item_product_bottom_listview_description_height">570dp</dimen>
+    <dimen name="item_product_bottom_listview_description_iv_height">350dp</dimen>
+    <dimen name="item_product_bottom_listview_description_iv_margin">25dp</dimen>
+    <dimen name="item_product_bottom_listview_description_iv_margintop">90.5dp</dimen>
+    <dimen name="item_product_bottom_listview_description_ll_out_width">255dp</dimen>
+    <dimen name="item_product_bottom_listview_description_ll_margintop">130dp</dimen>
+
+    <dimen name="item_product_bottom_description_title">25sp</dimen>
+    <dimen name="item_product_bottom_description_iv_line_below_title">2dp</dimen>
+    <dimen name="item_product_bottom_description_iv_line_below_title_marginTop">27dp</dimen>
+    <dimen name="item_product_bottom_description_tv_brandname_marginTop">10dp</dimen>
+    <dimen name="item_product_bottom_description_tv_brandname_size">21sp</dimen>
+    <dimen name="item_product_bottom_description_iv_line_below_brandname">10dp</dimen>
+    <dimen name="item_product_bottom_description_tv_body_marginTop">25dp</dimen>
+    <dimen name="item_product_bottom_description_tv_body_size">12sp</dimen>
+    <dimen name="item_product_bottom_description_tv_price_size">18sp</dimen>
+    <dimen name="item_product_bottom_listview_description_ll_in_marginTop">24dp</dimen>
+    <dimen name="item_product_bottom_description_tv_sliding_marginTop">470dp</dimen>
+    <dimen name="item_product_bottom_description_iv_sliding_marginTop">497dp</dimen>
     <dimen name="fragment_topicsShareCase_tv_description_size">10sp</dimen>
+    <dimen name="item_product_bottom_listview_ll_height">570dp</dimen>
+    <dimen name="item_product_bottom_listview_image_ll_jeight">470dp</dimen>
+    <dimen name="item_product_top_listview_null_ll_height">685dp</dimen>
+    <dimen name="item_product_top_listview_describe_ll_father_height">565dp</dimen>
 </resources>
