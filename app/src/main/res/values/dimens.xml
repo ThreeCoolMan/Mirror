@@ -105,5 +105,11 @@
     <dimen name="item_product_top_listview_describe_tv_content_textsize">13sp</dimen>
     <dimen name="item_product_top_listview_describe_tv_content_marginBottom">22dp</dimen>
     <dimen name="item_product_top_listview_describe_tv_content_marginTop">15dp</dimen>
+    <dimen name="item_product_top_listview_goodsname_ll_margin">20dp</dimen>
+    <dimen name="item_product_top_listview_goodsname_tv_height">45dp</dimen>
+    <dimen name="item_product_top_listview_null_second_height">60dp</dimen>
+    <dimen name="item_product_top_listview_null_second_height">60dp</dimen>
+
+
 
 </resources>
