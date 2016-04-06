@@ -1,19 +1,23 @@
 package com.lanou.mirror.activity;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import com.lanou.mirror.base.BaseActivity;
 import com.lanou.mirror.R;
 import com.lanou.mirror.bean.RegisterFailedBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.HashMap;
 
 /**
@@ -26,6 +30,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private String number, verificationCode, passWord;
     private ImageView closeIv;
     private HashMap<String, String> params;
+    private CountDownTimer timer;//倒计时类
 
 
     @Override
@@ -47,6 +52,20 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         createBtn = bindView(R.id.activity_register_btn_creatnumber);
         createBtn.setOnClickListener(this);
 
+        //定义一个倒计时类        倒计时时长  计时间隔
+        timer = new CountDownTimer(60000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                sendBtn.setText(millisUntilFinished / 1000 + getString(R.string.register_activity_countDownTimer_btn_text));
+                sendBtn.setEnabled(false);//倒计时设置按钮不可点击
+            }
+
+            @Override
+            public void onFinish() {
+                sendBtn.setText(getResources().getString(R.string.activity_register_tv_send_verification));
+                sendBtn.setEnabled(true);//倒计时结束设置按钮可点击
+            }
+        };
     }
 
     @Override
@@ -79,6 +98,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     params.put("phone number", number);
                     OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_SEND_CODE_URL, params, this);
                     Toast.makeText(RegisterActivity.this, "验证码发送成功", Toast.LENGTH_SHORT).show();
+                    timer.start();//发送成功启动倒计时
                 } else {
                     Toast.makeText(RegisterActivity.this, "请输入手机号", Toast.LENGTH_SHORT).show();
                 }
