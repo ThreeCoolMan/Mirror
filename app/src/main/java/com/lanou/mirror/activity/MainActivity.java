@@ -1,9 +1,11 @@
 package com.lanou.mirror.activity;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lanou.mirror.R;
@@ -19,6 +21,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ArrayList<Fragment> data;
     private VerticalPagerAdapter adapter;
     private TextView loginTv;
+    private ImageView logoIv;
 
     @Override
     protected int setContent() {
@@ -29,8 +32,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void initView() {
         verticalPager = bindView(R.id.verticalpager);
         loginTv = bindView(R.id.activity_main_login_tv);
+        logoIv = bindView(R.id.activity_main_logo_iv);
         //登录
         loginTv.setOnClickListener(this);
+        //logo动画
+        logoIv.setOnClickListener(this);
     }
 
 
@@ -61,6 +67,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.activity_main_login_tv:
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.activity_main_logo_iv:
+                ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 1.2f, 1.0f, 1.1f, 1.0f).setDuration(500).start();
+                break;
+
         }
     }
 }

@@ -47,13 +47,14 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
         recyclerView = bindView(R.id.fragment_allbrowsing_recyclerview);
         linearLayout = bindView(R.id.fragment_allbrowsing_title_linearlayout);
         titleTv = bindView(R.id.fragment_allbrowsing_title_tv);
-        Bundle bundle = getArguments();
-        position = bundle.getInt("position", 1);
-        Log.e("22222", position + "");
+
     }
 
     @Override
     protected void initData() {
+        Bundle bundle = getArguments();
+        position = bundle.getInt("position", 0);
+        titleTv.setText(titles[position]);
         HashMap<String, String> map = new HashMap<>();
         map.put("device_type", "3");
         map.put("last_time", "");
@@ -125,7 +126,6 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                titleTv.setText(titles[position]);
                 adapter = new AllBrowsingFragmentAdapter(bean, position);
                 LinearLayoutManager manager = new LinearLayoutManager(getContext());
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);

@@ -72,7 +72,7 @@
     <dimen name="fragment_topicsShareCase_tv_subTitle_size">11sp</dimen>
     <dimen name="fragment_topicsShareCase_tv_title_size">17sp</dimen>
     <dimen name="fragment_topicsShareCase_tv_description_size">10sp</dimen>
-    <dimen name="item_fragmentallbrowsing_iv_width">270dp</dimen>
+    <dimen name="item_fragmentallbrowsing_iv_width">240dp</dimen>
     <dimen name="item_fragmentallbrowsing_iv_height">350dp</dimen>
     <dimen name="item_fragmentallbrowsing_relativeLayout_height">110dp</dimen>
     <dimen name="item_fragmentallbrowsing_relativeLayout_marinTop">260dp</dimen>
