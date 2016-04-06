@@ -12,24 +12,25 @@
     <LinearLayout
 
 
-        android:layout_width="295dp"
+        android:layout_width="@dimen/item_product_top_listview_describe_ll_son_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@android:color/black"
         android:orientation="vertical">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="@dimen/item_product_top_listview_describe_ll_littleson_margin"
+            android:layout_marginRight="@dimen/item_product_top_listview_describe_ll_littleson_margin"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="@dimen/item_product_top_listview_describe_iv_line_top_marginTop"
                 android:background="@mipmap/iv_line_below_title" />
 
             <TextView
@@ -38,24 +39,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/item_product_top_listview_describe_tv_brand_marginTop"
                 android:textColor="@android:color/white"
-                android:textSize="30sp" />
+                android:textSize="@dimen/item_product_top_listview_describe_tv_brand_textsize" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
+                android:layout_marginTop="@dimen/item_product_top_listview_describe_iv_line_bottom_marginTop"
                 android:background="@mipmap/iv_line_below_title" />
 
             <TextView
                 android:id="@+id/item_product_tv_introcontent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="22dp"
-                android:layout_marginTop="15sp"
+                android:layout_marginBottom="@dimen/item_product_top_listview_describe_tv_content_marginBottom"
+                android:layout_marginTop="@dimen/item_product_top_listview_describe_tv_content_marginTop"
                 android:textColor="@android:color/white"
-                android:textSize="13sp" />
+                android:textSize="@dimen/item_product_top_listview_describe_tv_content_textsize" />
         </LinearLayout>
 
     </LinearLayout>

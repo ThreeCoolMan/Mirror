@@ -96,4 +96,14 @@
     <dimen name="item_product_bottom_listview_image_ll_jeight">470dp</dimen>
     <dimen name="item_product_top_listview_null_ll_height">685dp</dimen>
     <dimen name="item_product_top_listview_describe_ll_father_height">565dp</dimen>
+    <dimen name="item_product_top_listview_describe_ll_son_width">295dp</dimen>
+    <dimen name="item_product_top_listview_describe_ll_littleson_margin">15dp</dimen>
+    <dimen name="item_product_top_listview_describe_iv_line_top_marginTop">14dp</dimen>
+    <dimen name="item_product_top_listview_describe_tv_brand_marginTop">15dp</dimen>
+    <dimen name="item_product_top_listview_describe_tv_brand_textsize">30sp</dimen>
+    <dimen name="item_product_top_listview_describe_iv_line_bottom_marginTop">17dp</dimen>
+    <dimen name="item_product_top_listview_describe_tv_content_textsize">13sp</dimen>
+    <dimen name="item_product_top_listview_describe_tv_content_marginBottom">22dp</dimen>
+    <dimen name="item_product_top_listview_describe_tv_content_marginTop">15dp</dimen>
+
 </resources>
