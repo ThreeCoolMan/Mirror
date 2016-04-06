@@ -1,5 +1,6 @@
 package com.lanou.mirror.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -50,6 +51,7 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
 
     @Override
     protected void initData() {
+
         //请求参数
         params = new HashMap<>();
         params.put("token", "");
@@ -75,7 +77,7 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
 
                 String url = beans.getData().getList().get(listPosition).getStory_data().getImg_array().get(position);
                 OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backgroundIv);
-                Log.e("2222222", "23232323" + url);
+                Log.e("2222222", "" + position + " : " + url);
             }
 
             @Override
@@ -93,14 +95,13 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
             @Override
             public void run() {
                 beans = bean;
-                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(bean.getData().getList().get(1).getStory_data().getImg_array().get(0), backgroundIv);
+                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(bean.getData().getList().get(listPosition).getStory_data().getImg_array().get(0), backgroundIv);
                 for (int i = 0; i < bean.getData().getList().get(listPosition).getStory_data().getImg_array().size(); i++) {
                     //复用 fragment 时进行 bundle 传值
                     data.add(getTopicsShareCaseFragment(i));
                     adapter.notifyDataSetChanged();//刷新适配器
                 }
             }
-
         });
 
     }
