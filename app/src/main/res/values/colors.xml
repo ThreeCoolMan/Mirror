@@ -16,5 +16,8 @@
     <color name="item_fragmentallbrowsing_brand_color">#000</color>
     <color name="item_fragmentallbrowsing_city_color">#333</color>
     <color name="item_fragmentallbrowsing_des_color">#000</color>
+    <color name="fragment_topicssharecase_subTitle_tv_color">#fff</color>
+    <color name="fragment_topicssharecase_Title_tv_color">#fff</color>
+    <color name="fragment_topicssharecase_description_tv_color">#fff</color>
 
 </resources>

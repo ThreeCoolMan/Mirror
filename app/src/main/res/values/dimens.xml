@@ -68,7 +68,9 @@
     <dimen name="activity_topicsShare_iv_close_margin">20dp</dimen>
     <dimen name="fragment_topicsShareCase_relativeLayout_widthSize">320dp</dimen>
     <dimen name="fragment_topicsShareCase_relativeLayout_margin">50dp</dimen>
-    <dimen name="fragment_topicsShareCase_tv_margin">20dp</dimen>
+    <dimen name="fragment_topicsShareCase_tv_margin">21dp</dimen>
+    <dimen name="fragment_topicsShareCase_subTitle_tv_marginTop">11dp</dimen>
+
     <dimen name="fragment_topicsShareCase_tv_subTitle_size">11sp</dimen>
     <dimen name="fragment_topicsShareCase_tv_title_size">17sp</dimen>
     <dimen name="fragment_topicsShareCase_tv_description_size">10sp</dimen>

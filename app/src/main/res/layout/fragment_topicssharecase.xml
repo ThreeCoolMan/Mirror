@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/fragment_topicsShareCase_tv_margin"
             android:layout_marginTop="@dimen/fragment_topicsShareCase_tv_margin"
+            android:textColor="@color/fragment_topicssharecase_subTitle_tv_color"
             android:text="这是小标题"
             android:textSize="@dimen/fragment_topicsShareCase_tv_subTitle_size" />
 
@@ -26,8 +27,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/topicsShareCase_subTitle_tv"
-            android:layout_margin="@dimen/fragment_topicsShareCase_tv_margin"
+            android:layout_marginTop="@dimen/fragment_topicsShareCase_subTitle_tv_marginTop"
+            android:layout_marginLeft="@dimen/fragment_topicsShareCase_tv_margin"
             android:text="这是标题"
+            android:textColor="@color/fragment_topicssharecase_Title_tv_color"
             android:textSize="@dimen/fragment_topicsShareCase_tv_title_size" />
 
         <TextView
@@ -36,7 +39,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/topicsShareCase_Title_tv"
             android:layout_marginLeft="@dimen/fragment_topicsShareCase_tv_margin"
+            android:layout_marginRight="@dimen/fragment_topicsShareCase_tv_margin"
+            android:layout_marginTop="@dimen/fragment_topicsShareCase_subTitle_tv_marginTop"
             android:text="巴拉巴拉"
+            android:textColor="@color/fragment_topicssharecase_description_tv_color"
             android:textSize="@dimen/fragment_topicsShareCase_tv_description_size" />
 
     </RelativeLayout>
