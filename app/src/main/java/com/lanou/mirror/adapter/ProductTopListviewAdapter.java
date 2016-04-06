@@ -1,7 +1,6 @@
 package com.lanou.mirror.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,12 +30,14 @@ public class ProductTopListviewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+        //因为有三行是空的行布局 所以加3
         return goodsListBean.getData().getList().get(0).getGoods_data().size() + 3;
     }
 
 
     /**
-     * 这里设置前两行行布局和最后两行行布局为透明
+     * 这里设置前三行是透明行布局 
+     * 余下都是商品介绍的行布局
      */
     @Override
     public int getItemViewType(int position) {
@@ -75,9 +76,8 @@ public class ProductTopListviewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        FirstViewHolder holderF = null;
-        SecondViewHolder holderS = null;
-        ThirdViewHolder holderT = null;
+
+        GoodsIntroduceHolder holderT = null;
         int type = getItemViewType(position);
 
         if (convertView == null) {
@@ -90,15 +90,13 @@ public class ProductTopListviewAdapter extends BaseAdapter {
                     break;
                 case TYPE_S:
                     convertView = inflater.inflate(R.layout.item_product_top_listview_describe, parent, false);
-                    holderT = new ThirdViewHolder(convertView);
+                    holderT = new GoodsIntroduceHolder(convertView);
                     holderT.introContentTv.setText(goodsListBean.getData().getList().get(0).getGoods_data().get(position - 3).getIntroContent());
                     if (goodsListBean.getData().getList().get(0).getGoods_data().get(position - 3).getName().equals("")) {
                         holderT.nameTv.setText(goodsListBean.getData().getList().get(0).getGoods_data().get(position - 3).getCountry());
-
                     } else {
                         holderT.nameTv.setText(goodsListBean.getData().getList().get(0).getGoods_data().get(position - 3).getName());
                     }
-
                     break;
             }
 
@@ -107,19 +105,11 @@ public class ProductTopListviewAdapter extends BaseAdapter {
 
     }
 
-    private class FirstViewHolder {
 
-    }
-
-    private class SecondViewHolder {
-
-    }
-
-    private class ThirdViewHolder {
+    //商品介绍的ViewHolder
+    private class GoodsIntroduceHolder {
         private TextView introContentTv, nameTv;
-
-
-        public ThirdViewHolder(View view) {
+        public GoodsIntroduceHolder(View view) {
             introContentTv = (TextView) view.findViewById(R.id.item_product_tv_introcontent);
             nameTv = (TextView) view.findViewById(R.id.item_product_tv_name);
         }

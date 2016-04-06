@@ -1,7 +1,6 @@
 package com.lanou.mirror.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,11 +34,17 @@ public class ProductBottomListviewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return    goodsListBean.getData().getList().get(0).getDesign_des().size()+3;
-
+        //因为有三行其他种类行布局 所以加3
+        return goodsListBean.getData().getList().get(0).getDesign_des().size() + 3;
     }
 
 
+    /**
+     * 第0行TYPE_1是个半透明带文字的布局
+     * 第1行TYPE_2是个大空白
+     * 第2行TYPE_4是个商品品牌的小行布局
+     * 第3行及之后所有行TYPE_3 是商品图片
+     */
     @Override
     public int getItemViewType(int position) {
         int p = position;
@@ -49,12 +54,13 @@ public class ProductBottomListviewAdapter extends BaseAdapter {
             return TYPE_2;
         } else if (p == 2) {
             return TYPE_4;
-        } else if (p>2){
+        } else if (p > 2) {
             return TYPE_3;
-        }return TYPE_2;
+        }
+        return TYPE_2;
     }
 
-    //设置当前listview
+    //设置当前listview有四种行布局
     @Override
     public int getViewTypeCount() {
         return 4;
@@ -76,52 +82,53 @@ public class ProductBottomListviewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         GoodsDescriptionViewHolder holderDes = null;
         ImageViewHolder holderI = null;
-        GoodNameViewHolder holderGoodName = null;
+        GoodBrandViewHolder holderGoodName = null;
         int type = getItemViewType(position);
 
-            switch (type) {
-                case TYPE_1:
-                    convertView = inflater.inflate(R.layout.item_product_bottom_listview_description, parent, false);
-                    holderDes = new GoodsDescriptionViewHolder(convertView);
-                    holderDes.brandTv.setText(goodsListBean.getData().getList().get(0).getBrand());
-                    holderDes.nameTv.setText(goodsListBean.getData().getList().get(0).getGoods_name());
-                    holderDes.infodesTv.setText(goodsListBean.getData().getList().get(0).getInfo_des());
-                    holderDes.priceTv.setText(goodsListBean.getData().getList().get(0).getGoods_price());
-                    convertView.setTag(holderDes);
-                    break;
-                case TYPE_2:
-                    convertView = inflater.inflate(R.layout.item_product_bottom_listview_null, parent, false);
+        switch (type) {
+            case TYPE_1:
+                convertView = inflater.inflate(R.layout.item_product_bottom_listview_description, parent, false);
+                holderDes = new GoodsDescriptionViewHolder(convertView);
+                holderDes.brandTv.setText(goodsListBean.getData().getList().get(0).getBrand());
+                holderDes.nameTv.setText(goodsListBean.getData().getList().get(0).getGoods_name());
+                holderDes.infodesTv.setText(goodsListBean.getData().getList().get(0).getInfo_des());
+                holderDes.priceTv.setText(goodsListBean.getData().getList().get(0).getGoods_price());
+                convertView.setTag(holderDes);
+                break;
+            case TYPE_2:
+                convertView = inflater.inflate(R.layout.item_product_bottom_listview_null, parent, false);
+                break;
+            case TYPE_3:
+                String url = null;
+                url = goodsListBean.getData().getList().get(0).getDesign_des().get(position - 3).getImg();
+                convertView = inflater.inflate(R.layout.item_product_bottom_listview_image, parent, false);
+                holderI = new ImageViewHolder(convertView);
+                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, holderI.imageView);
 
-                    break;
-                case TYPE_3:
-                    String url = null;
-                    url = goodsListBean.getData().getList().get(0).getDesign_des().get(position-3).getImg();
-                    convertView = inflater.inflate(R.layout.item_product_bottom_listview_image, parent, false);
-                    holderI = new ImageViewHolder(convertView);
-                    OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, holderI.imageView);
-
-                    break;
-                case TYPE_4:
-                    convertView = inflater.inflate(R.layout.item_product_bottom_listview_goodsname, parent, false);
-                    holderGoodName = new GoodNameViewHolder(convertView);
-                    holderGoodName.goodsBrandTv.setText(goodsListBean.getData().getList().get(0).getBrand());
-            }
+                break;
+            case TYPE_4:
+                convertView = inflater.inflate(R.layout.item_product_bottom_listview_goodsname, parent, false);
+                holderGoodName = new GoodBrandViewHolder(convertView);
+                holderGoodName.goodsBrandTv.setText(goodsListBean.getData().getList().get(0).getBrand());
+        }
 
 
         return convertView;
 
     }
 
+    //想用来设置顶部透明度变化的
     public FrameLayout getFl(View view) {
         GoodsDescriptionViewHolder holderF = new GoodsDescriptionViewHolder(view);
         holderF.fl = (FrameLayout) inflater.inflate(R.layout.item_product_bottom_listview_description, null).findViewById(R.id.item_product_bottom_fl);
         return holderF.fl;
     }
 
+    //顶部半透明viewHolder
     class GoodsDescriptionViewHolder {
 
         private TextView nameTv, brandTv, infodesTv, priceTv;
-        private FrameLayout fl;
+        private FrameLayout fl;//用来设置顶部透明度变化
 
         public GoodsDescriptionViewHolder(View view) {
             nameTv = (TextView) view.findViewById(R.id.item_product_bottom_description_tv_name);
@@ -132,6 +139,7 @@ public class ProductBottomListviewAdapter extends BaseAdapter {
     }
 
 
+    //多行图片的viewHolder
     class ImageViewHolder {
 
         private ImageView imageView;
@@ -141,10 +149,11 @@ public class ProductBottomListviewAdapter extends BaseAdapter {
         }
     }
 
-    class GoodNameViewHolder {
+    //商品品牌viewHolder
+    class GoodBrandViewHolder {
         private TextView goodsBrandTv;
 
-        public GoodNameViewHolder(View view) {
+        public GoodBrandViewHolder(View view) {
             goodsBrandTv = (TextView) view.findViewById(R.id.item_product_bottom_tv_goodsname);
         }
     }

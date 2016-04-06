@@ -26,8 +26,8 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         this.imgs = imgs;
     }
 
-    public void SetDetailsListener( ProductDetailsItemListioner listioner) {
-    this.listioner = listioner;
+    public void SetDetailsListener(ProductDetailsItemListioner listioner) {
+        this.listioner = listioner;
     }
 
     @Override
@@ -41,7 +41,8 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ProductDetailsHolder) {
-            ((ProductDetailsHolder) holder).detailsIv.setImageResource(imgs[position]);
+//            ((ProductDetailsHolder) holder).detailsIv.setImageResource(imgs[position]);
+
         } else if (holder instanceof HeadProductDetailsHolder) {
             ((HeadProductDetailsHolder) holder).detailsVv.getId();
 
@@ -84,7 +85,7 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         @Override
         public void onClick(View v) {
             if (listioner != null) {
-                listioner.productDetailsItemListioner(getItemViewType(),v);
+                listioner.productDetailsItemListioner(getItemViewType(), v);
                 Log.d("android", getItemViewType() + "");
             }
         }

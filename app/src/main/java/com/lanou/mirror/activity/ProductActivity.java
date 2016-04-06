@@ -24,13 +24,8 @@ import java.util.List;
 public class ProductActivity extends BaseActivity implements UrlListener, OkHttpNetHelperListener<GoodsListBean> {
     private LinkageListView mlistView;
     private ProductBottomListviewAdapter bottomAdapter;
-
-    private static List bottomDatas = new ArrayList();
-    private static List topDatas = new ArrayList();
     private ImageView backGroundIv;
-    private GoodsListBean data = null;
 
-    private FrameLayout frameLayout = null;
 
     @Override
     protected int setContent() {
@@ -40,14 +35,8 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
 
     @Override
     protected void initView() {
-
-
         mlistView = bindView(R.id.activity_prodoct_llv);
         backGroundIv = bindView(R.id.activity_product_iv_background);
-
-
-
-
     }
 
     @Override
