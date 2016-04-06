@@ -11,9 +11,13 @@ import android.widget.Toast;
 import com.lanou.mirror.R;
 import com.lanou.mirror.base.BaseActivity;
 import com.lanou.mirror.bean.LoginBeans;
+import com.lanou.mirror.bean.RegisterFailedBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -73,7 +77,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     HashMap<String, String> params = new HashMap<>();
                     params.put("phone_number", phoneNumber);
                     params.put("password", passWord);
-                    OkHttpNetHelper.getOkHttpNetHelper().postRequest(USER_LOGIN_URL, params, LoginBeans.class, this);
+                    // OkHttpNetHelper.getOkHttpNetHelper().postRequest(USER_LOGIN_URL, params, LoginBeans.class, this);
+                    OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_LOGIN_URL, params, this);
                 }
                 break;
             case R.id.activity_register_Iv_close:
@@ -82,24 +87,31 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         }
     }
 
-
     @Override
-    public void requestSucceed(String result, final LoginBeans bean) {
+    public void requestSucceed(String result, LoginBeans bean) {
 
+        try {
+            final JSONObject object = new JSONObject(result);
+            if (object.getString("result").equals("1")) {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            } else {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Toast.makeText(LoginActivity.this, object.getString("msg"), Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
 
-        if (bean.getResult().equals("")) {//如果输入的用户名或者密码有误会吐司弹出失败原因
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(LoginActivity.this, bean.getMsg(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {  //如果输入用户名及密码正确进行传值并跳转
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("token", bean.getData().getToken());
-            intent.putExtra("uid", bean.getData().getUid());
-            startActivity(intent);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
     }
 
     @Override

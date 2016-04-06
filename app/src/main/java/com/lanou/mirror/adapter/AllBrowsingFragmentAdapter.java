@@ -1,6 +1,7 @@
 package com.lanou.mirror.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,21 +10,28 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lanou.mirror.R;
-import com.lanou.mirror.bean.GoodsListBean;
+import com.lanou.mirror.bean.GoodsListBeans;
+import com.lanou.mirror.bean.ShareBeans;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
 /**
  * Created by 何伟东 on 16/3/29.
  */
 public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsingFragmentAdapter.MyViewHolder> {
-    private GoodsListBean data;
+    private GoodsListBeans goodData;
+    private ShareBeans shareData;
     private int pos;
     private OkHttpNetHelper helper;
 
 
-    public AllBrowsingFragmentAdapter(GoodsListBean data, int pos) {
-        this.data = data;
+    public<T> AllBrowsingFragmentAdapter(T t, int pos) {
         this.pos = pos;
+        if (pos==3){
+            this.shareData = (ShareBeans) t;
+        }
+        else {
+            this.goodData = (GoodsListBeans) t;
+        }
     }
 
     @Override
@@ -37,12 +45,17 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
 
         if (pos < 3) {
             helper =OkHttpNetHelper.getOkHttpNetHelper();
-            helper.setOkImage(data.getData().getList().get(pos).getGoods_img(), holder.iv);
-            holder.cityTv.setText(data.getData().getList().get(pos).getProduct_area());
-            holder.descriptionTv.setText(data.getData().getList().get(pos).getBrand());
-            holder.nameTv.setText(data.getData().getList().get(pos).getGoods_name());
-            holder.priceTv.setText(data.getData().getList().get(pos).getGoods_price());
-        } else {
+            helper.setOkImage(goodData.getData().getList().get(pos).getGoods_img(), holder.iv);
+            holder.cityTv.setText(goodData.getData().getList().get(pos).getProduct_area());
+            holder.descriptionTv.setText(goodData.getData().getList().get(pos).getBrand());
+            holder.nameTv.setText(goodData.getData().getList().get(pos).getGoods_name());
+            holder.priceTv.setText(goodData.getData().getList().get(pos).getGoods_price());
+        }else if (pos == 3){
+            helper =OkHttpNetHelper.getOkHttpNetHelper();
+            helper.setOkImage(shareData.getData().getList().get(1).getStory_img(),holder.iv);
+            holder.layout.setVisibility(View.GONE);
+        }
+        else {
             holder.layout.setVisibility(View.GONE);
         }
 

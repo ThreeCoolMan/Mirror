@@ -17,7 +17,8 @@ import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.AllBrowsingFragmentAdapter;
 import com.lanou.mirror.adapter.PopupwindowListViewAdapter;
 import com.lanou.mirror.base.BaseFragment;
-import com.lanou.mirror.bean.GoodsListBean;
+import com.lanou.mirror.bean.GoodsListBeans;
+import com.lanou.mirror.bean.ShareBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
@@ -26,7 +27,7 @@ import java.util.HashMap;
 /**
  * Created by 何伟东 on 16/3/29.
  */
-public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelperListener<GoodsListBean> {
+public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelperListener<GoodsListBeans> {
     private AllBrowsingFragmentAdapter adapter;
     private RecyclerView recyclerView;
     private LinearLayout linearLayout;
@@ -34,6 +35,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
     private int position;
     private String headUrl = "http://api101.test.mirroreye.cn/";
     private String classUrl = "index.php/products/goods_list";
+    private String classShareUrl = "index.php/story/story_list";
     String[] titles = {"浏览所有分类", "浏览平光眼镜", "浏览太阳眼镜", "专题分享", "我的购物车", "返回首页", "退出"};
     private TextView titleTv;
 
@@ -55,25 +57,60 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
         Bundle bundle = getArguments();
         position = bundle.getInt("position", 0);
         titleTv.setText(titles[position]);
-        HashMap<String, String> map = new HashMap<>();
-        map.put("device_type", "3");
-        map.put("last_time", "");
-        map.put("token", "");
-        map.put("page", "");
-        map.put("category_id", "");
-        map.put("version", "");
+        if (position == 3) {
 
-        OkHttpNetHelper.getOkHttpNetHelper().postRequest(headUrl + classUrl, map, GoodsListBean.class, this);
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getPopupWindow();
-                // 这里是位置显示方式
-                popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, 0, 0);
+            HashMap<String, String> map = new HashMap<>();
+            map.put("device_type", "3");
+            OkHttpNetHelper helper = OkHttpNetHelper.getOkHttpNetHelper();
+            helper.postRequest(headUrl + classShareUrl, map, ShareBeans.class, new OkHttpNetHelperListener<ShareBeans>() {
+                @Override
+                public void requestSucceed(String result, final ShareBeans clazz) {
+
+                    getActivity().runOnUiThread(new Runnable() {
 
 
-            }
-        });
+                        @Override
+                        public void run() {
+                            adapter = new AllBrowsingFragmentAdapter(clazz, position);
+                            LinearLayoutManager manager = new LinearLayoutManager(getContext());
+                            manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                            recyclerView.setLayoutManager(manager);
+                            recyclerView.setAdapter(adapter);
+                        }
+                    });
+                }
+
+                @Override
+                public void requestFailed(String result) {
+
+                }
+
+
+            });
+
+        } else {
+
+
+            HashMap<String, String> map = new HashMap<>();
+            map.put("device_type", "3");
+            map.put("last_time", "");
+            map.put("token", "");
+            map.put("page", "");
+            map.put("category_id", "");
+            map.put("version", "");
+
+            OkHttpNetHelper.getOkHttpNetHelper().postRequest(headUrl + classUrl, map, GoodsListBeans.class, this);
+            linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getPopupWindow();
+                    // 这里是位置显示方式
+                    popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, 0, 0);
+
+
+                }
+            });
+        }
     }
 
     /***
@@ -121,7 +158,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
     }
 
     @Override
-    public void requestSucceed(String result, final GoodsListBean bean) {
+    public void requestSucceed(String result, final GoodsListBeans bean) {
 
         getActivity().runOnUiThread(new Runnable() {
             @Override
