@@ -4,9 +4,15 @@
     android:layout_height="match_parent"
     android:background="@mipmap/bg"
     android:orientation="vertical">
+<LinearLayout
+    android:id="@+id/fragment_allbrowsing_title_linearlayout"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
 
     <LinearLayout
-        android:id="@+id/fragment_allbrowsing_title_linearlayout"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -27,8 +33,9 @@
             android:layout_marginLeft="@dimen/fragment_allBrowsing_iv_marinLeft"
             android:layout_marginTop="@dimen/fragment_allBrowsing_iv_marinTop"
             android:background="@mipmap/iv_drop_down_arrow" />
-
     </LinearLayout>
+
+
 
     <ImageView
         android:layout_width="wrap_content"
@@ -45,6 +52,7 @@
         android:text="@string/allBrowsing_content"
         android:textColor="@color/allBrowsing_title"
         android:textSize="@dimen/fragment_allBrowsing_content" />
+</LinearLayout>
 
 
     <android.support.v7.widget.RecyclerView

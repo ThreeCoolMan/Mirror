@@ -3,6 +3,7 @@ package com.lanou.mirror.activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.lanou.mirror.R;
@@ -71,8 +72,10 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
             @Override
             public void onPageSelected(int position) {
                 //verticalPager 滑动监听,当改变页面时 更换线性布局背景
+
                 String url = beans.getData().getList().get(listPosition).getStory_data().getImg_array().get(position);
                 OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backgroundIv);
+                Log.e("2222222", "23232323" + url);
             }
 
             @Override

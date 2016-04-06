@@ -71,7 +71,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
 
                         @Override
                         public void run() {
-                            adapter = new AllBrowsingFragmentAdapter(clazz, position);
+                            adapter = new AllBrowsingFragmentAdapter(clazz, position,getContext());
                             LinearLayoutManager manager = new LinearLayoutManager(getContext());
                             manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                             recyclerView.setLayoutManager(manager);
@@ -101,9 +101,12 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
 
             OkHttpNetHelper.getOkHttpNetHelper().postRequest(headUrl + classUrl, map, GoodsListBeans.class, this);
             linearLayout.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
+                    Log.e("11111","11111");
                     getPopupWindow();
+
                     // 这里是位置显示方式
                     popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, 0, 0);
 
@@ -163,7 +166,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                adapter = new AllBrowsingFragmentAdapter(bean, position);
+                adapter = new AllBrowsingFragmentAdapter(bean, position,getContext());
                 LinearLayoutManager manager = new LinearLayoutManager(getContext());
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);
