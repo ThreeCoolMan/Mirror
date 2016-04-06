@@ -18,8 +18,9 @@ import com.lanou.mirror.adapter.AllBrowsingFragmentAdapter;
 import com.lanou.mirror.adapter.PopupwindowListViewAdapter;
 import com.lanou.mirror.base.BaseFragment;
 import com.lanou.mirror.bean.GoodsListBeans;
-import com.lanou.mirror.bean.ShareBeans;
+import com.lanou.mirror.bean.TopicsShareBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
+import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
 import java.util.HashMap;
@@ -27,15 +28,12 @@ import java.util.HashMap;
 /**
  * Created by 何伟东 on 16/3/29.
  */
-public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelperListener<GoodsListBeans> {
+public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelperListener<GoodsListBeans>, UrlListener {
     private AllBrowsingFragmentAdapter adapter;
     private RecyclerView recyclerView;
     private LinearLayout linearLayout;
     private PopupWindow popupWindow;
     private int position;
-    private String headUrl = "http://api101.test.mirroreye.cn/";
-    private String classUrl = "index.php/products/goods_list";
-    private String classShareUrl = "index.php/story/story_list";
     String[] titles = {"浏览所有分类", "浏览平光眼镜", "浏览太阳眼镜", "专题分享", "我的购物车", "返回首页", "退出"};
     private TextView titleTv;
 
@@ -62,16 +60,27 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
             HashMap<String, String> map = new HashMap<>();
             map.put("device_type", "3");
             OkHttpNetHelper helper = OkHttpNetHelper.getOkHttpNetHelper();
-            helper.postRequest(headUrl + classShareUrl, map, ShareBeans.class, new OkHttpNetHelperListener<ShareBeans>() {
+            linearLayout.setOnClickListener(new View.OnClickListener() {
+
                 @Override
-                public void requestSucceed(String result, final ShareBeans clazz) {
+                public void onClick(View v) {
+                    getPopupWindow();
+                    // 这里是位置显示方式
+                    popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, 0, 0);
+
+
+                }
+            });
+            helper.postRequest(STORY_LIST_URL, map, TopicsShareBeans.class, new OkHttpNetHelperListener<TopicsShareBeans>() {
+                @Override
+                public void requestSucceed(String result, final TopicsShareBeans topicsShareBeans) {
 
                     getActivity().runOnUiThread(new Runnable() {
 
 
                         @Override
                         public void run() {
-                            adapter = new AllBrowsingFragmentAdapter(clazz, position,getContext());
+                            adapter = new AllBrowsingFragmentAdapter(topicsShareBeans, position, getContext());
                             LinearLayoutManager manager = new LinearLayoutManager(getContext());
                             manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                             recyclerView.setLayoutManager(manager);
@@ -99,15 +108,14 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
             map.put("category_id", "");
             map.put("version", "");
 
-            OkHttpNetHelper.getOkHttpNetHelper().postRequest(headUrl + classUrl, map, GoodsListBeans.class, this);
+            OkHttpNetHelper.getOkHttpNetHelper().postRequest(PRODUCTS_GOODS_LIST_URL, map, GoodsListBeans.class, this);
             linearLayout.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
-                    Log.e("11111","11111");
                     getPopupWindow();
-
                     // 这里是位置显示方式
+                    Log.e("heweidong", "sb");
                     popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, 0, 0);
 
 
@@ -161,12 +169,12 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
     }
 
     @Override
-    public void requestSucceed(String result, final GoodsListBeans bean) {
+    public void requestSucceed(String result, final GoodsListBeans goodsListBeans) {
 
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                adapter = new AllBrowsingFragmentAdapter(bean, position,getContext());
+                adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext());
                 LinearLayoutManager manager = new LinearLayoutManager(getContext());
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);

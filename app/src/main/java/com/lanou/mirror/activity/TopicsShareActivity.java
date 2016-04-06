@@ -75,7 +75,6 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
 
                 String url = beans.getData().getList().get(listPosition).getStory_data().getImg_array().get(position);
                 OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backgroundIv);
-                Log.e("2222222", "23232323" + url);
             }
 
             @Override

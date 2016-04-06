@@ -3,7 +3,6 @@ package com.lanou.mirror.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +12,8 @@ import android.widget.TextView;
 
 import com.lanou.mirror.R;
 import com.lanou.mirror.activity.TopicsShareActivity;
-import com.lanou.mirror.base.BaseApplication;
 import com.lanou.mirror.bean.GoodsListBeans;
-import com.lanou.mirror.bean.ShareBeans;
+import com.lanou.mirror.bean.TopicsShareBeans;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
 /**
@@ -23,7 +21,7 @@ import com.lanou.mirror.tools.OkHttpNetHelper;
  */
 public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsingFragmentAdapter.MyViewHolder> {
     private GoodsListBeans goodData;
-    private ShareBeans shareData;
+    private TopicsShareBeans shareData;
     private int pos;
     private OkHttpNetHelper helper;
     private Context context;
@@ -33,7 +31,7 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
         this.pos = pos;
         this.context = context;
         if (pos==3){
-            this.shareData = (ShareBeans) t;
+            this.shareData = (TopicsShareBeans) t;
         }
         else {
             this.goodData = (GoodsListBeans) t;

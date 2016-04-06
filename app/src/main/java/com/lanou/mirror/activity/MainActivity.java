@@ -20,8 +20,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private VerticalPager verticalPager;
     private ArrayList<Fragment> data;
     private VerticalPagerAdapter adapter;
-    private TextView loginTv;
-    private ImageView logoIv;
+    private TextView loginTv;//登录
+    private ImageView logoIv;//商标
 
     @Override
     protected int setContent() {
