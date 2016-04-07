@@ -10,14 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lanou.mirror.R;
-import com.lanou.mirror.bean.GoodsListBean;
 import com.lanou.mirror.bean.GoodsListBeans;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
 /**
  * Created by dllo on 16/4/1.
  */
-public class ProductBottomListviewAdapter extends BaseAdapter {
+public class ProductBottomListViewAdapter extends BaseAdapter {
 
     GoodsListBeans goodsListBeans;
     Context context;
@@ -28,7 +27,7 @@ public class ProductBottomListviewAdapter extends BaseAdapter {
     final int TYPE_4 = 3;
     private int pos;
 
-    public ProductBottomListviewAdapter(Context context, GoodsListBeans goodsListBeans,int pos) {
+    public ProductBottomListViewAdapter(Context context, GoodsListBeans goodsListBeans, int pos) {
         this.context = context;
         this.goodsListBeans = goodsListBeans;
         this.pos = pos;

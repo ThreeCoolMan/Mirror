@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.lanou.mirror.R;
-import com.lanou.mirror.bean.GoodsListBean;
 import com.lanou.mirror.bean.GoodsListBeans;
 
 /**

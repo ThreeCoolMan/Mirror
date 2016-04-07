@@ -54,8 +54,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         adapter = new VerticalPagerAdapter(getSupportFragmentManager(), data);
         verticalPager.setAdapter(adapter);
+        //从popupwindow的adapter传过来的
         Intent intent = getIntent();
         int list = intent.getIntExtra("list", 0);
+        //设置跳转到的几个页面
         verticalPager.setCurrentItem(list);
 
 
@@ -69,7 +71,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.activity_main_logo_iv:
-                ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 1.2f, 1.0f, 1.1f, 1.0f).setDuration(500).start();
+                //每设置一次变化一次
+                ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 1.3f, 1.0f, 1.2f,1.0f).setDuration(500).start();
                 break;
 
         }

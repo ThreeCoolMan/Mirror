@@ -1,23 +1,19 @@
 package com.lanou.mirror.activity;
 
 import android.content.Intent;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.lanou.mirror.R;
-import com.lanou.mirror.adapter.ProductBottomListviewAdapter;
+import com.lanou.mirror.adapter.ProductBottomListViewAdapter;
 import com.lanou.mirror.adapter.ProductTopListviewAdapter;
 import com.lanou.mirror.base.BaseActivity;
-import com.lanou.mirror.bean.GoodsListBean;
 import com.lanou.mirror.bean.GoodsListBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.LinkageListView;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 
 /**
@@ -25,7 +21,7 @@ import java.util.List;
  */
 public class ProductActivity extends BaseActivity implements UrlListener, OkHttpNetHelperListener<GoodsListBeans> {
     private LinkageListView mlistView;
-    private ProductBottomListviewAdapter bottomAdapter;
+    private ProductBottomListViewAdapter bottomAdapter;
     private ImageView backGroundIv;
     private int position;
 
@@ -76,7 +72,7 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
                 OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backGroundIv);
 
                 //自定义组件中的方法 只需要添加两个adapter参数即可
-                bottomAdapter = new ProductBottomListviewAdapter(getApplication(), goodsListBeans,position);
+                bottomAdapter = new ProductBottomListViewAdapter(getApplication(), goodsListBeans,position);
                 mlistView.setAdapter(bottomAdapter, new ProductTopListviewAdapter(getApplication(),goodsListBeans,position));
                 mlistView.setLinkageSpeed(1.2f);//设置当前listview的滑动速度,封装好的方法
             }

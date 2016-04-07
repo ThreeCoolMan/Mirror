@@ -74,7 +74,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     loginBtn.setBackground(getDrawable(R.mipmap.btn_notavailable));
 
                 } else {
-                    loginBtn.setBackground(getDrawable(R.mipmap.btn_login_press));
+                    loginBtn.setBackground(getDrawable(R.mipmap.btn_login_unpress));
                 }
 
             }

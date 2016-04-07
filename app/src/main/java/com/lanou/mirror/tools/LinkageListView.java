@@ -12,7 +12,6 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.lanou.mirror.R;
-import com.lanou.mirror.adapter.ProductBottomListviewAdapter;
 
 /**
  * Created by dllo on 16/4/1.
