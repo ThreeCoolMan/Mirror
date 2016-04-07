@@ -150,7 +150,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
