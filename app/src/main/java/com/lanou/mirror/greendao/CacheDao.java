@@ -29,6 +29,7 @@ public class CacheDao extends AbstractDao<Cache, Long> {
         public final static Property Url = new Property(3, String.class, "url", false, "URL");
         public final static Property Description = new Property(4, String.class, "description", false, "DESCRIPTION");
         public final static Property Brand = new Property(5, String.class, "brand", false, "BRAND");
+        public final static Property Title = new Property(6, String.class, "title", false, "TITLE");
     };
 
 
@@ -49,7 +50,8 @@ public class CacheDao extends AbstractDao<Cache, Long> {
                 "\"PRICE\" TEXT," + // 2: price
                 "\"URL\" TEXT," + // 3: url
                 "\"DESCRIPTION\" TEXT," + // 4: description
-                "\"BRAND\" TEXT);"); // 5: brand
+                "\"BRAND\" TEXT," + // 5: brand
+                "\"TITLE\" TEXT);"); // 6: title
     }
 
     /** Drops the underlying database table. */
@@ -92,6 +94,11 @@ public class CacheDao extends AbstractDao<Cache, Long> {
         if (brand != null) {
             stmt.bindString(6, brand);
         }
+ 
+        String title = entity.getTitle();
+        if (title != null) {
+            stmt.bindString(7, title);
+        }
     }
 
     /** @inheritdoc */
@@ -109,7 +116,8 @@ public class CacheDao extends AbstractDao<Cache, Long> {
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // price
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // url
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // description
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // brand
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // brand
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6) // title
         );
         return entity;
     }
@@ -123,6 +131,7 @@ public class CacheDao extends AbstractDao<Cache, Long> {
         entity.setUrl(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setDescription(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setBrand(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setTitle(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
      }
     
     /** @inheritdoc */

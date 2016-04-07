@@ -14,6 +14,7 @@ public class MyClass {
         cache.addStringProperty("url");
         cache.addStringProperty("description");
         cache.addStringProperty("brand");
+        cache.addStringProperty("title");
 
 
         try {

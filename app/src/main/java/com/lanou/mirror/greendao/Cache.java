@@ -12,6 +12,7 @@ public class Cache {
     private String url;
     private String description;
     private String brand;
+    private String title;
 
     public Cache() {
     }
@@ -20,13 +21,14 @@ public class Cache {
         this.id = id;
     }
 
-    public Cache(Long id, String city, String price, String url, String description, String brand) {
+    public Cache(Long id, String city, String price, String url, String description, String brand, String title) {
         this.id = id;
         this.city = city;
         this.price = price;
         this.url = url;
         this.description = description;
         this.brand = brand;
+        this.title = title;
     }
 
     public Long getId() {
@@ -75,6 +77,14 @@ public class Cache {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
 }
