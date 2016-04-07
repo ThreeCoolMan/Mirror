@@ -67,6 +67,33 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_marginTop="@dimen/item_fragmentallbrowsing_share_relativeLayout_marinTop"
+        android:background="@android:color/white"
+        android:id="@+id/fragment_allbrowsing_share_relativelayout"
+        android:layout_width="@dimen/item_fragmentallbrowsing_iv_width"
+        android:layout_height="@dimen/item_fragmentallbrowsing_share_relativeLayout_height">
+
+        <ImageView
+            android:id="@+id/item_fragmentallbrowsing_line_share_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="@dimen/item_fragmentallbrowsing_share_line_marinTop"
+            android:src="@mipmap/iv_line_below_text" />
+
+        <TextView
+            android:id="@+id/item_fragmentallbrowsing_share_descripsion_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/item_fragmentallbrowsing_des_marinLeft"
+            android:layout_marginTop="@dimen/item_fragmentallbrowsing_share_des_marinTop"
+
+            android:textColor="@color/item_fragmentallbrowsing_des_color"
+            android:textSize="@dimen/item_fragmentallbrowsing_des_size" />
+    </RelativeLayout>
+
 
 
 

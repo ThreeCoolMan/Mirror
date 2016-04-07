@@ -17,6 +17,8 @@ import com.lanou.mirror.bean.GoodsListBeans;
 import com.lanou.mirror.bean.TopicsShareBeans;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
+import java.util.IdentityHashMap;
+
 /**
  * Created by 何伟东 on 16/3/29.
  */
@@ -28,13 +30,12 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
     private Context context;
 
 
-    public<T> AllBrowsingFragmentAdapter(T t, int pos ,Context context) {
+    public <T> AllBrowsingFragmentAdapter(T t, int pos, Context context) {
         this.pos = pos;
         this.context = context;
-        if (pos==3){
+        if (pos == 3) {
             this.shareData = (TopicsShareBeans) t;
-        }
-        else {
+        } else {
             this.goodData = (GoodsListBeans) t;
         }
     }
@@ -49,23 +50,28 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         if (pos < 3) {
-            helper =OkHttpNetHelper.getOkHttpNetHelper();
+            helper = OkHttpNetHelper.getOkHttpNetHelper();
             helper.setOkImage(goodData.getData().getList().get(pos).getGoods_img(), holder.iv);
             holder.cityTv.setText(goodData.getData().getList().get(pos).getProduct_area());
             holder.descriptionTv.setText(goodData.getData().getList().get(pos).getBrand());
             holder.nameTv.setText(goodData.getData().getList().get(pos).getGoods_name());
             holder.priceTv.setText(goodData.getData().getList().get(pos).getGoods_price());
+            holder.shareRelativeLayout.setVisibility(View.GONE);
             holder.iv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, ProductActivity.class);
-                    intent.putExtra("position",pos);
+                    intent.putExtra("position", pos);
                     context.startActivity(intent);
                 }
             });
-        }else if (pos == 3){
-            helper =OkHttpNetHelper.getOkHttpNetHelper();
-            helper.setOkImage(shareData.getData().getList().get(1).getStory_img(),holder.iv);
+        } else if (pos == 3) {
+            helper = OkHttpNetHelper.getOkHttpNetHelper();
+            helper.setOkImage(shareData.getData().getList().get(1).getStory_img(), holder.iv);
+            holder.shareDescriptionTv.setText(shareData.getData().getList().get(1).getStory_title());
+            holder.shareRelativeLayout.setVisibility(View.VISIBLE);
+            holder.layout.setVisibility(View.GONE);
+
             holder.iv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -74,10 +80,9 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
                     context.startActivity(intent);
                 }
             });
+        } else {
             holder.layout.setVisibility(View.GONE);
-        }
-        else {
-            holder.layout.setVisibility(View.GONE);
+            holder.shareRelativeLayout.setVisibility(View.GONE);
         }
 
     }
@@ -91,8 +96,8 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
     class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView iv;
         private RelativeLayout layout;
-        private TextView priceTv, nameTv, cityTv, descriptionTv;
-
+        private TextView priceTv, nameTv, cityTv, descriptionTv, shareDescriptionTv;
+private RelativeLayout shareRelativeLayout;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -102,7 +107,8 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
             cityTv = (TextView) itemView.findViewById(R.id.item_fragmentallbrowsing_city_tv);
             descriptionTv = (TextView) itemView.findViewById(R.id.item_fragmentallbrowsing_descripsion_tv);
             layout = (RelativeLayout) itemView.findViewById(R.id.item_fragmentallbrowsing_relativelayout);
-
+            shareDescriptionTv = (TextView) itemView.findViewById(R.id.item_fragmentallbrowsing_share_descripsion_tv);
+            shareRelativeLayout = (RelativeLayout) itemView.findViewById(R.id.fragment_allbrowsing_share_relativelayout);
         }
     }
 }
