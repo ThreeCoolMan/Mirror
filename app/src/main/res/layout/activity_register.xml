@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F1F1"
+    android:background="@color/login_linearLayout_background_color"
     android:orientation="vertical">
 
     <LinearLayout
@@ -112,10 +112,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/login_allItem_horizontal_creat_marginTop"
-            android:background="@drawable/btn_create_selector"
+            android:background="@mipmap/btn_create_press"
             android:text="@string/login_btn_register"
-            android:textColor="@color/login_all_creat_colour"
+            android:textColor="@color/login_all_create_colour"
             android:textSize="@dimen/activity_register_btn_creatnumber" />
+
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="测试" />-->
 
     </LinearLayout>
 </LinearLayout>

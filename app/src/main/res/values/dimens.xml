@@ -116,7 +116,6 @@
     <dimen name="item_fragmentallbrowsing_des_marinTop">70dp</dimen>
     <dimen name="item_fragmentallbrowsing_des_size">15sp</dimen>
     <dimen name="item_fragmentallbrowsing_des_marinLeft">16dp</dimen>
-
     <dimen name="item_product_bottom_listview_ll_height">570dp</dimen>
     <dimen name="item_product_bottom_listview_image_ll_jeight">470dp</dimen>
     <dimen name="item_product_top_listview_null_ll_height">685dp</dimen>
@@ -133,5 +132,6 @@
     <dimen name="item_product_top_listview_goodsname_ll_margin">20dp</dimen>
     <dimen name="item_product_top_listview_goodsname_tv_height">45dp</dimen>
     <dimen name="item_product_top_listview_null_second_height">60dp</dimen>
+    <dimen name="login_activity_btn_textSize">17sp</dimen>
 
 </resources>
