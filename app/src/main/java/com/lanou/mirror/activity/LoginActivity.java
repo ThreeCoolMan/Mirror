@@ -23,6 +23,11 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
+
 /**
  * Created by Yi on 16/3/29.
  */
@@ -31,7 +36,7 @@ import java.util.HashMap;
 public class LoginActivity extends BaseActivity implements View.OnClickListener, UrlListener, OkHttpNetHelperListener<LoginBeans> {
     private Button createBtn, loginBtn;
     private EditText phoneNumberEt, passWordEt;
-    private ImageView closeIv;
+    private ImageView closeIv, blogIv;
     private String phoneNumber, passWord;
 
 
@@ -42,7 +47,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     protected void initView() {
-        Log.d("!!!", "走这?");
+        blogIv = bindView(R.id.activity_login_iv_blog);
+        blogIv.setOnClickListener(this);
         closeIv = bindView(R.id.activity_login_close_iv);
         closeIv.setOnClickListener(this);
         loginBtn = bindView(R.id.activity_login_btn);
@@ -135,12 +141,43 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     HashMap<String, String> params = new HashMap<>();
                     params.put("phone_number", phoneNumber);
                     params.put("password", passWord);
-                    // OkHttpNetHelper.getOkHttpNetHelper().postRequest(USER_LOGIN_URL, params, LoginBeans.class, this);
                     OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_LOGIN_URL, params, this);
                 }
                 break;
             case R.id.activity_register_Iv_close:
                 finish();
+                break;
+            case R.id.activity_login_iv_blog:
+                //第三方登录
+                ShareSDK.initSDK(v.getContext());
+                Platform platform = ShareSDK.getPlatform(SinaWeibo.NAME);
+                if (platform.isAuthValid()) {
+                    platform.removeAccount();
+                }
+                platform.setPlatformActionListener(new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                        //在这里获取用户名和头像
+                        String head = platform.getDb().getUserIcon();//获取的头像是 URL 的头像地址
+                        String name = platform.getDb().getUserName();
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("userName", name);
+                        intent.putExtra("userHead", head);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+
+                    }
+                });
+                platform.SSOSetting(false);
+                platform.showUser(null);
                 break;
         }
 
@@ -183,6 +220,4 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         });
 
     }
-
-
 }

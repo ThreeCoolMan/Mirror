@@ -105,8 +105,8 @@
         android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
         android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
         android:layout_marginTop="@dimen/login_allItem_horizontal_creat_marginTop"
-        android:text="@string/login_btn_register"
         android:background="@mipmap/btn_create_press"
+        android:text="@string/login_btn_register"
         android:textColor="@color/login_all_create_colour"
         android:textSize="@dimen/login_activity_btn_textSize" />
 
@@ -144,7 +144,6 @@
                 android:gravity="center">
 
                 <ImageView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@mipmap/iv_wechat_icon" />
@@ -157,6 +156,7 @@
                 android:gravity="center">
 
                 <ImageView
+                    android:id="@+id/activity_login_iv_blog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@mipmap/iv_blog_icon" />
