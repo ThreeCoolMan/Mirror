@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lanou.mirror.R;
+import com.lanou.mirror.activity.ProductActivity;
 import com.lanou.mirror.activity.TopicsShareActivity;
 import com.lanou.mirror.bean.GoodsListBeans;
 import com.lanou.mirror.bean.TopicsShareBeans;
@@ -54,6 +55,14 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
             holder.descriptionTv.setText(goodData.getData().getList().get(pos).getBrand());
             holder.nameTv.setText(goodData.getData().getList().get(pos).getGoods_name());
             holder.priceTv.setText(goodData.getData().getList().get(pos).getGoods_price());
+            holder.iv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, ProductActivity.class);
+                    intent.putExtra("position",pos);
+                    context.startActivity(intent);
+                }
+            });
         }else if (pos == 3){
             helper =OkHttpNetHelper.getOkHttpNetHelper();
             helper.setOkImage(shareData.getData().getList().get(1).getStory_img(),holder.iv);
@@ -61,6 +70,7 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, TopicsShareActivity.class);
+
                     context.startActivity(intent);
                 }
             });

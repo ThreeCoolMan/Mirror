@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    >
+
+    <ImageView
+        android:id="@+id/activity_product_iv_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <com.lanou.mirror.tools.LinkageListView
+        android:id="@+id/activity_prodoct_llv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.lanou.mirror.tools.LinkageListView>
+
+    <RelativeLayout
+        android:id="@+id/activity_prodoct_rl"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/activity_product_relativelayout_marinBottom"
+        android:layout_marginLeft="@dimen/activity_product_relativelayout_marinLeft"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/activity_prodoct_btn_comeback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/btn_comeback" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_product_atlas_tv_marinLeft"
+            android:layout_toRightOf="@+id/activity_prodoct_btn_comeback"
+            android:background="@mipmap/btn_wear_atlas"
+            android:gravity="center"
+            android:text="@string/activity_product_atlas_tv"
+            android:textColor="@android:color/white" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/activity_product_imgbtn_marinRigth"
+            android:background="@mipmap/btn_shopping" />
+    </RelativeLayout>
+</FrameLayout>

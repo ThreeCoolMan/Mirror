@@ -41,7 +41,8 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ProductDetailsHolder) {
-            ((ProductDetailsHolder) holder).detailsIv.setImageResource(imgs[position]);
+//            ((ProductDetailsHolder) holder).detailsIv.setImageResource(imgs[position]);
+
         } else if (holder instanceof HeadProductDetailsHolder) {
             ((HeadProductDetailsHolder) holder).detailsVv.getId();
 

@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Mirror</string>
-
-
     <string name="AllBrowsing_tv">浏览所有类别</string>
     <string name="allBrowsing_content">显示排序为最新推荐</string>
     <string name="spectacles_tv">浏览平光眼镜</string>
@@ -20,6 +18,11 @@
     <string name="login_passWord_textView_text">密碼</string>
     <string name="login_social_textView_text">使用社交帳號</string>
     <string name="activity_product_tv_show">商品細節展示</string>
->>>>>>> feature/张洪猛_商品细节展示
+    <string name="item_product_bottom_description_title">FINLAYCO</string>
+    <string name="item_product_bottom_description_tv_brandname">谁颜色镜头板材太阳镜</string>
+    <string name="item_product_bottom_description_tv_body">我是你的你是我的手机大奖阿克琉斯多asdasdasdasdasdasdasdasdasd久啊看似简单撒打算打算.打算打算打打双打sadasdasdasdasdasdasdasdasdasd</string>
+    <string name="item_product_bottom_description_tv_price">2150</string>
+    <string name="item_product_bottom_description_tv_sliding">滑动浏览详情</string>
+    <string name="activity_product_atlas_tv">佩戴图集</string>
 </resources>
 
