@@ -169,5 +169,7 @@
     <dimen name="activity_buydetails_confirmorder_tv_marinTop">25dp</dimen>
     <dimen name="activity_buydetails_confirmorder_tv_size">15sp</dimen>
 
+    <dimen name="activity_myaddress_listview_marginTop">25dp</dimen>
+
 
 </resources>
