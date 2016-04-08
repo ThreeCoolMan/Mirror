@@ -22,6 +22,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private VerticalPagerAdapter adapter;
     private TextView loginTv;//登录
     private ImageView logoIv;//商标
+    private String token = "";//服务器获取得用户凭证
 
     @Override
     protected int setContent() {
@@ -72,7 +73,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.activity_main_logo_iv:
                 //每设置一次变化一次
-                ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 1.3f, 1.0f, 1.2f,1.0f).setDuration(500).start();
+                ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 1.3f, 1.0f, 1.2f, 1.0f).setDuration(500).start();
                 break;
 
         }
