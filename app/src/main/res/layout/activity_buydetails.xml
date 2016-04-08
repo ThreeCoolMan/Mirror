@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/activity_buydetails_linearlayout_marinLeft"
+    android:layout_marginRight="@dimen/activity_buydetails_linearlayout_marinRight"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_buydetails_relativeLayout_marinTop"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_buydetails_title_tv"
+            android:textColor="@color/activity_buydetails_title_tv"
+            android:textSize="@dimen/activity_buydetails_title_tv" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/btn_closs" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_buydetails_line_marinTop"
+        android:src="@mipmap/iv_line_below_create" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_buydetails_linearlayout_marinTop"
+        android:background="@mipmap/iv_fill_in_address_input"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/activity_buydetails_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_buydetails_writeaddress_tv_margin"
+            android:text="@string/activity_buydetails_writeaddress_tv"
+            android:textColor="@color/activity_buydetails_writeaddress_tv"
+            android:textSize="@dimen/activity_buydetails_writeaddress_tv" />
+
+        <TextView
+            android:id="@+id/activity_buydetails_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_buydetails_writeaddress_tv_margin"
+            android:text="@string/activity_buydetails_writeaddress_tv"
+            android:textColor="@color/activity_buydetails_writeaddress_tv"
+            android:textSize="@dimen/activity_buydetails_writeaddress_tv"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/activity_buydetails_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_buydetails_writeaddress_tv_margin"
+            android:text="@string/activity_buydetails_writeaddress_tv"
+            android:textColor="@color/activity_buydetails_writeaddress_tv"
+            android:textSize="@dimen/activity_buydetails_writeaddress_tv"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/activity_buydetails_view" />
+
+    <TextView
+        android:id="@+id/activity_buydetails_writeaddress_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_buydetails_writeaddress_tv_heigth"
+        android:background="@mipmap/iv_phone_number_output"
+        android:gravity="center"
+        android:hint="@string/activity_buydetails_writeaddress"
+        android:textColor="@color/activity_buydetails_writeaddress_tv"
+        android:textSize="@dimen/activity_buydetails_writeaddress_tv" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/iv_fill_in_address_input"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/activity_buydetails_pic_iv_heigth"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_buydetails_brand_tv_marinTop"
+                android:text="wwodlike"
+                android:textColor="@color/activity_buydetails_brand_tv"
+                android:textSize="@dimen/activity_buydetails_brand_tv" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_buydetails_des_tv_marinTop"
+                android:text="lalalalalalal"
+                android:textColor="@color/activity_buydetails_brand_tv"
+                android:textSize="@dimen/activity_buydetails_des_tv_size" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_buydetails_des_tv_marinTop"
+                android:orientation="horizontal">
+
+                <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/blackmoney" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="3850"
+                    android:textColor="@color/activity_buydetails_price_tv"
+                    android:textSize="@dimen/activity_buydetails_price_tv_size" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/activity_buydetails_confirmorder_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_buydetails_confirmorder_tv_marinTop"
+        android:background="@mipmap/btn_create_press"
+        android:gravity="center"
+        android:text="@string/activity_buydetails_confirmorder"
+        android:textColor="@color/activity_buydetails_confirmorder_tv"
+        android:textSize="@dimen/activity_buydetails_confirmorder_tv_size" />
+
+
+</LinearLayout>

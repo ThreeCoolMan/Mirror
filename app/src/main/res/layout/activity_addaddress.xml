@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_addaddress_title_relativeLayout_marinTop"
+        android:orientation="horizontal">
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_addaddress_title_tv"
+            android:textColor="@color/activity_addaddress_title_tv_color"
+            android:textSize="@dimen/activity_addaddress_title_relativeLayout_size" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/btn_closs" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_addaddress_line_marinTop"
+        android:src="@mipmap/iv_line_below_create" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_addaddress_name_tv_marinTop"
+        android:text="@string/activity_addaddress_name_tv"
+        android:textColor="@color/activity_addaddress_name_tv_color"
+        android:textSize="@dimen/activity_addaddress_name_tv_size" />
+
+    <EditText
+        android:id="@+id/activity_addaddress_name_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_addaddress_name_edit_marinTop"
+        android:background="@mipmap/iv_phone_number_output" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_addaddress_number_tv_marinTop"
+        android:text="@string/activity_addaddress_number_tv"
+        android:textColor="@color/activity_addaddress_number_tv_color"
+        android:textSize="@dimen/activity_addaddress_number_tv_size" />
+
+    <EditText
+        android:id="@+id/activity_addaddress_number_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_addaddress_number_edit_marinTop"
+        android:background="@mipmap/iv_phone_number_output" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_addaddress_address_tv_marinTop"
+        android:text="@string/activity_addaddress_address_tv"
+        android:textColor="@color/activity_addaddress_address_tv_color"
+        android:textSize="@dimen/activity_addaddress_address_tv_size" />
+
+    <EditText
+        android:id="@+id/activity_addaddress_address_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_addaddress_address_edit_marinTop"
+        android:background="@mipmap/iv_fill_in_address_input" />
+
+    <TextView
+        android:id="@+id/activity_addaddress_submitaddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_addaddress_submitaddress_marinTop"
+        android:background="@mipmap/btn_create_press"
+        android:gravity="center"
+        android:text="@string/activity_addaddress_submitaddress_tv"
+        android:textColor="@color/activity_addaddress_submitaddress_color"
+        android:textSize="@dimen/activity_addaddress_submitaddress_size" />
+
+
+</LinearLayout>

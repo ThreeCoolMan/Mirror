@@ -19,7 +19,17 @@
     <color name="fragment_topicssharecase_subTitle_tv_color">#fff</color>
     <color name="fragment_topicssharecase_Title_tv_color">#fff</color>
     <color name="fragment_topicssharecase_description_tv_color">#fff</color>
-
+    <color name="activity_buydetails_title_tv">#333</color>
+    <color name="activity_buydetails_writeaddress_tv">#333</color>
+    <color name="activity_buydetails_view">#ddd</color>
+    <color name="activity_buydetails_brand_tv">#333</color>
+    <color name="activity_buydetails_price_tv">#ff5aab</color>
+    <color name="activity_buydetails_confirmorder_tv">#fff</color>
+    <color name="activity_addaddress_title_tv_color">#333</color>
+    <color name="activity_addaddress_name_tv_color">#333</color>
+    <color name="activity_addaddress_number_tv_color">#333</color>
+    <color name="activity_addaddress_address_tv_color">#333</color>
+    <color name="activity_addaddress_submitaddress_color">#fff</color>
     <color name="color_item_product_bottom_listview_description">#500e0e0e</color>
     <color name="color_activity_details_iv_line">#ff000000</color>
 

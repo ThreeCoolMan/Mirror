@@ -136,5 +136,38 @@
     <dimen name="item_product_top_listview_goodsname_tv_height">45dp</dimen>
     <dimen name="item_product_top_listview_null_second_height">60dp</dimen>
     <dimen name="login_activity_btn_textSize">17sp</dimen>
+    <dimen name="activity_addaddress_title_relativeLayout_marinTop">15dp</dimen>
+    <dimen name="activity_addaddress_title_relativeLayout_size">17sp</dimen>
+    <dimen name="activity_addaddress_line_marinTop">10dp</dimen>
+    <dimen name="activity_addaddress_name_tv_marinTop">20dp</dimen>
+    <dimen name="activity_addaddress_name_tv_size">12sp</dimen>
+    <dimen name="activity_addaddress_name_edit_marinTop">10dp</dimen>
+    <dimen name="activity_addaddress_number_tv_marinTop">15dp</dimen>
+    <dimen name="activity_addaddress_number_tv_size">12sp</dimen>
+    <dimen name="activity_addaddress_number_edit_marinTop">10dp</dimen>
+    <dimen name="activity_addaddress_address_tv_marinTop">15dp</dimen>
+    <dimen name="activity_addaddress_address_tv_size">12sp</dimen>
+    <dimen name="activity_addaddress_address_edit_marinTop">10dp</dimen>
+    <dimen name="activity_addaddress_submitaddress_marinTop">25dp</dimen>
+    <dimen name="activity_addaddress_submitaddress_size">15sp</dimen>
+    <dimen name="activity_buydetails_linearlayout_marinLeft">15dp</dimen>
+    <dimen name="activity_buydetails_linearlayout_marinRight">15dp</dimen>
+    <dimen name="activity_buydetails_relativeLayout_marinTop">15dp</dimen>
+    <dimen name="activity_buydetails_title_tv">17sp</dimen>
+    <dimen name="activity_buydetails_line_marinTop">10dp</dimen>
+    <dimen name="activity_buydetails_linearlayout_marinTop">20dp</dimen>
+
+    <dimen name="activity_buydetails_writeaddress_tv">13sp</dimen>
+    <dimen name="activity_buydetails_writeaddress_tv_margin">10sp</dimen>
+    <dimen name="activity_buydetails_writeaddress_tv_heigth">40dp</dimen>
+    <dimen name="activity_buydetails_pic_iv_heigth">114dp</dimen>
+    <dimen name="activity_buydetails_brand_tv_marinTop">20dp</dimen>
+    <dimen name="activity_buydetails_brand_tv">15sp</dimen>
+    <dimen name="activity_buydetails_des_tv_marinTop">15dp</dimen>
+    <dimen name="activity_buydetails_des_tv_size">13sp</dimen>
+    <dimen name="activity_buydetails_price_tv_size">12sp</dimen>
+    <dimen name="activity_buydetails_confirmorder_tv_marinTop">25dp</dimen>
+    <dimen name="activity_buydetails_confirmorder_tv_size">15sp</dimen>
+
 
 </resources>
