@@ -8,6 +8,8 @@ import com.lanou.mirror.greendao.CacheDao;
 import com.lanou.mirror.greendao.DaoMaster;
 import com.lanou.mirror.greendao.DaoSession;
 
+import java.util.List;
+
 import de.greenrobot.dao.query.QueryBuilder;
 
 /**
@@ -24,18 +26,23 @@ public class DaoHelper {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(BaseApplication.getContext(), "cache", null);
         daoMaster = new DaoMaster(helper.getWritableDatabase());
         daoSession = daoMaster.newSession();
-        builder = daoSession.getCacheDao().queryBuilder();
+//        builder = daoSession.getCacheDao().queryBuilder();
+        cacheDao = daoSession.getCacheDao();
 
 
     }
 
-    public long addData(Cache cache) {
+    public void addData(Cache cache) {
 
-        return daoSession.insert(cache);
+        cacheDao.insert(cache);
 
     }
 
     public void deleteAll() {
-cacheDao.deleteAll();
+        cacheDao.deleteAll();
+    }
+
+    public List<Cache> loadAll(){
+       return cacheDao.loadAll();
     }
 }

@@ -44,7 +44,7 @@ public class ProductTopListviewAdapter extends BaseAdapter {
     @Override
     public int getItemViewType(int position) {
         int p = position;
-        if (p <= 1) {
+        if (p <= 1||p==goodsListBeans.getData().getList().get(0).getGoods_data().size()+2) {
             return TYPE_F;
         } else if (p == 2) {
             return TYPE_T;
