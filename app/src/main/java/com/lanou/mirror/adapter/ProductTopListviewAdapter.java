@@ -8,8 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.lanou.mirror.R;
-import com.lanou.mirror.bean.GoodsListBean;
-import com.lanou.mirror.bean.GoodsListBeans;
+import com.lanou.mirror.bean.GoodsDetailsBean;
 
 /**
  * Created by dllo on 16/4/1.
@@ -20,12 +19,12 @@ public class ProductTopListviewAdapter extends BaseAdapter {
     final int TYPE_F = 0;
     final int TYPE_S = 1;
     final int TYPE_T = 2;
-    private GoodsListBeans goodsListBeans;
+    private GoodsDetailsBean goodsDetailsBean;
     private int pos;
 
-    public ProductTopListviewAdapter(Context context, GoodsListBeans goodsListBeans,int pos ) {
+    public ProductTopListviewAdapter(Context context, GoodsDetailsBean goodsDetailsBean,int pos ) {
         this.context = context;
-        this.goodsListBeans = goodsListBeans;
+        this.goodsDetailsBean = goodsDetailsBean;
         this.pos = pos;
         inflater = LayoutInflater.from(context);
 
@@ -34,7 +33,7 @@ public class ProductTopListviewAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         //因为有三行是空的行布局 所以加3
-        return goodsListBeans.getData().getList().get(0).getGoods_data().size() + 3;
+        return goodsDetailsBean.getData().getGoods_data().size()+4;
     }
 
 
@@ -45,7 +44,8 @@ public class ProductTopListviewAdapter extends BaseAdapter {
     @Override
     public int getItemViewType(int position) {
         int p = position;
-        if (p <= 1) {
+
+        if (p <= 1||p>= goodsDetailsBean.getData().getGoods_data().size()+3) {
             return TYPE_F;
         } else if (p == 2) {
             return TYPE_T;
@@ -94,11 +94,11 @@ public class ProductTopListviewAdapter extends BaseAdapter {
                 case TYPE_S:
                     convertView = inflater.inflate(R.layout.item_product_top_listview_describe, parent, false);
                     holderT = new GoodsIntroduceHolder(convertView);
-                    holderT.introContentTv.setText(goodsListBeans.getData().getList().get(pos).getGoods_data().get(position - 3).getIntroContent());
-                    if (goodsListBeans.getData().getList().get(pos).getGoods_data().get(position - 3).getName().equals("")) {
-                        holderT.nameTv.setText(goodsListBeans.getData().getList().get(pos).getGoods_data().get(position - 3).getCountry());
+                    holderT.introContentTv.setText(goodsDetailsBean.getData().getGoods_data().get(position-3).getIntroContent());
+                    if (!goodsDetailsBean.getData().getGoods_data().get(position-3).getCountry().equals("")) {
+                        holderT.nameTv.setText(goodsDetailsBean.getData().getGoods_data().get(position - 3).getCountry());
                     } else {
-                        holderT.nameTv.setText(goodsListBeans.getData().getList().get(pos).getGoods_data().get(position - 3).getName());
+                        holderT.nameTv.setText(goodsDetailsBean.getData().getGoods_data().get(position - 3).getName());
                     }
                     break;
             }

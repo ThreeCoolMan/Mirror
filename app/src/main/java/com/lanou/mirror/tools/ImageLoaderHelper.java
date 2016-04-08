@@ -18,11 +18,9 @@ public class ImageLoaderHelper {
     public static ImageLoaderHelper imageLoaderHelper;
     private ImageLoader imageLoader;
     private DisplayImageOptions options;//图片设置对象
-
     private ImageLoaderHelper() {
         init();//配置imageLoader信息
     }
-
     public static ImageLoaderHelper getImageLoaderHelper() {
         if (imageLoaderHelper == null) {
             synchronized (ImageLoaderHelper.class) {
@@ -38,7 +36,7 @@ public class ImageLoaderHelper {
     private void init() {
         options = new DisplayImageOptions.Builder()
                 .showImageForEmptyUri(R.mipmap.btn_close)//设置空的网址图片
-                .showImageOnFail(R.mipmap.btn_close)//设置加载失败图片
+                .showImageOnFail(R.mipmap.blackmoney)//设置加载失败图片
                 .delayBeforeLoading(200) //加载时间
                 .cacheInMemory(true)//缓存
                 .cacheOnDisk(true)//磁盘缓存

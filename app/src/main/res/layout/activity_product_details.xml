@@ -69,6 +69,7 @@
             android:background="@color/color_activity_details_iv_line" />
 
         <com.bm.library.PhotoView
+            android:layout_gravity="center_vertical"
             android:id="@+id/activity_peoduct_newpv"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
