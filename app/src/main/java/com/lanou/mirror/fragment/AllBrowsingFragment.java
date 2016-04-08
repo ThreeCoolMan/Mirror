@@ -22,7 +22,7 @@ import com.lanou.mirror.bean.TopicsShareBeans;
 import com.lanou.mirror.greendao.Cache;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
-import com.lanou.mirror.tools.DaoHelper;
+
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
 import java.util.HashMap;
@@ -36,8 +36,8 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
     private LinearLayout linearLayout;
     private PopupWindow popupWindow;
     private int position;
-    private DaoHelper daoHelper = new DaoHelper();
-    private final Cache cache = new Cache();
+    //private DaoHelper daoHelper = new DaoHelper();
+    //private final Cache cache = new Cache();
     String[] titles = {"浏览所有分类", "浏览平光眼镜", "浏览太阳眼镜", "专题分享", "我的购物车", "返回首页", "退出"};
     private TextView titleTv;
 
@@ -184,11 +184,11 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                 //daoHelper.delete(cache);
 
                 adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext());
-                cache.setCity(goodsListBeans.getData().getList().get(position).getProduct_area());
-                cache.setBrand(goodsListBeans.getData().getList().get(position).getGoods_name());
-                cache.setDescription(goodsListBeans.getData().getList().get(position).getBrand());
-                cache.setPrice(goodsListBeans.getData().getList().get(position).getGoods_price());
-                cache.setUrl(goodsListBeans.getData().getList().get(position).getGoods_img());
+//                cache.setCity(goodsListBeans.getData().getList().get(position).getProduct_area());
+//                cache.setBrand(goodsListBeans.getData().getList().get(position).getGoods_name());
+//                cache.setDescription(goodsListBeans.getData().getList().get(position).getBrand());
+//                cache.setPrice(goodsListBeans.getData().getList().get(position).getGoods_price());
+//                cache.setUrl(goodsListBeans.getData().getList().get(position).getGoods_img());
                 LinearLayoutManager manager = new LinearLayoutManager(getContext());
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);
