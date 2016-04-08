@@ -1,5 +1,6 @@
 package com.lanou.mirror.fragment;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -46,6 +47,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
     private TextView titleTv;
     private List<Cache> cacheList;
     private Cache cache;
+    private int type = 1;
 
     @Override
     protected int setContent() {
@@ -102,7 +104,8 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                             recyclerView.setLayoutManager(manager);
                             recyclerView.setAdapter(adapter);
                             cacheList = daoHelper.loadAll();
-                            Log.e("5454545","!!!!!!!"+ cacheList.toString());
+                            type = 2;
+                            Log.e("5454545", "!!!!!!!" + cacheList.toString() + type);
                         }
                     });
                 }
@@ -110,7 +113,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                 @Override
                 public void requestFailed(String result) {
                     cacheList = daoHelper.loadAll();
-                    Log.e("5454545","!!!!!!!"+ cacheList.toString());
+                    Log.e("5454545", "!!!!!!!" + cacheList.toString() + position);
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -127,7 +130,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
 
             });
 
-        } else {
+        } else if (position < 3) {
 
 
             HashMap<String, String> map = new HashMap<>();
@@ -139,18 +142,19 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
             map.put("version", "");
 
             OkHttpNetHelper.getOkHttpNetHelper().postRequest(PRODUCTS_GOODS_LIST_URL, map, GoodsListBeans.class, this);
-            linearLayout.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    getPopupWindow();
-                    // 这里是位置显示方式
-                    popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, 0, 0);
-
-
-                }
-            });
         }
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                getPopupWindow();
+                // 这里是位置显示方式
+                popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, 0, 0);
+
+
+            }
+        });
     }
 
     /***
@@ -203,27 +207,26 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-
-                daoHelper.deleteAll();
-
-                adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext());
-                for (int i = 0; i < goodsListBeans.getData().getList().size(); i++) {
-                    cache = new Cache();
-                    cache.setCity(goodsListBeans.getData().getList().get(i).getProduct_area());
-                    cache.setBrand(goodsListBeans.getData().getList().get(i).getGoods_name());
-                    cache.setDescription(goodsListBeans.getData().getList().get(i).getBrand());
-                    cache.setPrice(goodsListBeans.getData().getList().get(i).getGoods_price());
-                    cache.setUrl(goodsListBeans.getData().getList().get(i).getGoods_img());
-                    daoHelper.addData(cache);
+                if (type == 1) {
+                    daoHelper.deleteAll();
+                    for (int i = 0; i < goodsListBeans.getData().getList().size(); i++) {
+                        cache = new Cache();
+                        cache.setCity(goodsListBeans.getData().getList().get(i).getProduct_area());
+                        cache.setBrand(goodsListBeans.getData().getList().get(i).getGoods_name());
+                        cache.setDescription(goodsListBeans.getData().getList().get(i).getBrand());
+                        cache.setPrice(goodsListBeans.getData().getList().get(i).getGoods_price());
+                        cache.setUrl(goodsListBeans.getData().getList().get(i).getGoods_img());
+                        daoHelper.addData(cache);
+                    }
                 }
 
-
+                adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext());
                 LinearLayoutManager manager = new LinearLayoutManager(getContext());
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);
                 recyclerView.setAdapter(adapter);
                 cacheList = daoHelper.loadAll();
-                Log.e("5454545", "66767" + cacheList.toString());
+                Log.e("5454545", "66767" + cacheList.toString() + type);
 
             }
         });
@@ -232,7 +235,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
     @Override
     public void requestFailed(String cause) {
         cacheList = daoHelper.loadAll();
-        Log.e("5454545","66767"+ cacheList.toString());
+        Log.e("5454545", "66767" + cacheList.toString());
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
                 failedAdapter = new AllBrowsingFailedFragmentAdapter((ArrayList<Cache>) cacheList, position);

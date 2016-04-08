@@ -20,6 +20,7 @@ public class DaoHelper {
     private DaoSession daoSession;
     private CacheDao cacheDao;
     QueryBuilder builder;
+    private Boolean flag = true;
 
 
     public DaoHelper() {
@@ -39,10 +40,16 @@ public class DaoHelper {
     }
 
     public void deleteAll() {
-        cacheDao.deleteAll();
+
+
+            cacheDao.deleteAll();
+
     }
 
     public List<Cache> loadAll(){
        return cacheDao.loadAll();
+    }
+    public int getSize(){
+        return daoSession.getCacheDao().loadAll().size();
     }
 }
