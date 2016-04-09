@@ -40,10 +40,11 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
     protected void initData() {
         Intent intent = getIntent();
         position  = intent.getIntExtra("position",0);
+        String id = intent.getStringExtra("id");
         HashMap<String, String> params = new HashMap<>();
         params.put("token", "");
         params.put("device_type", "3");
-        params.put("goods_id", "28JeX1452078872");
+        params.put("goods_id", id);
 
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(PRODUCTS_GOODS_INFO_URL, params, GoodsDetailsBean.class, this);
     }

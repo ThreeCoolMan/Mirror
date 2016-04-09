@@ -60,6 +60,7 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
                 public void onClick(View v) {
                     Intent intent = new Intent(context, ProductActivity.class);
                     intent.putExtra("position",pos);
+                    intent.putExtra("id",goodData.getData().getList().get(pos).getGoods_id());
                     context.startActivity(intent);
                 }
             });
