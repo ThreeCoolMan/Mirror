@@ -25,6 +25,7 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
     private ProductBottomListviewAdapter bottomAdapter;
     private ImageView backGroundIv;
     private int position;
+
     @Override
     protected int setContent() {
         return R.layout.activity_product;
@@ -39,17 +40,16 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
     @Override
     protected void initData() {
         Intent intent = getIntent();
-        position  = intent.getIntExtra("position",0);
+        position = intent.getIntExtra("position", 0);
         String id = intent.getStringExtra("id");
         HashMap<String, String> params = new HashMap<>();
         params.put("token", "");
         params.put("device_type", "3");
+        params.put("version", "1.0.1");
         params.put("goods_id", id);
 
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(PRODUCTS_GOODS_INFO_URL, params, GoodsDetailsBean.class, this);
     }
-
-
 
 
     @Override
@@ -58,10 +58,10 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
             @Override
             public void run() {
                 String url = bean.getData().getGoods_img();
-                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url,backGroundIv);
+                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backGroundIv);
 
-                bottomAdapter = new ProductBottomListviewAdapter(getApplication(),bean,position);
-                mlistView.setAdapter(bottomAdapter,new ProductTopListviewAdapter(getApplication(),bean,position));
+                bottomAdapter = new ProductBottomListviewAdapter(getApplication(), bean, position);
+                mlistView.setAdapter(bottomAdapter, new ProductTopListviewAdapter(getApplication(), bean, position));
                 mlistView.setLinkageSpeed(1.2f);//设置当前listview的滑动速度,封装好的方法
             }
         });
