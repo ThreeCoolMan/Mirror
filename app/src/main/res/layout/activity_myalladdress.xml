@@ -36,11 +36,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
         android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
         android:layout_marginTop="@dimen/login_allItem_horizontal_marginTop"
-
         android:orientation="vertical">
 
         <ImageView
@@ -48,13 +46,16 @@
             android:layout_height="match_parent"
             android:background="@mipmap/iv_line_below_create" />
 
+        <TextView
+            android:layout_margin="@dimen/login_allItem_horizontal_login_marginTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <ListView
             android:id="@+id/activity_myaddress_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_myaddress_listview_marginTop">
-
         </ListView>
 
     </LinearLayout>
