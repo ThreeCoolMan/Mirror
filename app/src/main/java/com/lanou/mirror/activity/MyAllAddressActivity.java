@@ -11,6 +11,7 @@ import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -56,7 +57,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                adapter = new MyAllAddressAdapter(bean.getData().getList(), MyAllAddressActivity.this);
+                adapter = new MyAllAddressAdapter((ArrayList<MyAllAddressBeans.DataEntity.ListEntity>) bean.getData().getList(), MyAllAddressActivity.this);
                 listView.setAdapter(adapter);
             }
         });
