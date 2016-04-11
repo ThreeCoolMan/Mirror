@@ -1,6 +1,7 @@
 package com.lanou.mirror.activity;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -57,7 +58,8 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
     protected void initData() {
         Intent intent = getIntent();
         position = intent.getIntExtra("position", 0);
-       // token = intent.getStringExtra("token");
+        token = intent.getStringExtra("token");
+        Log.e("eeeeee", "e34" + token);
 
         HashMap<String, String> params = new HashMap<>();
         params.put("token", "");
@@ -109,11 +111,12 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
 
             case R.id.activity_product_imageButton_buy:
 
-                if (token.equals("")) {
+                if (token == null) {
                     Intent intentLogin = new Intent(ProductActivity.this, LoginActivity.class);
                     startActivity(intentLogin);
                 } else {
                     Intent intentBuy = new Intent(ProductActivity.this, BuyDetailsActivity.class);
+                    intentBuy.putExtra("token",token);
                     startActivity(intentBuy);
                 }
 

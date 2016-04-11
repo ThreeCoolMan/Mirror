@@ -22,7 +22,8 @@ import java.util.HashMap;
 public class BuyDetailsActivity extends BaseActivity implements View.OnClickListener, UrlListener, OkHttpNetHelperListener<AddressListBeans> {
     private TextView writeAddressTv, nameTv, numberTv, addressTv;
     //private String token = "08f46330b2634ed9ddb0dbf9be876379";//付翼的电话 token
-    private String token = "f3e92dca0f9284d80c46fbbce1432774";//何伟东的电话 token
+    //private String token = "f3e92dca0f9284d80c46fbbce1432774";//何伟东的电话 token
+    private String token = "";
     private int defaultPosition;//默认的地址所在集合的位置
 
 
@@ -42,6 +43,8 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initData() {
+        token = getIntent().getStringExtra("token");
+
         HashMap<String, String> params = new HashMap<>();
         params.put("token", token);
         params.put("device_type", "3");
@@ -59,6 +62,7 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                     startActivity(intent);
                 } else {//有默认地址就跳转我的所有地址页面
                     Intent intent = new Intent(BuyDetailsActivity.this, MyAllAddressActivity.class);
+                    intent.putExtra("token", token);
                     startActivity(intent);
                 }
                 break;

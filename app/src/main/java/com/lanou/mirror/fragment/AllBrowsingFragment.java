@@ -48,6 +48,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
     private List<Cache> cacheList;
     private Cache cache;
     private int type = 1;
+    private String token;
 
     @Override
     protected int setContent() {
@@ -66,6 +67,8 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
     protected void initData() {
         Bundle bundle = getArguments();
         position = bundle.getInt("position", 0);
+        token = bundle.getString("token");
+        Log.e("FRAGMENT","4444" + token);
         titleTv.setText(titles[position]);
 
 
@@ -94,7 +97,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
 
                         @Override
                         public void run() {
-                            adapter = new AllBrowsingFragmentAdapter(topicsShareBeans, position, getContext());
+                            adapter = new AllBrowsingFragmentAdapter(topicsShareBeans, position, getContext(),token);
                             cache = new Cache();
                             cache.setTitle(topicsShareBeans.getData().getList().get(1).getStory_title());
                             cache.setUrl(topicsShareBeans.getData().getList().get(1).getStory_img());
@@ -220,7 +223,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                     }
                 }
 
-                adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext());
+                adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext(),token);
                 LinearLayoutManager manager = new LinearLayoutManager(getContext());
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);

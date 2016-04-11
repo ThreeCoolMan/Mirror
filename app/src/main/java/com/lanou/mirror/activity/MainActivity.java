@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,11 +44,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initData() {
+
+        token = getIntent().getStringExtra("token");
         data = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             AllBrowsingFragment fragmentAllBrowsing = new AllBrowsingFragment();
             Bundle bundle = new Bundle();
             bundle.putInt("position", i);
+            bundle.putString("token", token);
+            Log.e("main","4444" + token);
             fragmentAllBrowsing.setArguments(bundle);
             data.add(fragmentAllBrowsing);
 

@@ -152,13 +152,13 @@ public class LinkageListView extends FrameLayout {
 
                 int position = mTopListView.getLastVisiblePosition();
 
-                if (position >= 5 && limit == true) {
+                if (position >= 4 && limit == true) {
                     relativeLayout.setVisibility(VISIBLE);
                     ObjectAnimator animator = ObjectAnimator.ofFloat(relativeLayout, "translationX", -1200, 0);
                     animator.setDuration(500);
                     animator.start();
                     limit = false;
-                } else if (position < 5 && limit == false) {
+                } else if (position < 4 && limit == false) {
                     ObjectAnimator animator = ObjectAnimator.ofFloat(relativeLayout, "translationX", 0, -1200);
                     animator.setDuration(500);
                     animator.start();

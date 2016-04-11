@@ -40,8 +40,8 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initData() {
-        //token = getIntent().getStringExtra("token");
-        token = "08f46330b2634ed9ddb0dbf9be876379";
+        token = getIntent().getStringExtra("token");
+        //token = "08f46330b2634ed9ddb0dbf9be876379";
     }
 
     @Override

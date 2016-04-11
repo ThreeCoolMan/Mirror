@@ -24,7 +24,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
     private ListView listView;
     private MyAllAddressAdapter adapter;
 
-    private String token = "08f46330b2634ed9ddb0dbf9be876379";//付翼的电话 token
+    private String token = "";
 
 
     @Override
@@ -41,6 +41,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
 
     @Override
     protected void initData() {
+        token = getIntent().getStringExtra("token");
         HashMap<String, String> params = new HashMap<>();
         params.put("token", token);
         params.put("device_type", "3");
@@ -50,10 +51,16 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
     }
 
     @Override
-    public void requestSucceed(String result, MyAllAddressBeans bean) {
+    public void requestSucceed(String result, final MyAllAddressBeans bean) {
 
-        adapter = new MyAllAddressAdapter(bean.getData().getList(), this);
-        listView.setAdapter(adapter);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                adapter = new MyAllAddressAdapter(bean.getData().getList(), MyAllAddressActivity.this);
+                listView.setAdapter(adapter);
+            }
+        });
+
     }
 
     @Override
