@@ -27,7 +27,6 @@ public class ProductTopListviewAdapter extends BaseAdapter {
         this.goodsListBeans = goodsListBeans;
         this.pos = pos;
         inflater = LayoutInflater.from(context);
-
     }
 
     @Override

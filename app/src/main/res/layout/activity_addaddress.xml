@@ -80,8 +80,8 @@
         android:layout_marginTop="@dimen/activity_addaddress_address_edit_marinTop"
         android:background="@mipmap/iv_fill_in_address_input" />
 
-    <TextView
-        android:id="@+id/activity_addaddress_submitaddress"
+    <Button
+        android:id="@+id/activity_addAddress_btn_submitAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_addaddress_submitaddress_marinTop"

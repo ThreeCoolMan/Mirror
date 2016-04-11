@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/login_linearLayout_background_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
+        android:layout_marginTop="@dimen/login_allItem_horizontal_creat_marginTop"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的所有地址"
+            android:textColor="@color/login_allTextView_colour"
+            android:textSize="@dimen/login_title_textView_size" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/activity_login_close_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/login_allItem_close_btn_marginRight"
+            android:src="@mipmap/btn_close" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
+        android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
+        android:layout_marginTop="@dimen/login_allItem_horizontal_marginTop"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/iv_line_below_create" />
+
+        <TextView
+
+            android:textStyle="bold"
+            android:textColor="#333"
+            android:gravity="center"
+            android:text="添加地址"
+            android:textSize="15sp"
+            android:layout_marginTop="25dp"
+            android:background="@mipmap/iv_fill_in_address_input"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+
+
+
+        <ListView
+            android:id="@+id/activity_myaddress_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_myaddress_listview_marginTop">
+        </ListView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

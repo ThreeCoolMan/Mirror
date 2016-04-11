@@ -38,7 +38,7 @@ public interface UrlListener {
     //我的收获地址 编码 m011
     String USER_ADDRESS_LIST_URL = SERVER_SIDE_URL + "index.php/user/address_list";
     //添加收获地址 编码 m012
-    String UESR_ADD_ADDRESS_URL = SERVER_SIDE_URL + "index.php/user/add_address";
+    String USER_ADD_ADDRESS_URL = SERVER_SIDE_URL + "index.php/user/add_address";
     //编辑收货地址 编码 m013
     String UESR_EDIT_ADDRESS_URL = SERVER_SIDE_URL + "index.php/user/edit_address";
     //删除收获地址 编码 m014

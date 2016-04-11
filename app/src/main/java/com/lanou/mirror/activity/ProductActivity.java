@@ -1,7 +1,11 @@
 package com.lanou.mirror.activity;
 
 import android.content.Intent;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.ProductBottomListViewAdapter;
@@ -19,12 +23,16 @@ import java.util.HashMap;
 /**
  * Created by dllo on 16/4/1.
  */
-public class ProductActivity extends BaseActivity implements UrlListener, OkHttpNetHelperListener<GoodsListBeans> {
-    private LinkageListView mlistView;
+public class ProductActivity extends BaseActivity implements UrlListener, OkHttpNetHelperListener<GoodsListBeans>, View.OnClickListener {
+    private LinkageListView mListView;
     private ProductBottomListViewAdapter bottomAdapter;
-    private ImageView backGroundIv;
+    private ProductTopListviewAdapter topAdapter;
+    private ImageView backGroundIv, closeIv;
     private int position;
-
+    private RelativeLayout relativeLayout;
+    private TextView atlasTv;
+    private ImageButton buyImageViewButton;
+    private String token = "";
 
     @Override
     protected int setContent() {
@@ -34,14 +42,22 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
 
     @Override
     protected void initView() {
-        mlistView = bindView(R.id.activity_prodoct_llv);
+        mListView = bindView(R.id.activity_prodoct_llv);
         backGroundIv = bindView(R.id.activity_product_iv_background);
+        relativeLayout = bindView(R.id.activity_prodoct_rl);
+        closeIv = bindView(R.id.activity_prodoct_btn_comeback);
+        closeIv.setOnClickListener(this);
+        atlasTv = bindView(R.id.activity_product_tv_atlas);
+        atlasTv.setOnClickListener(this);
+        buyImageViewButton = bindView(R.id.activity_product_imageButton_buy);
+        buyImageViewButton.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
         Intent intent = getIntent();
-        position  = intent.getIntExtra("position",0);
+        position = intent.getIntExtra("position", 0);
+       // token = intent.getStringExtra("token");
 
         HashMap<String, String> params = new HashMap<>();
         params.put("token", "");
@@ -52,18 +68,11 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
         params.put("version", "");
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(PRODUCTS_GOODS_LIST_URL, params, GoodsListBeans.class, this);
 
-
-
-
-
-
-
+        mListView.setLinkListViewListener(relativeLayout);//对表层 listView 进行监听
     }
-
 
     @Override
     public void requestSucceed(String result, final GoodsListBeans goodsListBeans) {
-
 
         runOnUiThread(new Runnable() {//主线程刷新ui
             @Override
@@ -72,9 +81,10 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
                 OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backGroundIv);
 
                 //自定义组件中的方法 只需要添加两个adapter参数即可
-                bottomAdapter = new ProductBottomListViewAdapter(getApplication(), goodsListBeans,position);
-                mlistView.setAdapter(bottomAdapter, new ProductTopListviewAdapter(getApplication(),goodsListBeans,position));
-                mlistView.setLinkageSpeed(1.2f);//设置当前listview的滑动速度,封装好的方法
+                bottomAdapter = new ProductBottomListViewAdapter(getApplication(), goodsListBeans, position);
+                topAdapter = new ProductTopListviewAdapter(getApplication(), goodsListBeans, position);
+                mListView.setAdapter(bottomAdapter, topAdapter);
+                mListView.setLinkageSpeed(1.2f);//设置当前listview的滑动速度,封装好的方法
             }
         });
 
@@ -85,4 +95,30 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
 
     }
 
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.activity_prodoct_btn_comeback:
+                finish();
+                break;
+            case R.id.activity_product_tv_atlas:
+                Intent intent = new Intent(ProductActivity.this, ProductDetailsActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.activity_product_imageButton_buy:
+
+                if (token.equals("")) {
+                    Intent intentLogin = new Intent(ProductActivity.this, LoginActivity.class);
+                    startActivity(intentLogin);
+                } else {
+                    Intent intentBuy = new Intent(ProductActivity.this, BuyDetailsActivity.class);
+                    startActivity(intentBuy);
+                }
+
+                break;
+
+        }
+    }
 }

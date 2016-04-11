@@ -38,6 +38,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private EditText phoneNumberEt, passWordEt;
     private ImageView closeIv, blogIv;
     private String phoneNumber, passWord;
+    private String token;
+    private String uid;
 
 
     @Override
@@ -124,7 +126,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -188,8 +189,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         try {
             final JSONObject object = new JSONObject(result);
-            if (object.getString("result").equals("1")) {
+            if (object.getString("result").equals("1")) { //登录成功跳转主页面传值 token 和 uid
+                if (object.has("data")) {
+                    JSONObject obj = object.getJSONObject("data");
+                    token = obj.getString("token");
+                    uid = obj.getString("uid");
+
+                    Log.d("@@@", token);
+                }
+
                 Intent intent = new Intent(this, MainActivity.class);
+                intent.putExtra("token", token);
+                intent.putExtra("uid", uid);
                 startActivity(intent);
             } else {
                 runOnUiThread(new Runnable() {

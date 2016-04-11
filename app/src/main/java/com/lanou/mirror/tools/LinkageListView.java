@@ -1,8 +1,10 @@
 package com.lanou.mirror.tools;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.lanou.mirror.R;
 
@@ -19,16 +22,16 @@ import com.lanou.mirror.R;
 public class LinkageListView extends FrameLayout {
     /**
      * 1.我们的自定义控件和其他的控件一样,应该写成一个类,而这个类的属性是是有自己来决定的.
-
-     2.我们要在res/values目录下建立一个attrs.xml的文件,并在此文件中增加对控件的属性的定义.
-
-     3.使用AttributeSet来完成控件类的构造函数,并在构造函数中将自定义控件类中变量与attrs.xml中的属性连接起来.
-
-     4.在自定义控件类中使用这些已经连接的属性变量.
-
-     5.将自定义的控件类定义到布局用的xml文件中去.
-
-     6.在界面中生成此自定义控件类对象,并加以使用.
+     * <p/>
+     * 2.我们要在res/values目录下建立一个attrs.xml的文件,并在此文件中增加对控件的属性的定义.
+     * <p/>
+     * 3.使用AttributeSet来完成控件类的构造函数,并在构造函数中将自定义控件类中变量与attrs.xml中的属性连接起来.
+     * <p/>
+     * 4.在自定义控件类中使用这些已经连接的属性变量.
+     * <p/>
+     * 5.将自定义的控件类定义到布局用的xml文件中去.
+     * <p/>
+     * 6.在界面中生成此自定义控件类对象,并加以使用.
      */
 
     private static final float LINKAGE_SPEED = 2.5f;
@@ -42,6 +45,8 @@ public class LinkageListView extends FrameLayout {
     private BaseAdapter mBotAdapter, mTopAdapter;
 
     private int headerHeight;
+
+    private boolean limit = true;//boolean 变量用于判断动画是否显示
 
     public LinkageListView(Context context) {
         this(context, null);
@@ -138,4 +143,28 @@ public class LinkageListView extends FrameLayout {
         this.linkageSpeed = linkageSpeed;
     }
 
+    //自定义方法实现组件滑动监听
+    public void setLinkListViewListener(final RelativeLayout relativeLayout) {
+        //表层 listView监听 当滑到位置显示动画,滑会位置隐藏动画
+        mTopListView.setOnScrollChangeListener(new OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+
+                int position = mTopListView.getLastVisiblePosition();
+
+                if (position >= 5 && limit == true) {
+                    relativeLayout.setVisibility(VISIBLE);
+                    ObjectAnimator animator = ObjectAnimator.ofFloat(relativeLayout, "translationX", -1200, 0);
+                    animator.setDuration(500);
+                    animator.start();
+                    limit = false;
+                } else if (position < 5 && limit == false) {
+                    ObjectAnimator animator = ObjectAnimator.ofFloat(relativeLayout, "translationX", 0, -1200);
+                    animator.setDuration(500);
+                    animator.start();
+                    limit = true;
+                }
+            }
+        });
+    }
 }

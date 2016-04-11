@@ -34,6 +34,9 @@
         <activity android:name=".activity.ProductDetailsActivity" />
         <activity android:name=".activity.TopicsShareActivity" />
         <activity android:name=".activity.ProductActivity" />
+        <activity android:name=".activity.AddAddressActivity" />
+        <activity android:name=".activity.BuyDetailsActivity" />
+        <activity android:name=".activity.MyAllAddressActivity" />
 
         <activity
             android:name="com.mob.tools.MobUIShell"
