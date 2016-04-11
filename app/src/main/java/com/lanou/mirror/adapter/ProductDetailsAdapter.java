@@ -10,20 +10,23 @@ import android.widget.LinearLayout;
 import android.widget.VideoView;
 
 import com.bm.library.PhotoView;
+import com.lanou.mirror.bean.GoodsListBeans;
 import com.lanou.mirror.listener.ProductDetailsItemListioner;
 import com.lanou.mirror.R;
+import com.lanou.mirror.tools.OkHttpNetHelper;
 
 /**
  * Created by dllo on 16/3/30.
  */
 public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private Context context;
+    private GoodsListBeans goodsListBeans;
     private ProductDetailsItemListioner listioner;
-    private int[] imgs;
-
-    public ProductDetailsAdapter(Context context, int[] imgs) {
-
-        this.imgs = imgs;
+    public ProductDetailsAdapter(Context context, GoodsListBeans goodsListBeans) {
+        this.context = context;
+        this.goodsListBeans = goodsListBeans;
+        notifyDataSetChanged();;
     }
 
     public void SetDetailsListener(ProductDetailsItemListioner listioner) {
@@ -41,19 +44,12 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ProductDetailsHolder) {
-//            ((ProductDetailsHolder) holder).detailsIv.setImageResource(imgs[position]);
+            OkHttpNetHelper.getOkHttpNetHelper().setOkImage(goodsListBeans.getData().getList().get(0).getWear_video().get(position + 1).getData(),
+                    ((ProductDetailsHolder) holder).detailsIv);
 
         } else if (holder instanceof HeadProductDetailsHolder) {
             ((HeadProductDetailsHolder) holder).detailsVv.getId();
-
-//            MediaController mediaController = new MediaController(context);
-//            //调整播放进度条的位置
-//            mediaController.setPadding(36,45,33,2);
-//            //用这句话可以播放
-//            mediaController.setAnchorView(((HeadProductDetailsHolder) holder).detailsVv);
-//            ((HeadProductDetailsHolder) holder).detailsVv.setMediaController(mediaController);
-//            ((HeadProductDetailsHolder) holder).detailsVv.requestFocus();
-        }
+       }
     }
 
 
@@ -64,16 +60,15 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public int getItemCount() {
-        return imgs.length;
+        return goodsListBeans.getData().getList().get(0).getWear_video().size() - 1;
+
     }
 
     class ProductDetailsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private int position;
         private LinearLayout linearLayout;
-
         private PhotoView detailsIv;
-
 
         public ProductDetailsHolder(View itemView) {
             super(itemView);
@@ -85,8 +80,8 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         @Override
         public void onClick(View v) {
             if (listioner != null) {
-                listioner.productDetailsItemListioner(getItemViewType(), v);
-                Log.d("android", getItemViewType() + "");
+                listioner.productDetailsItemListioner(getItemViewType(), v, goodsListBeans);
+
             }
         }
     }
