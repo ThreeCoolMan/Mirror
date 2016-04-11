@@ -36,11 +36,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
         android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
         android:layout_marginTop="@dimen/login_allItem_horizontal_marginTop"
-
         android:orientation="vertical">
 
         <ImageView
@@ -49,6 +47,7 @@
             android:background="@mipmap/iv_line_below_create" />
 
         <TextView
+
             android:textStyle="bold"
             android:textColor="#333"
             android:gravity="center"
@@ -56,8 +55,9 @@
             android:textSize="15sp"
             android:layout_marginTop="25dp"
             android:background="@mipmap/iv_fill_in_address_input"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="80dp" />
+
 
 
         <ListView
@@ -65,7 +65,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_myaddress_listview_marginTop">
-
         </ListView>
 
     </LinearLayout>

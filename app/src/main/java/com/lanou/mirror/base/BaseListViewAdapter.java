@@ -14,8 +14,8 @@ import java.util.List;
  */
 public abstract class BaseListViewAdapter<T> extends BaseAdapter {
 
-    private List<T> data;
-    private Context context;
+    protected List<T> data;
+    protected Context context;
 
     public BaseListViewAdapter(List<T> data, Context context) {
         this.data = data;

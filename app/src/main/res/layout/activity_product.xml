@@ -2,13 +2,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    >
+    android:background="@android:color/white">
 
     <ImageView
         android:id="@+id/activity_product_iv_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
     <com.lanou.mirror.tools.LinkageListView
         android:id="@+id/activity_prodoct_llv"
         android:layout_width="match_parent"
@@ -18,13 +18,13 @@
 
     <RelativeLayout
         android:id="@+id/activity_prodoct_rl"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginBottom="@dimen/activity_product_relativelayout_marinBottom"
         android:layout_marginLeft="@dimen/activity_product_relativelayout_marinLeft"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <ImageButton
             android:id="@+id/activity_prodoct_btn_comeback"
@@ -33,6 +33,7 @@
             android:background="@mipmap/btn_comeback" />
 
         <TextView
+            android:id="@+id/activity_product_tv_atlas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_product_atlas_tv_marinLeft"
@@ -43,6 +44,7 @@
             android:textColor="@android:color/white" />
 
         <ImageButton
+            android:id="@+id/activity_product_imageButton_buy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
