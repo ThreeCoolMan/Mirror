@@ -15,6 +15,8 @@ import com.lanou.mirror.listener.ProductDetailsItemListioner;
 import com.lanou.mirror.R;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+
 /**
  * Created by dllo on 16/3/30.
  */
@@ -48,7 +50,9 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     ((ProductDetailsHolder) holder).detailsIv);
 
         } else if (holder instanceof HeadProductDetailsHolder) {
-            ((HeadProductDetailsHolder) holder).detailsVv.getId();
+            String url = goodsListBeans.getData().getList().get(0).getWear_video().get(0).getData();
+
+                    ((HeadProductDetailsHolder) holder).detailsVv.setUp(url,null);
        }
     }
 
@@ -88,11 +92,11 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     class HeadProductDetailsHolder extends RecyclerView.ViewHolder {
         private int position;
-        private VideoView detailsVv;
+        private JCVideoPlayer detailsVv;
 
         public HeadProductDetailsHolder(View itemView) {
             super(itemView);
-            detailsVv = (VideoView) itemView.findViewById(R.id.item_details_vv_details);
+            detailsVv = (JCVideoPlayer) itemView.findViewById(R.id.item_details_vv_details);
         }
     }
 
