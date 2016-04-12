@@ -41,7 +41,6 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void initData() {
         token = getIntent().getStringExtra("token");
-        //token = "08f46330b2634ed9ddb0dbf9be876379";
     }
 
     @Override
@@ -80,6 +79,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
             Toast.makeText(this, "请完整的填写", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     @Override
     public void requestSucceed(String result, Object bean) {

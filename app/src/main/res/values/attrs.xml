@@ -3,4 +3,10 @@
     <declare-styleable name="LinkageListView">
         <attr name="linkageSpeed" format="float" />
     </declare-styleable>
+
+
+<declare-styleable name="swipelistviewstyle">
+    <attr name="right_width" format="dimension"></attr>
+</declare-styleable>
 </resources>
+

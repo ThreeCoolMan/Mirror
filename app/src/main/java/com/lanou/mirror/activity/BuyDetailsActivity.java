@@ -43,8 +43,8 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initData() {
-        token = getIntent().getStringExtra("token");
 
+        token = getIntent().getStringExtra("token");
         HashMap<String, String> params = new HashMap<>();
         params.put("token", token);
         params.put("device_type", "3");
