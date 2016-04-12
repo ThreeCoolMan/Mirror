@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lanou.mirror.R;
 import com.lanou.mirror.base.BaseApplication;
@@ -83,6 +84,12 @@ public class MyAllAddressAdapter extends BaseAdapter {
         holder.numberTv.setText("电话 ：" + data.get(position).getCellphone());
         holder.addressTv.setText("地址: " + data.get(position).getAddr_info());
         holder.receiveTv.setText("收件人: " + data.get(position).getUsername());
+        holder.editIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,"hahahah",Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         return convertView;

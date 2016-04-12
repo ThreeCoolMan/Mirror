@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.lanou.mirror.R;
 import com.lanou.mirror.base.BaseActivity;
 import com.lanou.mirror.bean.LoginBeans;
-import com.lanou.mirror.bean.RegisterFailedBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
@@ -51,7 +50,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     protected void initView() {
         blogIv = bindView(R.id.activity_login_iv_blog);
         blogIv.setOnClickListener(this);
-        closeIv = bindView(R.id.activity_login_close_iv);
+        closeIv = bindView(R.id.activity_myAlladdress_close_iv);
         closeIv.setOnClickListener(this);
         loginBtn = bindView(R.id.activity_login_btn);
         loginBtn.setOnClickListener(this);
@@ -157,14 +156,54 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 }
                 platform.setPlatformActionListener(new PlatformActionListener() {
                     @Override
-                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+                    public void onComplete(Platform platform, final int i, HashMap<String, Object> hashMap) {
                         //在这里获取用户名和头像
                         String head = platform.getDb().getUserIcon();//获取的头像是 URL 的头像地址
-                        String name = platform.getDb().getUserName();
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra("userName", name);
-                        intent.putExtra("userHead", head);
-                        startActivity(intent);
+                        String name = platform.getDb().getUserName();//获取用户名
+                        String id = String.valueOf(platform.getId());//获取 id
+                        HashMap<String, String> paramsBlog = new HashMap<String, String>();
+
+                        paramsBlog.put("iswb_orwx", "1");
+                        paramsBlog.put("wb_name", name);
+                        paramsBlog.put("wb_img", head);
+                        paramsBlog.put("wb_id", id);
+                        OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_BUNDLING_URL, paramsBlog, new OkHttpNetHelperListener() {
+                            @Override
+                            public void requestSucceed(String result, Object bean) {
+
+                                try {
+                                    JSONObject object = new JSONObject(result);
+                                    String resultCode = object.getString("result");
+                                    if (resultCode.equals("0")) {
+                                        final String msg = object.getString("msg");
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() { //如果绑定账号失败  返回失败原因
+                                                Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        });
+                                    } else { //绑定成功跳转主页面
+                                        JSONObject data = object.getJSONObject("data");
+                                        String token = data.getString("token");
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        intent.putExtra("token", token);
+                                        startActivity(intent);
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+
+                            }
+
+                            @Override
+                            public void requestFailed(String cause) {
+
+                            }
+                        });
+
                     }
 
                     @Override
@@ -195,7 +234,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     token = obj.getString("token");
                     uid = obj.getString("uid");
 
-                    Log.d("@@@", token);
                 }
 
                 Intent intent = new Intent(this, MainActivity.class);
@@ -218,7 +256,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override

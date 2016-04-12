@@ -40,7 +40,6 @@ public class ImageLoaderHelper {
         return imageLoaderHelper;
     }
 
-
     private void init() {
         //设置网络加载图片
         options = new DisplayImageOptions.Builder()
@@ -61,6 +60,7 @@ public class ImageLoaderHelper {
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(configuration);
 
+// 设置默认的缓存属性,不需要磁盘缓存可以用这句
 //        imageLoader = ImageLoader.getInstance();
 //        imageLoader.init(ImageLoaderConfiguration.createDefault(BaseApplication.getContext()));
 

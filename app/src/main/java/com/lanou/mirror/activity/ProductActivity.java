@@ -34,6 +34,7 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
     private TextView atlasTv;
     private ImageButton buyImageViewButton;
     private String token = "";
+    private GoodsListBeans passBeans;
 
     @Override
     protected int setContent() {
@@ -59,7 +60,6 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
         Intent intent = getIntent();
         position = intent.getIntExtra("position", 0);
         token = intent.getStringExtra("token");
-        Log.e("eeeeee", "e34" + token);
 
         HashMap<String, String> params = new HashMap<>();
         params.put("token", "");
@@ -76,6 +76,7 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
     @Override
     public void requestSucceed(String result, final GoodsListBeans goodsListBeans) {
 
+        passBeans = goodsListBeans;
         runOnUiThread(new Runnable() {//主线程刷新ui
             @Override
             public void run() {
@@ -86,7 +87,7 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
                 bottomAdapter = new ProductBottomListViewAdapter(getApplication(), goodsListBeans, position);
                 topAdapter = new ProductTopListviewAdapter(getApplication(), goodsListBeans, position);
                 mListView.setAdapter(bottomAdapter, topAdapter);
-                mListView.setLinkageSpeed(1.2f);//设置当前listview的滑动速度,封装好的方法
+                mListView.setLinkageSpeed(1.2f);//设置当前listView的滑动速度,封装好的方法
             }
         });
 
@@ -105,6 +106,7 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
                 finish();
                 break;
             case R.id.activity_product_tv_atlas:
+
                 Intent intent = new Intent(ProductActivity.this, ProductDetailsActivity.class);
                 startActivity(intent);
                 break;
@@ -114,9 +116,11 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
                 if (token == null) {
                     Intent intentLogin = new Intent(ProductActivity.this, LoginActivity.class);
                     startActivity(intentLogin);
-                } else {
+                } else if (passBeans != null) {
+                    String goodsId = passBeans.getData().getList().get(position).getGoods_id();
                     Intent intentBuy = new Intent(ProductActivity.this, BuyDetailsActivity.class);
-                    intentBuy.putExtra("token",token);
+                    intentBuy.putExtra("token", token);
+                    intentBuy.putExtra("goodsId", goodsId);
                     startActivity(intentBuy);
                 }
 
