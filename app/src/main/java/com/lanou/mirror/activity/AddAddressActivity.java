@@ -14,6 +14,7 @@ import com.lanou.mirror.base.BaseActivity;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
+import com.lanou.mirror.tools.T;
 
 import java.util.HashMap;
 
@@ -68,7 +69,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                     params.put("addr_info", addressInfo);
                     OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_ADD_ADDRESS_URL, params, this);
                 } else {
-                    Toast.makeText(AddAddressActivity.this, "请填写详细信息", Toast.LENGTH_SHORT).show();
+                    T.showShort(AddAddressActivity.this, "请填写详细信息");
                 }
 
                 break;
@@ -85,7 +86,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(AddAddressActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                T.showShort(AddAddressActivity.this, "添加成功");
                 Intent intent = new Intent(AddAddressActivity.this, MyAllAddressActivity.class);
                 intent.putExtra("token", token);
                 startActivity(intent);
@@ -95,6 +96,6 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void requestFailed(String cause) {
-
+        T.showShort(AddAddressActivity.this, cause);
     }
 }

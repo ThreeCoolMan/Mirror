@@ -16,6 +16,7 @@ import com.lanou.mirror.bean.LoginBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
+import com.lanou.mirror.tools.T;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -136,7 +137,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 passWord = passWordEt.getText().toString();
                 phoneNumber = phoneNumberEt.getText().toString();
                 if (phoneNumber.equals("") || passWord.equals("")) {
-                    Toast.makeText(LoginActivity.this, "请输入登录信息", Toast.LENGTH_SHORT).show();
+                    T.showShort(LoginActivity.this, "请输入登录信息");
                 } else {
                     HashMap<String, String> params = new HashMap<>();
                     params.put("phone_number", phoneNumber);
@@ -245,7 +246,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     @Override
                     public void run() {
                         try {
-                            Toast.makeText(LoginActivity.this, object.getString("msg"), Toast.LENGTH_SHORT).show();
+                            T.showShort(LoginActivity.this, object.getString("msg"));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -263,7 +264,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(LoginActivity.this, cause, Toast.LENGTH_SHORT).show();
+                T.showShort(LoginActivity.this, cause);
             }
         });
 

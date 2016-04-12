@@ -14,6 +14,7 @@ import com.lanou.mirror.bean.RegisterFailedBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
+import com.lanou.mirror.tools.T;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -88,7 +89,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_REGISTER_URL, params, this);
 
                 } else {
-                    Toast.makeText(RegisterActivity.this, "请认真填写信息", Toast.LENGTH_SHORT).show();
+                    T.showShort(RegisterActivity.this, "请认真填写信息");
                 }
                 break;
             case R.id.activity_register_btn_send_verification://请求验证码
@@ -97,10 +98,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     params = new HashMap<>();
                     params.put("phone number", number);
                     OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_SEND_CODE_URL, params, this);
-                    Toast.makeText(RegisterActivity.this, "验证码发送成功", Toast.LENGTH_SHORT).show();
+                    T.showShort(RegisterActivity.this, "验证码发送成功");
                     timer.start();//发送成功启动倒计时
                 } else {
-                    Toast.makeText(RegisterActivity.this, "请输入手机号", Toast.LENGTH_SHORT).show();
+                    T.showShort(RegisterActivity.this, "请输入手机号");
                 }
                 break;
             case R.id.activity_register_Iv_close:
@@ -130,7 +131,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                        T.showShort(RegisterActivity.this, "注册成功");
                     }
                 });
                 new Thread(new Runnable() {
@@ -158,7 +159,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(RegisterActivity.this, cause, Toast.LENGTH_SHORT).show();
+                T.showShort(RegisterActivity.this, cause);
             }
         });
 

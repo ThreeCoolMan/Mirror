@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.MyAllAddressAdapter;
 import com.lanou.mirror.base.BaseActivity;
@@ -16,7 +15,6 @@ import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 import com.lanou.mirror.tools.SwipeListView;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -82,7 +80,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                adapter = new MyAllAddressAdapter((ArrayList<MyAllAddressBeans.DataEntity.ListEntity>) bean.getData().getList(), MyAllAddressActivity.this, listView.getRightViewWidth());
+                adapter = new MyAllAddressAdapter((ArrayList<MyAllAddressBeans.DataEntity.ListEntity>) bean.getData().getList(), MyAllAddressActivity.this,listView.getRightViewWidth());
 
                 adapter.setOnRightItemClickListener(new MyAllAddressAdapter.onRightItemClickListener() {
 

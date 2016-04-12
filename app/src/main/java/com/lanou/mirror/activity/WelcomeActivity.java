@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.lanou.mirror.R;
 import com.lanou.mirror.base.BaseActivity;
 import com.lanou.mirror.bean.GoodsListBeans;
@@ -20,7 +21,7 @@ import java.util.HashMap;
  * Created by dllo on 16/4/8.
  */
 public class WelcomeActivity extends BaseActivity implements UrlListener, OkHttpNetHelperListener<WelcomeBean> {
-    private ImageView welcomeIv;
+    private SimpleDraweeView welcomeIv;
     private Handler handler = new Handler();
     private final long SPLASH_LENGTH = 3000;
 
@@ -40,6 +41,15 @@ public class WelcomeActivity extends BaseActivity implements UrlListener, OkHttp
         HashMap<String, String> params = new HashMap<>();
         params.put("version", "1.0.1");
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(START_IMAGE_URL, params, WelcomeBean.class, this);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, SPLASH_LENGTH);
+
 
     }
 
@@ -50,20 +60,14 @@ public class WelcomeActivity extends BaseActivity implements UrlListener, OkHttp
             @Override
             public void run() {
                 String url = bean.getImg();
-                Log.d("aaaaaaa", url + "");
-//                OkHttpNetHelper.getOkHttpNetHelper().setOkImage("http://pic1.zhimg.com/e1cc747cbf2076a378d2fe0f8c3b2e20.jpg", welcomeIv);
+                welcomeIv.setImageURI(Uri.parse(url));
+
             }
         });
 
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        }, SPLASH_LENGTH);
+
     }
+
 
     @Override
     public void requestFailed(String cause) {

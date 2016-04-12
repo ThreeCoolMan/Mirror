@@ -41,4 +41,5 @@ dependencies {
     compile files('libs/ShareSDK-Wechat-Moments-2.7.0.jar')
     compile files('libs/ShareSDK-Wechat-Core-2.7.0.jar')
     compile 'fm.jiecao:jiecaovideoplayer:2.0'
+    compile 'com.facebook.fresco:fresco:0.9.0+'
 }

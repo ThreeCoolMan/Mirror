@@ -16,6 +16,7 @@ import com.lanou.mirror.bean.OrderBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
+import com.lanou.mirror.tools.T;
 
 import java.util.HashMap;
 
@@ -24,7 +25,7 @@ import java.util.HashMap;
  */
 public class BuyDetailsActivity extends BaseActivity implements View.OnClickListener, UrlListener, OkHttpNetHelperListener<AddressListBeans> {
     private TextView writeAddressTv, nameTv, numberTv, addressTv, goodsNameTv, goodsContentTv, goodsPriceTv;
-    private String token;
+    private String token ="";
     private int defaultPosition;//默认的地址所在集合的位置
     private String goodsId;//商品 Id
     private ImageView closeIv, goodsIv;
@@ -51,19 +52,13 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initData() {
-
-
         token = getIntent().getStringExtra("token");
-
         goodsId = getIntent().getStringExtra("goodsId");
-
         //地址列表请求
-
         HashMap<String, String> params = new HashMap<>();
         params.put("token", token);
         params.put("device_type", "3");
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(USER_ADDRESS_LIST_URL, params, AddressListBeans.class, this);
-
         //商品请求
         HashMap<String, String> paramsOrder = new HashMap<>();
         paramsOrder.put("token", token);
@@ -71,7 +66,6 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         paramsOrder.put("goods_id", goodsId);
         paramsOrder.put("goods_num", "1");
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(ORDER_SUB_URL, paramsOrder, OrderBeans.class, new OkHttpNetHelperListener<OrderBeans>() {
-
             @Override
             public void requestSucceed(String result, final OrderBeans bean) {
                 runOnUiThread(new Runnable() {
@@ -87,7 +81,7 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
             @Override
             public void requestFailed(String cause) {
-
+                T.showShort(BuyDetailsActivity.this, cause);
             }
         });
     }

@@ -75,7 +75,6 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
             holder.shareDescriptionTv.setText(shareData.getData().getList().get(1).getStory_title());
             holder.shareRelativeLayout.setVisibility(View.VISIBLE);
             holder.layout.setVisibility(View.GONE);
-
             holder.iv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
