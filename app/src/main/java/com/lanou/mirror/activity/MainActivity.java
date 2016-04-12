@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.VerticalPagerAdapter;
@@ -18,12 +20,14 @@ import com.lanou.mirror.tools.VerticalPager;
 import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
+
     private VerticalPager verticalPager;
     private ArrayList<Fragment> data;
     private VerticalPagerAdapter adapter;
     private TextView loginTv;//登录
     private ImageView logoIv;//商标
     private String token = "";//服务器获取得用户凭证
+    private long exitTime = 0;
 
     @Override
     protected int setContent() {
@@ -81,6 +85,28 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 1.3f, 1.0f, 1.2f, 1.0f).setDuration(500).start();
                 break;
 
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode==KeyEvent.KEYCODE_BACK){
+            exit();
+            return false;
+        }
+
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void exit() {
+
+        if ((System.currentTimeMillis()- exitTime)>2000){
+            Toast.makeText(getApplicationContext(),"特么的别走",Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        }else {
+            finish();
+            System.exit(0);//退出当前程序
         }
     }
 }

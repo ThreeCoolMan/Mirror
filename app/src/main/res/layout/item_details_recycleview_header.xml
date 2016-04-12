@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <VideoView
+    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
         android:id="@+id/item_details_vv_details"
         android:layout_width="@dimen/item_details_recycleview_header_vv_width"
-        android:layout_height="@dimen/item_details_recycleview_header_vv_height" />
+        android:layout_height="@dimen/item_details_recycleview_header_vv_height"></fm.jiecao.jcvideoplayer_lib.JCVideoPlayer>
 </LinearLayout>

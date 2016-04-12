@@ -105,8 +105,10 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
                 });
                 break;
             case R.id.activity_peoduct_back_btn:
+                this.finish();
                 break;
             case R.id.activity_peoduct_shoping_btn:
+
                 break;
         }
     }
