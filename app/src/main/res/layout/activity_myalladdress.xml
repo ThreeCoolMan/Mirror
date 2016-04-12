@@ -60,12 +60,12 @@
 
 
 
-        <ListView
+        <com.lanou.mirror.tools.SwipeListView
             android:id="@+id/activity_myaddress_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_myaddress_listview_marginTop">
-        </ListView>
+        </com.lanou.mirror.tools.SwipeListView>
 
     </LinearLayout>
 
