@@ -72,10 +72,8 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
 
         Intent intent = getIntent();
         pos = intent.getIntExtra("position", pos);
-
-        token = getIntent().getStringExtra("token");
         HashMap<String, String> params = new HashMap<>();
-        params.put("token", token);
+        params.put("token", "");
         params.put("device_type", "3");
         params.put("page", "");
         params.put("last_time", "");
@@ -90,7 +88,7 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
     public void productDetailsItemListener(int position, View v, GoodsListBeans beans) {
 
         mInfo = ((PhotoView) v).getInfo();
-        if (pos == 0) {
+
             OkHttpNetHelper.getOkHttpNetHelper().setOkImage
                     (beans.getData().getList().get(pos).getWear_video().get(position + 1).getData(), deailsPv);
 
@@ -99,9 +97,7 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
             newFl.setVisibility(View.VISIBLE);
             newFl.startAnimation(in);
             deailsPv.animaFrom(mInfo);
-        } else if (pos == 2) {
 
-        }
     }
 
 
