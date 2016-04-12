@@ -1,9 +1,11 @@
 package com.lanou.mirror.activity;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     private Button submitBtn;
     private EditText nameEt, numberEt, addressEt;
     private String token;
+    private ImageView closeIv;
 
     @Override
     protected int setContent() {
@@ -30,7 +33,8 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initView() {
-
+        closeIv = bindView(R.id.activity_addAddress_iv_close);
+        closeIv.setOnClickListener(this);
         submitBtn = (Button) findViewById(R.id.activity_addAddress_btn_submitAddress);
         submitBtn.setOnClickListener(this);
         nameEt = (EditText) findViewById(R.id.activity_addaddress_name_et);
@@ -41,7 +45,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void initData() {
         token = getIntent().getStringExtra("token");
-        //token = "08f46330b2634ed9ddb0dbf9be876379";
+        Log.d("token", token);
     }
 
     @Override
@@ -53,7 +57,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 String phoneNumber = numberEt.getText().toString();
                 String addressInfo = addressEt.getText().toString();
 
-                if (nameEt.length() > 0 & numberEt.length() > 0 & addressEt.length() > 0) {
+                if (!name.equals("") & !phoneNumber.equals("") & !addressInfo.equals("")) {
                     //提交数据去服务器
                     HashMap<String, String> params = new HashMap<>();
                     params.put("token", token);
@@ -66,18 +70,10 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 }
 
                 break;
-        }
 
-        Intent intent = new Intent();
-        intent.putExtra("name", nameEt.getText().toString());
-        intent.putExtra("number", numberEt.getText().toString());
-        intent.putExtra("address", addressEt.getText().toString());
-        if (nameEt.getText().length() > 0 && numberEt.getText().length() > 0 && addressEt.getText().length() > 0) {
-            setResult(202, intent);
-            finish();
-
-        } else {
-            Toast.makeText(this, "请完整的填写", Toast.LENGTH_SHORT).show();
+            case R.id.activity_addAddress_iv_close:
+                finish();
+                break;
         }
     }
 
@@ -87,10 +83,11 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
             @Override
             public void run() {
                 Toast.makeText(AddAddressActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AddAddressActivity.this, MyAllAddressActivity.class);
+                intent.putExtra("token", token);
+                startActivity(intent);
             }
         });
-        Intent intent = new Intent(AddAddressActivity.this, MyAllAddressActivity.class);
-        startActivity(intent);
     }
 
     @Override

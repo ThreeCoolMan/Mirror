@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.lanou.mirror.R;
 import com.lanou.mirror.base.BaseActivity;
 import com.lanou.mirror.bean.LoginBeans;
-import com.lanou.mirror.bean.RegisterFailedBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
@@ -51,7 +50,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     protected void initView() {
         blogIv = bindView(R.id.activity_login_iv_blog);
         blogIv.setOnClickListener(this);
-        closeIv = bindView(R.id.activity_login_close_iv);
+        closeIv = bindView(R.id.activity_myAlladdress_close_iv);
         closeIv.setOnClickListener(this);
         loginBtn = bindView(R.id.activity_login_btn);
         loginBtn.setOnClickListener(this);
@@ -195,7 +194,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     token = obj.getString("token");
                     uid = obj.getString("uid");
 
-                    Log.d("@@@", token);
                 }
 
                 Intent intent = new Intent(this, MainActivity.class);

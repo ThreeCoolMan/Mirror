@@ -68,7 +68,6 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
         Bundle bundle = getArguments();
         position = bundle.getInt("position", 0);
         token = bundle.getString("token");
-        Log.e("FRAGMENT","4444" + token);
         titleTv.setText(titles[position]);
 
 
@@ -108,7 +107,6 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                             recyclerView.setAdapter(adapter);
                             cacheList = daoHelper.loadAll();
                             type = 2;
-                            Log.e("5454545", "!!!!!!!" + cacheList.toString() + type);
                         }
                     });
                 }
@@ -116,7 +114,6 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                 @Override
                 public void requestFailed(String result) {
                     cacheList = daoHelper.loadAll();
-                    Log.e("5454545", "!!!!!!!" + cacheList.toString() + position);
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -238,7 +235,6 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
     @Override
     public void requestFailed(String cause) {
         cacheList = daoHelper.loadAll();
-        Log.e("5454545", "66767" + cacheList.toString());
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
                 failedAdapter = new AllBrowsingFailedFragmentAdapter((ArrayList<Cache>) cacheList, position);

@@ -22,6 +22,7 @@
             android:textSize="@dimen/activity_addaddress_title_relativeLayout_size" />
 
         <ImageView
+            android:id="@+id/activity_addAddress_iv_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

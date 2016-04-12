@@ -21,6 +21,7 @@
             android:textSize="@dimen/activity_buydetails_title_tv" />
 
         <ImageView
+            android:id="@+id/activity_buyDetails_iv_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -94,6 +95,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/activity_buyDetails_iv_goods"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/activity_buydetails_pic_iv_heigth"
             android:src="@mipmap/ic_launcher" />
@@ -104,14 +106,15 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/activity_buyDetails_tv_goodsName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_buydetails_brand_tv_marinTop"
-                android:text="wwodlike"
                 android:textColor="@color/activity_buydetails_brand_tv"
                 android:textSize="@dimen/activity_buydetails_brand_tv" />
 
             <TextView
+                android:id="@+id/activity_buyDetails_tv_goodsContent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_buydetails_des_tv_marinTop"
@@ -126,13 +129,12 @@
                 android:orientation="horizontal">
 
                 <ImageView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/blackmoney" />
 
                 <TextView
-
+                     android:id="@+id/activity_buyDetails_tv_goodsPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

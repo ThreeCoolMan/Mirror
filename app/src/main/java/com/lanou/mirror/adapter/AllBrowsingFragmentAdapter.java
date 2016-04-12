@@ -66,7 +66,6 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
                     Intent intent = new Intent(context, ProductActivity.class);
                     intent.putExtra("position", pos);
                     intent.putExtra("token",token);
-                    Log.e("44444","343" + token);
                     context.startActivity(intent);
                 }
             });

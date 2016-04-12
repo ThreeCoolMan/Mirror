@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lanou.mirror.R;
 import com.lanou.mirror.base.BaseActivity;
 import com.lanou.mirror.bean.AddressListBeans;
+import com.lanou.mirror.bean.GoodsListBeans;
+import com.lanou.mirror.bean.OrderBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
@@ -20,12 +23,11 @@ import java.util.HashMap;
  * Created by dllo on 16/4/1.
  */
 public class BuyDetailsActivity extends BaseActivity implements View.OnClickListener, UrlListener, OkHttpNetHelperListener<AddressListBeans> {
-    private TextView writeAddressTv, nameTv, numberTv, addressTv;
-    //private String token = "08f46330b2634ed9ddb0dbf9be876379";//付翼的电话 token
-    //private String token = "f3e92dca0f9284d80c46fbbce1432774";//何伟东的电话 token
-    private String token = "";
+    private TextView writeAddressTv, nameTv, numberTv, addressTv, goodsNameTv, goodsContentTv, goodsPriceTv;
+    private String token;
     private int defaultPosition;//默认的地址所在集合的位置
-
+    private String goodsId;//商品 Id
+    private ImageView closeIv, goodsIv;
 
     @Override
     protected int setContent() {
@@ -34,6 +36,12 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initView() {
+        goodsIv = bindView(R.id.activity_buyDetails_iv_goods);
+        goodsPriceTv = bindView(R.id.activity_buyDetails_tv_goodsPrice);
+        goodsContentTv = bindView(R.id.activity_buyDetails_tv_goodsContent);
+        goodsNameTv = bindView(R.id.activity_buyDetails_tv_goodsName);
+        closeIv = bindView(R.id.activity_buyDetails_iv_close);
+        closeIv.setOnClickListener(this);
         writeAddressTv = (TextView) findViewById(R.id.activity_buydetails_writeaddress_tv);
         nameTv = (TextView) findViewById(R.id.activity_buydetails_name);
         numberTv = (TextView) findViewById(R.id.activity_buydetails_number);
@@ -44,11 +52,40 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void initData() {
         token = getIntent().getStringExtra("token");
+        goodsId = getIntent().getStringExtra("goodsId");
 
+        //地址列表请求
         HashMap<String, String> params = new HashMap<>();
         params.put("token", token);
         params.put("device_type", "3");
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(USER_ADDRESS_LIST_URL, params, AddressListBeans.class, this);
+
+        //商品请求
+        HashMap<String, String> paramsOrder = new HashMap<>();
+        paramsOrder.put("token", token);
+        paramsOrder.put("device_type", "3");
+        paramsOrder.put("goods_id", goodsId);
+        paramsOrder.put("goods_num", "1");
+        OkHttpNetHelper.getOkHttpNetHelper().postRequest(ORDER_SUB_URL, paramsOrder, OrderBeans.class, new OkHttpNetHelperListener<OrderBeans>() {
+
+            @Override
+            public void requestSucceed(String result, final OrderBeans bean) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        goodsNameTv.setText(bean.getData().getGoods().getGoods_name());
+                        goodsContentTv.setText(bean.getData().getGoods().getBook_copy());
+                        goodsPriceTv.setText(bean.getData().getGoods().getPrice());
+                        OkHttpNetHelper.getOkHttpNetHelper().setOkImage(bean.getData().getGoods().getPic(), goodsIv);
+                    }
+                });
+            }
+
+            @Override
+            public void requestFailed(String cause) {
+
+            }
+        });
     }
 
     @Override
@@ -66,12 +103,14 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                     startActivity(intent);
                 }
                 break;
+            case R.id.activity_buyDetails_iv_close:
+                finish();
+                break;
         }
     }
 
     @Override
     public void requestSucceed(String result, final AddressListBeans bean) {
-
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -80,7 +119,6 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
                     nameTv.setText("请设置默认地址");
                     writeAddressTv.setText(R.string.activity_buydetails_writeaddress);
-                    Log.d("看看是啥", writeAddressTv.getText().toString());
 
                 } else {//如果有已经保存的地址
                     for (int i = 0; i < bean.getData().getList().size(); i++) {
@@ -105,8 +143,6 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
             }
         });
-
-
     }
 
     @Override

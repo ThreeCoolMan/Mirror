@@ -52,7 +52,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             Bundle bundle = new Bundle();
             bundle.putInt("position", i);
             bundle.putString("token", token);
-            Log.e("main","4444" + token);
             fragmentAllBrowsing.setArguments(bundle);
             data.add(fragmentAllBrowsing);
 

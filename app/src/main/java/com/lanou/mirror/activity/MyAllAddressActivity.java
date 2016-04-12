@@ -1,7 +1,12 @@
 package com.lanou.mirror.activity;
 
 
+import android.content.Intent;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.MyAllAddressAdapter;
@@ -23,20 +28,35 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
 
     private ListView listView;
     private MyAllAddressAdapter adapter;
-
+    private TextView addTv;
+    private ImageView closeIv;
     private String token = "";
 
 
     @Override
-
     protected int setContent() {
         return R.layout.activity_myalladdress;
     }
 
     @Override
     protected void initView() {
+        closeIv = bindView(R.id.activity_myAlladdress_close_iv);
+        closeIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         listView = bindView(R.id.activity_myaddress_listview);
-
+        addTv = bindView(R.id.activity_myAddress_tv_add);
+        addTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyAllAddressActivity.this, AddAddressActivity.class);
+                intent.putExtra("token", token);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -67,4 +87,6 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
     public void requestFailed(String cause) {
 
     }
+
+
 }
