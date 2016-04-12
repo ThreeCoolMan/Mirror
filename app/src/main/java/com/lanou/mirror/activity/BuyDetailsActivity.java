@@ -140,7 +140,6 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                     addressTv.setVisibility(View.VISIBLE);
                     writeAddressTv.setText(R.string.activity_buyDetails_writeAdressTV_text_changeAddress);
                 }
-
             }
         });
     }

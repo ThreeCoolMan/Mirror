@@ -226,7 +226,6 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                 recyclerView.setLayoutManager(manager);
                 recyclerView.setAdapter(adapter);
                 cacheList = daoHelper.loadAll();
-                Log.e("5454545", "66767" + cacheList.toString() + type);
 
             }
         });
