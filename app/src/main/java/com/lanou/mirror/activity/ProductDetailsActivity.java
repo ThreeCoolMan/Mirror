@@ -1,7 +1,9 @@
 package com.lanou.mirror.activity;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageButton;
@@ -11,10 +13,10 @@ import com.bm.library.Info;
 import com.bm.library.PhotoView;
 import com.lanou.mirror.bean.GoodsListBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
-import com.lanou.mirror.listener.ProductDetailsItemListioner;
 import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.ProductDetailsAdapter;
 import com.lanou.mirror.base.BaseActivity;
+import com.lanou.mirror.listener.ProductDetailsItemListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
@@ -24,14 +26,15 @@ import java.util.HashMap;
 /**
  * Created by dllo on 16/3/30.
  */
-public class ProductDetailsActivity extends BaseActivity implements UrlListener, ProductDetailsItemListioner, View.OnClickListener, OkHttpNetHelperListener<GoodsListBeans> {
+public class ProductDetailsActivity extends BaseActivity implements UrlListener, ProductDetailsItemListener, View.OnClickListener, OkHttpNetHelperListener<GoodsListBeans> {
     private RecyclerView productDetailsRv;
     private ProductDetailsAdapter detailsAdapter;
-    private int[] imgs = {R.mipmap.iv_money, R.mipmap.ic_launcher, R.mipmap.iv_show_frame, R.mipmap.iv_blog_icon, R.mipmap.iv_display_page};
     private View newFl;
     private View newIv;
     private PhotoView deailsPv;
     private ImageButton ibBack, ibShopping;
+    private int pos;
+    private String token;
     Info mInfo;
     AlphaAnimation in = new AlphaAnimation(0, 1);
     AlphaAnimation out = new AlphaAnimation(1, 0);
@@ -43,6 +46,7 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
 
     @Override
     protected void initView() {
+
 
         in.setDuration(300);
         out.setDuration(300);
@@ -65,8 +69,13 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
 
     @Override
     protected void initData() {
+
+        Intent intent = getIntent();
+        pos = intent.getIntExtra("position", pos);
+
+        token = getIntent().getStringExtra("token");
         HashMap<String, String> params = new HashMap<>();
-        params.put("token", "");
+        params.put("token", token);
         params.put("device_type", "3");
         params.put("page", "");
         params.put("last_time", "");
@@ -78,16 +87,21 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
 
     //这里是点击小图变大图
     @Override
-    public void productDetailsItemListioner(int position, View v, GoodsListBeans beans) {
+    public void productDetailsItemListener(int position, View v, GoodsListBeans beans) {
 
         mInfo = ((PhotoView) v).getInfo();
-        //每次根据接口中的beans参数获得相对应的图片
-        OkHttpNetHelper.getOkHttpNetHelper().setOkImage
-                (beans.getData().getList().get(0).getWear_video().get(position + 1).getData(), deailsPv);
-        newIv.startAnimation(in);//背景渐变到黑色
-        newFl.setVisibility(View.VISIBLE);
-        newFl.startAnimation(in);
-        deailsPv.animaFrom(mInfo);
+        if (pos == 0) {
+            OkHttpNetHelper.getOkHttpNetHelper().setOkImage
+                    (beans.getData().getList().get(pos).getWear_video().get(position + 1).getData(), deailsPv);
+
+            //每次根据接口中的beans参数获得相对应的图片
+            newIv.startAnimation(in);//背景渐变到黑色
+            newFl.setVisibility(View.VISIBLE);
+            newFl.startAnimation(in);
+            deailsPv.animaFrom(mInfo);
+        } else if (pos == 2) {
+
+        }
     }
 
 
@@ -120,7 +134,7 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
 
             @Override
             public void run() {
-                detailsAdapter = new ProductDetailsAdapter(getApplication(), bean);
+                detailsAdapter = new ProductDetailsAdapter(getApplication(), bean, pos);
                 productDetailsRv.setAdapter(detailsAdapter);
                 detailsAdapter.SetDetailsListener(ProductDetailsActivity.this);
             }

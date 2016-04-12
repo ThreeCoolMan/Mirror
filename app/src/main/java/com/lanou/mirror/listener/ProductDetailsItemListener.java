@@ -7,7 +7,7 @@ import com.lanou.mirror.bean.GoodsListBeans;
 /**
  * Created by dllo on 16/3/30.
  */
-public interface ProductDetailsItemListioner {
+public interface ProductDetailsItemListener {
 
-    void productDetailsItemListioner(int position,View view,GoodsListBeans goodsListBeans);
+    void productDetailsItemListener(int position,View view,GoodsListBeans goodsListBeans);
 }

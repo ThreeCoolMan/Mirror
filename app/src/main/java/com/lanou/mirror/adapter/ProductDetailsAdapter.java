@@ -7,11 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.VideoView;
 
 import com.bm.library.PhotoView;
 import com.lanou.mirror.bean.GoodsListBeans;
-import com.lanou.mirror.listener.ProductDetailsItemListioner;
+import com.lanou.mirror.listener.ProductDetailsItemListener;
 import com.lanou.mirror.R;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
@@ -24,15 +23,18 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private Context context;
     private GoodsListBeans goodsListBeans;
-    private ProductDetailsItemListioner listioner;
-    public ProductDetailsAdapter(Context context, GoodsListBeans goodsListBeans) {
+    private ProductDetailsItemListener listener;
+    private int pos;
+
+    public ProductDetailsAdapter(Context context, GoodsListBeans goodsListBeans, int pos) {
         this.context = context;
         this.goodsListBeans = goodsListBeans;
-        notifyDataSetChanged();;
+        this.pos = pos;
+        notifyDataSetChanged();
     }
 
-    public void SetDetailsListener(ProductDetailsItemListioner listioner) {
-        this.listioner = listioner;
+    public void SetDetailsListener(ProductDetailsItemListener listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -46,14 +48,14 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ProductDetailsHolder) {
-            OkHttpNetHelper.getOkHttpNetHelper().setOkImage(goodsListBeans.getData().getList().get(0).getWear_video().get(position + 1).getData(),
+            OkHttpNetHelper.getOkHttpNetHelper().setOkImage(goodsListBeans.getData().getList().get(pos).getWear_video().get(position + 1).getData(),
                     ((ProductDetailsHolder) holder).detailsIv);
 
         } else if (holder instanceof HeadProductDetailsHolder) {
-            String url = goodsListBeans.getData().getList().get(0).getWear_video().get(0).getData();
+            String url = goodsListBeans.getData().getList().get(pos).getWear_video().get(0).getData();
 
-                    ((HeadProductDetailsHolder) holder).detailsVv.setUp(url,null);
-       }
+            ((HeadProductDetailsHolder) holder).detailsVv.setUp(url, null);
+        }
     }
 
 
@@ -64,7 +66,7 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public int getItemCount() {
-        return goodsListBeans.getData().getList().get(0).getWear_video().size() - 1;
+        return goodsListBeans.getData().getList().get(pos).getWear_video().size() - 1;
 
     }
 
@@ -83,8 +85,8 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         @Override
         public void onClick(View v) {
-            if (listioner != null) {
-                listioner.productDetailsItemListioner(getItemViewType(), v, goodsListBeans);
+            if (listener != null) {
+                listener.productDetailsItemListener(getItemViewType(), v, goodsListBeans);
 
             }
         }

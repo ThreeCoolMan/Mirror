@@ -59,7 +59,7 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
     protected void initData() {
         Intent intent = getIntent();
         position = intent.getIntExtra("position", 0);
-        token = intent.getStringExtra("token");
+
 
         HashMap<String, String> params = new HashMap<>();
         params.put("token", "");
@@ -108,6 +108,8 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
             case R.id.activity_product_tv_atlas:
 
                 Intent intent = new Intent(ProductActivity.this, ProductDetailsActivity.class);
+                intent.putExtra("position", position);
+                intent.putExtra("token", token);
                 startActivity(intent);
                 break;
 
