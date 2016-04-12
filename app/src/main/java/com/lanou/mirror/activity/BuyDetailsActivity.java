@@ -25,7 +25,7 @@ import java.util.HashMap;
  */
 public class BuyDetailsActivity extends BaseActivity implements View.OnClickListener, UrlListener, OkHttpNetHelperListener<AddressListBeans> {
     private TextView writeAddressTv, nameTv, numberTv, addressTv, goodsNameTv, goodsContentTv, goodsPriceTv;
-    private String token ="";
+    private String token = "";
     private int defaultPosition;//默认的地址所在集合的位置
     private String goodsId;//商品 Id
     private ImageView closeIv, goodsIv;
@@ -94,10 +94,12 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                 if (writeAddressTv.getText().toString().equals(getResources().getString(R.string.activity_buydetails_writeaddress))) {
                     Intent intent = new Intent(BuyDetailsActivity.this, AddAddressActivity.class);
                     intent.putExtra("token", token);
+                    intent.putExtra("goodsId", goodsId);
                     startActivity(intent);
                 } else {//有默认地址就跳转我的所有地址页面
                     Intent intent = new Intent(BuyDetailsActivity.this, MyAllAddressActivity.class);
                     intent.putExtra("token", token);
+                    intent.putExtra("goodsId", goodsId);
                     startActivity(intent);
                 }
                 break;

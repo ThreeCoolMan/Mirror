@@ -29,6 +29,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private String token = "";//服务器获取得用户凭证
     private long exitTime = 0;
 
+
+
     @Override
     protected int setContent() {
         return R.layout.activity_main;
@@ -50,6 +52,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void initData() {
 
         token = getIntent().getStringExtra("token");
+        if (token!=null){
+            loginTv.setText("购物车");
+        }
         data = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             AllBrowsingFragment fragmentAllBrowsing = new AllBrowsingFragment();
@@ -76,9 +81,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_main_login_tv:
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-                break;
+                if (token==null){
+
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    break;
+
+                }
+                if (token!=null){
+
+                    break;
+                }
             case R.id.activity_main_logo_iv:
                 //每设置一次变化一次
                 ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 1.3f, 1.0f, 1.2f, 1.0f).setDuration(500).start();

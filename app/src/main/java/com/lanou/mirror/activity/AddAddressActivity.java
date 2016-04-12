@@ -24,7 +24,7 @@ import java.util.HashMap;
 public class AddAddressActivity extends BaseActivity implements View.OnClickListener, UrlListener, OkHttpNetHelperListener {
     private Button submitBtn;
     private EditText nameEt, numberEt, addressEt;
-    private String token;
+    private String token, goodsId;
     private ImageView closeIv;
 
     @Override
@@ -46,7 +46,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void initData() {
         token = getIntent().getStringExtra("token");
-
+        goodsId = getIntent().getStringExtra("goodsId");
 
 
     }
@@ -88,6 +88,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
             public void run() {
                 T.showShort(AddAddressActivity.this, "添加成功");
                 Intent intent = new Intent(AddAddressActivity.this, MyAllAddressActivity.class);
+                intent.putExtra("goodsId", goodsId);
                 intent.putExtra("token", token);
                 startActivity(intent);
             }

@@ -42,7 +42,7 @@ public interface UrlListener {
     //编辑收货地址 编码 m013
     String UESR_EDIT_ADDRESS_URL = SERVER_SIDE_URL + "index.php/user/edit_address";
     //删除收获地址 编码 m014
-    String UESR_DELETE_ADDRESS_URL = SERVER_SIDE_URL + "index.php/user/edit_address";
+    String UESR_DELETE_ADDRESS_URL = SERVER_SIDE_URL + "index.php/user/del_address";
     //设置默认收获地址 编码 m015
     String UESR_DEFAULT_ADRESS_URL = SERVER_SIDE_URL + "index.php/user/mr_address";
     //下订单 编码 m016

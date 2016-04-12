@@ -38,6 +38,7 @@
         <activity android:name=".activity.BuyDetailsActivity" />
         <activity android:name=".activity.MyAllAddressActivity" />
         <activity android:name=".activity.WelcomeActivity"></activity>
+        <activity android:name=".activity.ModifyAddressActivity" />
 
         <activity
             android:name="com.mob.tools.MobUIShell"

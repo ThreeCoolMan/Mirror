@@ -3,10 +3,12 @@ package com.lanou.mirror.activity;
 
 import android.content.Intent;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.MyAllAddressAdapter;
 import com.lanou.mirror.base.BaseActivity;
@@ -15,6 +17,8 @@ import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 import com.lanou.mirror.tools.SwipeListView;
+import com.lanou.mirror.tools.T;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -32,6 +36,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
     private ImageView closeIv;
     private String token = "";
     private String addrId = "";
+    private String goodsId = "";
 
 
     @Override
@@ -63,7 +68,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
     @Override
     protected void initData() {
 
-
+        goodsId = getIntent().getStringExtra("goodsId");
         token = getIntent().getStringExtra("token");
         HashMap<String, String> params = new HashMap<>();
         params.put("token", token);
@@ -80,35 +85,32 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                adapter = new MyAllAddressAdapter((ArrayList<MyAllAddressBeans.DataEntity.ListEntity>) bean.getData().getList(), MyAllAddressActivity.this,listView.getRightViewWidth());
+                adapter = new MyAllAddressAdapter((ArrayList<MyAllAddressBeans.DataEntity.ListEntity>) bean.getData().getList(), MyAllAddressActivity.this, listView.getRightViewWidth(), token, goodsId);
 
                 adapter.setOnRightItemClickListener(new MyAllAddressAdapter.onRightItemClickListener() {
 
                     //删除监听
                     @Override
                     public void onRightItemClick(View v, int position) {
+                        //刷新适配器
+                        addrId = bean.getData().getList().get(position).getAddr_id();
                         bean.getData().getList().remove(position);
                         adapter.setData((ArrayList<MyAllAddressBeans.DataEntity.ListEntity>) bean.getData().getList());
                         listView.setAdapter(adapter);
 
-                    }
-                });
-                listView.setAdapter(adapter);
-                //点击item的监听
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(MyAllAddressActivity.this, BuyDetailsActivity.class);
-                        HashMap<String, String> map = new HashMap<String, String>();
-                        //去服务器提交新的默认地址让其更改
-                        map.put("token", token);
-                        map.put("addr_id", addrId);//TODO 获得子布局的addId；
-
-                        intent.putExtra("token", token);
-                        OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(UESR_DEFAULT_ADRESS_URL, map, new OkHttpNetHelperListener() {
+                        //删除数据请求
+                        HashMap<String, String> paramsDelete = new HashMap<String, String>();
+                        paramsDelete.put("token", token);
+                        paramsDelete.put("addr_id", addrId);
+                        OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(UESR_DELETE_ADDRESS_URL, paramsDelete, new OkHttpNetHelperListener() {
                             @Override
-                            public void requestSucceed(String result, Object bean) {
+                            public void requestSucceed(final String result, Object bean) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
 
+                                    }
+                                });
                             }
 
                             @Override
@@ -116,7 +118,37 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
 
                             }
                         });
-                        startActivity(intent);
+                    }
+                });
+                listView.setAdapter(adapter);
+
+                //点击item的监听
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+                        HashMap<String, String> map = new HashMap<String, String>();
+                        //去服务器提交新的默认地址让其更改
+                        map.put("token", token);
+                        map.put("addr_id", bean.getData().getList().get(position).getAddr_id());//TODO 获得子布局的addId；
+
+                        OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(UESR_DEFAULT_ADRESS_URL, map, new OkHttpNetHelperListener() {
+                            @Override
+                            public void requestSucceed(String result, Object bean) {
+                                Log.d("这是什么", addrId);
+                                Log.d("resultMyAll", result);
+                                Intent intent = new Intent(MyAllAddressActivity.this, BuyDetailsActivity.class);
+                                intent.putExtra("goodsId", goodsId);
+                                intent.putExtra("token", token);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void requestFailed(String cause) {
+
+                            }
+                        });
                     }
                 });
 

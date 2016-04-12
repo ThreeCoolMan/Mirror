@@ -189,6 +189,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                         String token = data.getString("token");
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         intent.putExtra("token", token);
+                                        notify();
                                         startActivity(intent);
                                     }
 
