@@ -136,7 +136,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 passWord = passWordEt.getText().toString();
                 phoneNumber = phoneNumberEt.getText().toString();
                 if (phoneNumber.equals("") || passWord.equals("")) {
-                    Toast.makeText(LoginActivity.this, "请输入登录信息", Toast.LENGTH_SHORT).show();
+                    showShortToast("请输入登录信息");
                 } else {
                     HashMap<String, String> params = new HashMap<>();
                     params.put("phone_number", phoneNumber);
@@ -179,8 +179,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() { //如果绑定账号失败  返回失败原因
-                                                Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
-
+                                                showShortToast(msg);
                                             }
                                         });
                                     } else { //绑定成功跳转主页面
@@ -245,7 +244,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     @Override
                     public void run() {
                         try {
-                            Toast.makeText(LoginActivity.this, object.getString("msg"), Toast.LENGTH_SHORT).show();
+                            showShortToast(object.getString("msg"));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -263,7 +262,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(LoginActivity.this, cause, Toast.LENGTH_SHORT).show();
+                showShortToast(cause);
             }
         });
 

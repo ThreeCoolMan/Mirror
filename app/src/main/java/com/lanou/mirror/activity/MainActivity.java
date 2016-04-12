@@ -101,7 +101,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void exit() {
 
         if ((System.currentTimeMillis()- exitTime)>2000){
-            Toast.makeText(getApplicationContext(),"特么的别走",Toast.LENGTH_SHORT).show();
+           showShortToast("特么的别走");
             exitTime = System.currentTimeMillis();
         }else {
             finish();

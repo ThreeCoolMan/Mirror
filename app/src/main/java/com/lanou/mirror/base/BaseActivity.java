@@ -3,6 +3,7 @@ package com.lanou.mirror.base;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 /**
  * Created by Yi on 16/3/29.
@@ -17,6 +18,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         initData();
     }
 
+    protected void showShortToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
     protected abstract int setContent();//绑定布局
 
     protected abstract void initView();//绑定组件

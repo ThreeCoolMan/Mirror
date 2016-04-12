@@ -25,6 +25,7 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private GoodsListBeans goodsListBeans;
     private ProductDetailsItemListener listener;
     private int pos;
+    private String url;
 
     public ProductDetailsAdapter(Context context, GoodsListBeans goodsListBeans, int pos) {
         this.context = context;
@@ -48,13 +49,27 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ProductDetailsHolder) {
-            OkHttpNetHelper.getOkHttpNetHelper().setOkImage(goodsListBeans.getData().getList().get(pos).getWear_video().get(position + 1).getData(),
-                    ((ProductDetailsHolder) holder).detailsIv);
+            if (pos == 0) {
+                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(goodsListBeans.getData().getList().get(pos).getWear_video().get(position + 1).getData(),
+                        ((ProductDetailsHolder) holder).detailsIv);
 
+
+            } else if (pos == 2) {
+                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(goodsListBeans.getData().getList().get(pos).getWear_video().get(position).getData(),
+                        ((ProductDetailsHolder) holder).detailsIv);
+            }
         } else if (holder instanceof HeadProductDetailsHolder) {
-            String url = goodsListBeans.getData().getList().get(pos).getWear_video().get(0).getData();
-
-            ((HeadProductDetailsHolder) holder).detailsVv.setUp(url, null);
+            if (pos == 0) {
+                url = goodsListBeans.getData().getList().get(pos).getWear_video().get(0).getData();
+                ((HeadProductDetailsHolder) holder).detailsVv.setUp(url, null);
+                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(goodsListBeans.getData().getList().get(pos).getWear_video().get(position + 1).getData(),
+                        ((HeadProductDetailsHolder) holder).detailsVv.ivThumb);
+            } else if (pos == 2) {
+                url = goodsListBeans.getData().getList().get(pos).getWear_video().get(4).getData();
+                ((HeadProductDetailsHolder) holder).detailsVv.setUp(url, null);
+                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(goodsListBeans.getData().getList().get(pos).getWear_video().get(position).getData(),
+                        ((HeadProductDetailsHolder) holder).detailsVv.ivThumb);
+            }
         }
     }
 
@@ -67,12 +82,11 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public int getItemCount() {
         return goodsListBeans.getData().getList().get(pos).getWear_video().size() - 1;
-
     }
 
     class ProductDetailsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private int position;
+
         private LinearLayout linearLayout;
         private PhotoView detailsIv;
 
@@ -93,7 +107,7 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     class HeadProductDetailsHolder extends RecyclerView.ViewHolder {
-        private int position;
+
         private JCVideoPlayer detailsVv;
 
         public HeadProductDetailsHolder(View itemView) {
@@ -101,6 +115,4 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             detailsVv = (JCVideoPlayer) itemView.findViewById(R.id.item_details_vv_details);
         }
     }
-
-
 }

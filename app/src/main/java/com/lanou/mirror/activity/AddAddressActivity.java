@@ -68,7 +68,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                     params.put("addr_info", addressInfo);
                     OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_ADD_ADDRESS_URL, params, this);
                 } else {
-                    Toast.makeText(AddAddressActivity.this, "请填写详细信息", Toast.LENGTH_SHORT).show();
+                    showShortToast("请填写详细信息");
                 }
 
                 break;
@@ -85,7 +85,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(AddAddressActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                showShortToast("添加成功");
                 Intent intent = new Intent(AddAddressActivity.this, MyAllAddressActivity.class);
                 intent.putExtra("token", token);
                 startActivity(intent);

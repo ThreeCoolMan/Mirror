@@ -97,10 +97,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     params = new HashMap<>();
                     params.put("phone number", number);
                     OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_SEND_CODE_URL, params, this);
-                    Toast.makeText(RegisterActivity.this, "验证码发送成功", Toast.LENGTH_SHORT).show();
+                    showShortToast("验证码发送成功");
                     timer.start();//发送成功启动倒计时
                 } else {
-                    Toast.makeText(RegisterActivity.this, "请输入手机号", Toast.LENGTH_SHORT).show();
+                    showShortToast("请输入手机号");
                 }
                 break;
             case R.id.activity_register_Iv_close:
@@ -122,7 +122,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(RegisterActivity.this, beans.getMsg(), Toast.LENGTH_SHORT).show();
+                        showShortToast(beans.getMsg());
                     }
                 });
             } else if (!object.get("data").equals("")) {
@@ -130,7 +130,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                        showShortToast("注册成功");
                     }
                 });
                 new Thread(new Runnable() {
@@ -158,7 +158,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(RegisterActivity.this, cause, Toast.LENGTH_SHORT).show();
+                showShortToast(cause);
             }
         });
 
