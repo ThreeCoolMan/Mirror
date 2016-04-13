@@ -2,9 +2,12 @@ package com.lanou.mirror.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +32,8 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     private int defaultPosition;//默认的地址所在集合的位置
     private String goodsId;//商品 Id
     private ImageView closeIv, goodsIv;
+    private Button orderBtn;
+
 
     @Override
     protected int setContent() {
@@ -37,6 +42,8 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initView() {
+        orderBtn = bindView(R.id.activity_buyDetails_confirmOrder_btn);
+        orderBtn.setOnClickListener(this);
         goodsIv = bindView(R.id.activity_buyDetails_iv_goods);
         goodsPriceTv = bindView(R.id.activity_buyDetails_tv_goodsPrice);
         goodsContentTv = bindView(R.id.activity_buyDetails_tv_goodsContent);
@@ -65,9 +72,16 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         paramsOrder.put("device_type", "3");
         paramsOrder.put("goods_id", goodsId);
         paramsOrder.put("goods_num", "1");
+
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(ORDER_SUB_URL, paramsOrder, OrderBeans.class, new OkHttpNetHelperListener<OrderBeans>() {
             @Override
             public void requestSucceed(String result, final OrderBeans bean) {
+
+                String order_id = bean.getData().getOrder_id();
+//                Log.d("!!!", "roder_id " + order_id);
+//                Log.d("!!!", "token " + token);
+//                Log.d("!!!", "addr_id " + bean.getData().getAddress().getAddr_id());
+//                Log.d("!!!!", "goodsname " + bean.getData().getGoods().getGoods_name());
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -106,7 +120,44 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
             case R.id.activity_buyDetails_iv_close:
                 finish();
                 break;
+            case R.id.activity_buyDetails_confirmOrder_btn:
+                //弹出 dialog
+                showDiaLog();
+                //下订单请求
+//                HashMap<String, String> params = new HashMap<>();
+//                params.put("token", token);
+//                params.put("device_type", "3");
+//                params.put("goods_num", "1");
+//                params.put("goods_id", goodsId);
+//                params.put("price",);
+//
+//                OkHttpNetHelper.getOkHttpNetHelper().postRequest(ORDER_SUB_URL,);
+                break;
         }
+    }
+
+    private void showDiaLog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.activity_orderdetail_sure_dialog, null);//dialog 载入布局
+        builder.setView(view);
+        //支付宝支付监听
+        view.findViewById(R.id.dialog_orderDetail_ailPay).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              Log.d("ailPay","支付宝");
+            }
+        });
+        //微信支付监听
+        view.findViewById(R.id.dialog_orderDetail_weixinPay).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        builder.show();
+
     }
 
     @Override

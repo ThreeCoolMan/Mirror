@@ -24,7 +24,7 @@
     <color name="activity_buydetails_view">#ddd</color>
     <color name="activity_buydetails_brand_tv">#333</color>
     <color name="activity_buydetails_price_tv">#ff5aab</color>
-    <color name="activity_buydetails_confirmorder_tv">#fff</color>
+    <color name="activity_buyDetails_confirmOrder_tv">#fff</color>
     <color name="activity_addaddress_title_tv_color">#333</color>
     <color name="activity_addaddress_name_tv_color">#333</color>
     <color name="activity_addaddress_number_tv_color">#333</color>

@@ -147,15 +147,15 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/activity_buydetails_confirmorder_tv"
+    <Button
+        android:id="@+id/activity_buyDetails_confirmOrder_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_buydetails_confirmorder_tv_marinTop"
         android:background="@mipmap/btn_create_press"
         android:gravity="center"
         android:text="@string/activity_buydetails_confirmorder"
-        android:textColor="@color/activity_buydetails_confirmorder_tv"
+        android:textColor="@color/activity_buyDetails_confirmOrder_tv"
         android:textSize="@dimen/activity_buydetails_confirmorder_tv_size" />
 
 
