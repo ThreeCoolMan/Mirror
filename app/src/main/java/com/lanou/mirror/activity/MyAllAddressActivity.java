@@ -136,8 +136,6 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
                         OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(UESR_DEFAULT_ADRESS_URL, map, new OkHttpNetHelperListener() {
                             @Override
                             public void requestSucceed(String result, Object bean) {
-                                Log.d("这是什么", addrId);
-                                Log.d("resultMyAll", result);
                                 Intent intent = new Intent(MyAllAddressActivity.this, BuyDetailsActivity.class);
                                 intent.putExtra("goodsId", goodsId);
                                 intent.putExtra("token", token);

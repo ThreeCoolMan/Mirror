@@ -75,6 +75,7 @@
     <EditText
         android:id="@+id/activity_modifyAddress_address_et"
         android:layout_width="match_parent"
+        android:gravity="start"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_addaddress_address_edit_marinTop"
         android:background="@mipmap/iv_fill_in_address_input" />
