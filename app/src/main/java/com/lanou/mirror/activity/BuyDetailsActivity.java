@@ -1,19 +1,29 @@
 package com.lanou.mirror.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.alipay.sdk.app.PayTask;
+import com.alipay.sdk.pay.demo.H5PayDemoActivity;
+import com.alipay.sdk.pay.demo.PayResult;
+import com.alipay.sdk.pay.demo.SignUtils;
 import com.lanou.mirror.R;
 import com.lanou.mirror.base.BaseActivity;
 import com.lanou.mirror.bean.AddressListBeans;
+import com.lanou.mirror.bean.AilPayBeans;
 import com.lanou.mirror.bean.GoodsListBeans;
 import com.lanou.mirror.bean.OrderBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
@@ -33,6 +43,12 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     private String goodsId;//商品 Id
     private ImageView closeIv, goodsIv;
     private Button orderBtn;
+    private String str = "";//支付宝支付请求的账户协议密匙等信息
+    private final static int SDK_PAY_FLAG = 1;
+    public static String RSA_PRIVATE = "";// 商户私钥，pkcs8格式
+    private String orderId;//订单 id
+    private String addressId;//地址 id
+    private String goodsName;
 
 
     @Override
@@ -66,6 +82,7 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         params.put("token", token);
         params.put("device_type", "3");
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(USER_ADDRESS_LIST_URL, params, AddressListBeans.class, this);
+
         //商品请求
         HashMap<String, String> paramsOrder = new HashMap<>();
         paramsOrder.put("token", token);
@@ -76,8 +93,9 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(ORDER_SUB_URL, paramsOrder, OrderBeans.class, new OkHttpNetHelperListener<OrderBeans>() {
             @Override
             public void requestSucceed(String result, final OrderBeans bean) {
-
-                String order_id = bean.getData().getOrder_id();
+                orderId = bean.getData().getOrder_id();
+                addressId = bean.getData().getAddress().getAddr_id();
+                goodsName = bean.getData().getGoods().getGoods_name();
 //                Log.d("!!!", "roder_id " + order_id);
 //                Log.d("!!!", "token " + token);
 //                Log.d("!!!", "addr_id " + bean.getData().getAddress().getAddr_id());
@@ -121,17 +139,10 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.activity_buyDetails_confirmOrder_btn:
-                //弹出 dialog
+                //弹出 dialog下订单请求
                 showDiaLog();
-                //下订单请求
-//                HashMap<String, String> params = new HashMap<>();
-//                params.put("token", token);
-//                params.put("device_type", "3");
-//                params.put("goods_num", "1");
-//                params.put("goods_id", goodsId);
-//                params.put("price",);
-//
-//                OkHttpNetHelper.getOkHttpNetHelper().postRequest(ORDER_SUB_URL,);
+
+
                 break;
         }
     }
@@ -145,7 +156,31 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         view.findViewById(R.id.dialog_orderDetail_ailPay).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              Log.d("ailPay","支付宝");
+                HashMap<String, String> paramsAilPay = new HashMap<>();
+                paramsAilPay.put("token", token);
+                paramsAilPay.put("order_no", orderId);
+                paramsAilPay.put("addr_id", addressId);
+                paramsAilPay.put("goodsname", goodsName);
+                OkHttpNetHelper.getOkHttpNetHelper().postRequest(PAY_AIL_PAY_SUB_URL, paramsAilPay, AilPayBeans.class, new OkHttpNetHelperListener<AilPayBeans>() {
+
+                    @Override
+                    public void requestSucceed(String result, AilPayBeans bean) {
+                        Log.d("%%%", result);
+                        if (!bean.getData().getStr().equals("")) {
+                            str = bean.getData().getStr();
+                            //支付宝支付请求
+                            requestAilPay(str);
+                        }
+                    }
+
+                    @Override
+                    public void requestFailed(String cause) {
+
+                    }
+                });
+                //OkHttpNetHelper.getOkHttpNetHelper().postRequest();
+
+
             }
         });
         //微信支付监听
@@ -155,10 +190,122 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
             }
         });
-
         builder.show();
-
     }
+
+    /**
+     * 阿里支付请求
+     *
+     * @param str 这是请求需要的协议以及账户内容
+     */
+    private void requestAilPay(String str) {
+
+        String sign = sign(str);
+
+        /**
+         * 完整的符合支付宝参数规范的订单信息
+         */
+        final String payInfo = str + "&sign=\"" + sign + "\"&" + getSignType();
+
+        Runnable payRunnable = new Runnable() {
+
+            @Override
+            public void run() {
+                // 构造PayTask 对象
+                PayTask alipay = new PayTask(BuyDetailsActivity.this);
+                // 调用支付接口，获取支付结果
+                String result = alipay.pay(payInfo, true);
+
+                Message msg = new Message();
+                msg.what = SDK_PAY_FLAG;
+                msg.obj = result;
+                mHandler.sendMessage(msg);
+            }
+        };
+
+        // 必须异步调用
+        Thread payThread = new Thread(payRunnable);
+        payThread.start();
+    }
+
+
+    /**
+     * 原生的H5（手机网页版支付切natvie支付） 【对应页面网页支付按钮】
+     *
+     * @param v
+     */
+    public void h5Pay(View v) {
+        Intent intent = new Intent(this, H5PayDemoActivity.class);
+        Bundle extras = new Bundle();
+        /**
+         * url是测试的网站，在app内部打开页面是基于webview打开的，demo中的webview是H5PayDemoActivity，
+         * demo中拦截url进行支付的逻辑是在H5PayDemoActivity中shouldOverrideUrlLoading方法实现，
+         * 商户可以根据自己的需求来实现
+         */
+        String url = "http://m.meituan.com";
+        // url可以是一号店或者美团等第三方的购物wap站点，在该网站的支付过程中，支付宝sdk完成拦截支付
+        extras.putString("url", url);
+        intent.putExtras(extras);
+        startActivity(intent);
+    }
+
+    /**
+     * sign the order info. 对订单信息进行签名
+     *
+     * @param content 待签名订单信息
+     */
+    private String sign(String content) {
+        return SignUtils.sign(content, RSA_PRIVATE);
+    }
+
+    /**
+     * get the sign type we use. 获取签名方式
+     */
+    private String getSignType() {
+        return "sign_type=\"RSA\"";
+    }
+
+
+    //支付宝之后的回调 判断是否支付成功
+    @SuppressLint("HandlerLeak")
+    private Handler mHandler = new Handler() {
+        @SuppressWarnings("unused")
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case SDK_PAY_FLAG: {
+                    PayResult payResult = new PayResult((String) msg.obj);
+                    /**
+                     * 同步返回的结果必须放置到服务端进行验证（验证的规则请看https://doc.open.alipay.com/doc2/
+                     * detail.htm?spm=0.0.0.0.xdvAU6&treeId=59&articleId=103665&
+                     * docType=1) 建议商户依赖异步通知
+                     */
+                    String resultInfo = payResult.getResult();// 同步返回需要验证的信息
+
+                    String resultStatus = payResult.getResultStatus();
+                    // 判断resultStatus 为“9000”则代表支付成功，具体状态码代表含义可参考接口文档
+                    if (TextUtils.equals(resultStatus, "9000")) {
+                        Toast.makeText(BuyDetailsActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // 判断resultStatus 为非"9000"则代表可能支付失败
+                        // "8000"代表支付结果因为支付渠道原因或者系统原因还在等待支付结果确认，最终交易是否成功以服务端异步通知为准（小概率状态）
+                        if (TextUtils.equals(resultStatus, "8000")) {
+                            Toast.makeText(BuyDetailsActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            // 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
+                            Toast.makeText(BuyDetailsActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
+
+
+                        }
+                    }
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+    };
+
 
     @Override
     public void requestSucceed(String result, final AddressListBeans bean) {

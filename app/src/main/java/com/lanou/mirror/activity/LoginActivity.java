@@ -40,6 +40,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private String phoneNumber, passWord;
     private String token;
     private String uid;
+    private boolean jumpFromMain;//判断是否从主页面跳转的 boolean 变量
 
 
     @Override
@@ -123,6 +124,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     protected void initData() {
+        jumpFromMain = getIntent().getBooleanExtra("jumpFromMain", true);
 
     }
 
@@ -182,7 +184,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() { //如果绑定账号失败  返回失败原因
-
+                                                Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
                                             }
                                         });
                                     } else { //绑定成功跳转主页面
@@ -197,7 +199,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-
 
                             }
 
@@ -232,17 +233,23 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         try {
             final JSONObject object = new JSONObject(result);
             if (object.getString("result").equals("1")) { //登录成功跳转主页面传值 token 和 uid
-                if (object.has("data")) {
-                    JSONObject obj = object.getJSONObject("data");
-                    token = obj.getString("token");
-                    uid = obj.getString("uid");
 
+                JSONObject obj = object.getJSONObject("data");
+                token = obj.getString("token");
+                uid = obj.getString("uid");
+
+                if (jumpFromMain) { //如果是主页面跳转过来的跳转回主页面
+                    Intent intent = new Intent(this, MainActivity.class);
+                    intent.putExtra("token", token);
+                    startActivity(intent);
+                    finish();
+                } else { //如果是其它页面跳转回来的就返回其它页面
+                    Intent intent = new Intent();
+                    intent.putExtra("token", token);
+                    setResult(888, intent);
+                    finish();
                 }
 
-                Intent intent = new Intent(this, MainActivity.class);
-                intent.putExtra("token", token);
-                intent.putExtra("uid", uid);
-                startActivity(intent);
             } else {
                 runOnUiThread(new Runnable() {
                     @Override

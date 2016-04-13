@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.lanou.mirror.R;
 import com.lanou.mirror.activity.ModifyAddressActivity;
+import com.lanou.mirror.activity.MyAllAddressActivity;
+import com.lanou.mirror.base.BaseActivity;
 import com.lanou.mirror.base.BaseApplication;
 import com.lanou.mirror.bean.MyAllAddressBeans;
 
@@ -97,13 +99,12 @@ public class MyAllAddressAdapter extends BaseAdapter {
                 intent.putExtra("phoneNumber", data.get(position).getCellphone());
                 intent.putExtra("addressId", data.get(position).getAddr_id());
                 intent.putExtra("goodsId", goodsId);
-                context.startActivity(intent);
+                ((MyAllAddressActivity)context).startActivityForResult(intent,666);
+
             }
 
 
         });
-
-
         return convertView;
     }
 

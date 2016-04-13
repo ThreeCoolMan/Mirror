@@ -1,6 +1,7 @@
 package com.lanou.mirror.activity;
 
 
+import android.content.Context;
 import android.content.Intent;
 
 import android.util.Log;
@@ -63,6 +64,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
                 startActivity(intent);
             }
         });
+
     }
 
     @Override
@@ -76,7 +78,6 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
         params.put("page", "");
 
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(USER_ADDRESS_LIST_URL, params, MyAllAddressBeans.class, this);
-
     }
 
     @Override
@@ -161,4 +162,19 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case 667:
+                Log.d("走着", "走这");
+                HashMap<String, String> params = new HashMap<>();
+                params.put("token", token);
+                params.put("device_type", "3");
+                params.put("page", "");
+
+                OkHttpNetHelper.getOkHttpNetHelper().postRequest(USER_ADDRESS_LIST_URL, params, MyAllAddressBeans.class, this);
+                break;
+        }
+    }
 }

@@ -82,7 +82,6 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
             public void run() {
                 String url = goodsListBeans.getData().getList().get(position).getGoods_img();
                 OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backGroundIv);
-
                 //自定义组件中的方法 只需要添加两个adapter参数即可
                 bottomAdapter = new ProductBottomListViewAdapter(getApplication(), goodsListBeans, position);
                 topAdapter = new ProductTopListviewAdapter(getApplication(), goodsListBeans, position);
@@ -116,7 +115,8 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
 
                 if (token == null) {
                     Intent intentLogin = new Intent(ProductActivity.this, LoginActivity.class);
-                    startActivity(intentLogin);
+                    intentLogin.putExtra("jumpFromMain", false);//boolean 值用于判断登录后跳转那个页面
+                    startActivityForResult(intentLogin, 999);
                 } else if (passBeans != null) {
                     String goodsId = passBeans.getData().getList().get(position).getGoods_id();
                     String price = passBeans.getData().getList().get(position).getGoods_price();
@@ -129,6 +129,16 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
 
                 break;
 
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case 888:
+                token = data.getStringExtra("token");
+                break;
         }
     }
 }
