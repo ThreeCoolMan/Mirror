@@ -15,6 +15,7 @@ import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.VerticalPagerAdapter;
 import com.lanou.mirror.base.BaseActivity;
 import com.lanou.mirror.fragment.AllBrowsingFragment;
+import com.lanou.mirror.tools.T;
 import com.lanou.mirror.tools.VerticalPager;
 
 import java.util.ArrayList;
@@ -114,7 +115,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void exit() {
 
         if ((System.currentTimeMillis()- exitTime)>2000){
-            Toast.makeText(getApplicationContext(),"特么的别走",Toast.LENGTH_SHORT).show();
+            T.showShort(MainActivity.this,"特么的别走");
             exitTime = System.currentTimeMillis();
         }else {
             finish();

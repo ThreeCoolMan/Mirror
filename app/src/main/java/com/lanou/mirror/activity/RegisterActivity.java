@@ -98,10 +98,14 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     params = new HashMap<>();
                     params.put("phone number", number);
                     OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_SEND_CODE_URL, params, this);
+
                     T.showShort(RegisterActivity.this, "验证码发送成功");
                     timer.start();//发送成功启动倒计时
                 } else {
                     T.showShort(RegisterActivity.this, "请输入手机号");
+
+
+                    timer.start();//发送成功启动倒计时
                 }
                 break;
             case R.id.activity_register_Iv_close:
@@ -123,7 +127,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(RegisterActivity.this, beans.getMsg(), Toast.LENGTH_SHORT).show();
+                        T.showShort(RegisterActivity.this,beans.getMsg());
                     }
                 });
             } else if (!object.get("data").equals("")) {
@@ -131,7 +135,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+
                         T.showShort(RegisterActivity.this, "注册成功");
+
                     }
                 });
                 new Thread(new Runnable() {
@@ -159,7 +165,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+
                 T.showShort(RegisterActivity.this, cause);
+
             }
         });
 

@@ -137,7 +137,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 passWord = passWordEt.getText().toString();
                 phoneNumber = phoneNumberEt.getText().toString();
                 if (phoneNumber.equals("") || passWord.equals("")) {
+
                     T.showShort(LoginActivity.this, "请输入登录信息");
+
                 } else {
                     HashMap<String, String> params = new HashMap<>();
                     params.put("phone_number", phoneNumber);
@@ -180,7 +182,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() { //如果绑定账号失败  返回失败原因
-                                                Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
 
                                             }
                                         });
@@ -248,6 +249,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     public void run() {
                         try {
                             T.showShort(LoginActivity.this, object.getString("msg"));
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -265,7 +267,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+
                 T.showShort(LoginActivity.this, cause);
+
             }
         });
 

@@ -86,7 +86,9 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+
                 T.showShort(AddAddressActivity.this, "添加成功");
+
                 Intent intent = new Intent(AddAddressActivity.this, MyAllAddressActivity.class);
                 intent.putExtra("goodsId", goodsId);
                 intent.putExtra("token", token);
