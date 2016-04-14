@@ -37,7 +37,7 @@ public class ProductBottomListViewAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         //因为有三行其他种类行布局 所以加3
-        return goodsListBeans.getData().getList().get(0).getDesign_des().size() + 3;
+        return getListEntity().getDesign_des().size() + 3;
     }
 
 
@@ -91,10 +91,10 @@ public class ProductBottomListViewAdapter extends BaseAdapter {
             case TYPE_1:
                 convertView = inflater.inflate(R.layout.item_product_bottom_listview_description, parent, false);
                 holderDes = new GoodsDescriptionViewHolder(convertView);
-                holderDes.brandTv.setText(goodsListBeans.getData().getList().get(pos).getBrand());
-                holderDes.nameTv.setText(goodsListBeans.getData().getList().get(pos).getGoods_name());
-                holderDes.infodesTv.setText(goodsListBeans.getData().getList().get(pos).getInfo_des());
-                holderDes.priceTv.setText(goodsListBeans.getData().getList().get(pos).getGoods_price());
+                holderDes.brandTv.setText(getListEntity().getBrand());
+                holderDes.nameTv.setText(getListEntity().getGoods_name());
+                holderDes.infodesTv.setText(getListEntity().getInfo_des());
+                holderDes.priceTv.setText(getListEntity().getGoods_price());
                 convertView.setTag(holderDes);
                 break;
             case TYPE_2:
@@ -102,7 +102,7 @@ public class ProductBottomListViewAdapter extends BaseAdapter {
                 break;
             case TYPE_3:
                 String url = null;
-                url = goodsListBeans.getData().getList().get(pos).getDesign_des().get(position - 3).getImg();
+                url = getListEntity().getDesign_des().get(position - 3).getImg();
                 convertView = inflater.inflate(R.layout.item_product_bottom_listview_image, parent, false);
                 holderI = new ImageViewHolder(convertView);
                 OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, holderI.imageView);
@@ -111,12 +111,16 @@ public class ProductBottomListViewAdapter extends BaseAdapter {
             case TYPE_4:
                 convertView = inflater.inflate(R.layout.item_product_bottom_listview_goodsname, parent, false);
                 holderGoodName = new GoodBrandViewHolder(convertView);
-                holderGoodName.goodsBrandTv.setText(goodsListBeans.getData().getList().get(pos).getBrand());
+                holderGoodName.goodsBrandTv.setText(getListEntity().getBrand());
         }
 
 
         return convertView;
 
+    }
+
+    private GoodsListBeans.DataEntity.ListEntity getListEntity() {
+        return goodsListBeans.getData().getList().get(pos);
     }
 
     //想用来设置顶部透明度变化的

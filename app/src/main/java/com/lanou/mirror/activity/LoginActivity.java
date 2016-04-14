@@ -1,6 +1,4 @@
 package com.lanou.mirror.activity;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.Editable;
@@ -41,6 +39,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private String phoneNumber, passWord;
     private String token;
     private boolean jumpFromMain;//判断是否从主页面跳转的 boolean 变量
+
 
 
     @Override
@@ -219,7 +218,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 token = obj.getString("token");
                 if (jumpFromMain) { //如果是主页面跳转过来的跳转回主页面
                     Intent intent = new Intent(this, MainActivity.class);
-                    intent.putExtra("token", token);
                     startActivity(intent);
                     finish();
                 } else { //如果是其它页面跳转回来的就返回其它页面

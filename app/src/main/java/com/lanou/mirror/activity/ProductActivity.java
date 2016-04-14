@@ -25,7 +25,9 @@ import java.util.HashMap;
  * Created by dllo on 16/4/1.
  */
 public class ProductActivity extends BaseActivity implements UrlListener, OkHttpNetHelperListener<GoodsListBeans>, View.OnClickListener {
+    //自定义可实现视差滑动的View.
     private LinkageListView mListView;
+    //自定义View需要两个adapter
     private ProductBottomListViewAdapter bottomAdapter;
     private ProductTopListviewAdapter topAdapter;
     private ImageView backGroundIv, closeIv;

@@ -2,6 +2,7 @@ package com.lanou.mirror.activity;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
@@ -29,6 +30,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private long exitTime = 0;
 
 
+
     @Override
     protected int setContent() {
         return R.layout.activity_main;
@@ -48,11 +50,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initData() {
-        token = getSharedPreferences("loginUser", MODE_PRIVATE).getString("token", null);
-        if (token != null && token != "") {
-            token = getIntent().getStringExtra("token");
+        if (token == null ) {
+            token = getSharedPreferences("loginUser", MODE_PRIVATE).getString("token", null);
         }
-        if (token != null) {
+        if (token != null&& token != "") {
             loginTv.setText("购物车");
         }
         data = new ArrayList<>();

@@ -62,11 +62,18 @@ public class ImageLoaderHelper {
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(configuration);
 
+
 /**
  设置默认的缓存属性,不需要磁盘缓存可以用这句
  imageLoader = ImageLoader.getInstance();
  imageLoader.init(ImageLoaderConfiguration.createDefault(BaseApplication.getContext()));
  */
+
+
+
+// 设置默认的缓存属性,不需要磁盘缓存可以用这句
+//        imageLoader = ImageLoader.getInstance();
+//        imageLoader.init(ImageLoaderConfiguration.createDefault(BaseApplication.getContext()));
 
 
     }

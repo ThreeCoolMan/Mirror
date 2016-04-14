@@ -9,5 +9,11 @@ import com.lanou.mirror.bean.GoodsListBeans;
  */
 public interface ProductDetailsItemListener {
 
+    /**
+     * 佩戴图集接口回调方法监听recycleView行布局
+     * @param position
+     * @param view 被监听的View
+     * @param goodsListBeans  返回的实体类
+     */
     void productDetailsItemListener(int position,View view,GoodsListBeans goodsListBeans);
 }
