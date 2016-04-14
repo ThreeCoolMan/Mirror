@@ -33,7 +33,7 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
     private HashMap<String, String> params;//请求参数
     private TopicsShareBeans beans;//实体类
     private ImageView backgroundIv;//背景 iv
-    private int listPosition = 1;//TODO 跳转时传递的 position 用来确认显示的数据集合位置
+    private int listPosition = 1;//跳转时传递的 position 用来确认显示的数据集合位置
 
     @Override
     protected int setContent() {

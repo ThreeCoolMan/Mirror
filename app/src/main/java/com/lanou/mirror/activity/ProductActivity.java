@@ -39,7 +39,6 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
     @Override
     protected int setContent() {
         return R.layout.activity_product;
-
     }
 
     @Override
@@ -60,7 +59,6 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
         Intent intent = getIntent();
         position = intent.getIntExtra("position", 0);
         token = intent.getStringExtra("token");
-
         HashMap<String, String> params = new HashMap<>();
         params.put("token", "");
         params.put("device_type", "3");
@@ -69,13 +67,11 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
         params.put("category_id", "");
         params.put("version", "");
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(PRODUCTS_GOODS_LIST_URL, params, GoodsListBeans.class, this);
-
         mListView.setLinkListViewListener(relativeLayout);//对表层 listView 进行监听
     }
 
     @Override
     public void requestSucceed(String result, final GoodsListBeans goodsListBeans) {
-
         passBeans = goodsListBeans;
         runOnUiThread(new Runnable() {//主线程刷新ui
             @Override
@@ -97,7 +93,6 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
 
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -110,9 +105,7 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
                 intent.putExtra("token", token);
                 startActivity(intent);
                 break;
-
             case R.id.activity_product_imageButton_buy:
-
                 if (token == null) {
                     Intent intentLogin = new Intent(ProductActivity.this, LoginActivity.class);
                     intentLogin.putExtra("jumpFromMain", false);//boolean 值用于判断登录后跳转那个页面
@@ -126,9 +119,7 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
                     intentBuy.putExtra("price", price);
                     startActivity(intentBuy);
                 }
-
                 break;
-
         }
     }
 

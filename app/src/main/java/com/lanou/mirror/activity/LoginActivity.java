@@ -39,7 +39,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private ImageView closeIv, blogIv;
     private String phoneNumber, passWord;
     private String token;
-    private String uid;
     private boolean jumpFromMain;//判断是否从主页面跳转的 boolean 变量
 
 
@@ -62,9 +61,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         phoneNumberEt = bindView(R.id.activity_login_phoneNumber_et);
         phoneNumberEt.setText(phoneNumber);
         passWordEt = bindView(R.id.activity_login_passWord_ed);
-
-        changeButtonBackground(); //判断输入框都有文字登录按钮就变红,输入框无文字就按钮默认灰色
-
+        //判断输入框都有文字登录按钮就变红,输入框无文字就按钮默认灰色
+        changeButtonBackground();
     }
 
     private void changeButtonBackground() {
@@ -77,17 +75,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
                 if (phoneNumberEt.length() == 0 || passWordEt.length() == 0) {
-
                     loginBtn.setBackground(getDrawable(R.mipmap.btn_notavailable));
-
                 } else {
                     loginBtn.setBackground(getDrawable(R.mipmap.btn_login_unpress));
                 }
-
             }
-
             @Override
             public void afterTextChanged(Editable s) {
 
@@ -102,16 +95,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
                 if (phoneNumberEt.length() == 0 || passWordEt.length() == 0) {
-
                     loginBtn.setBackground(getDrawable(R.mipmap.btn_notavailable));
-
                 } else {
-
                     loginBtn.setBackground(getDrawable(R.mipmap.btn_login_press));
                 }
-
             }
 
             @Override
@@ -119,13 +107,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
             }
         });
-
     }
 
     @Override
     protected void initData() {
         jumpFromMain = getIntent().getBooleanExtra("jumpFromMain", true);
-
     }
 
     @Override
@@ -166,8 +152,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                         String head = platform.getDb().getUserIcon();//获取的头像是 URL 的头像地址
                         String name = platform.getDb().getUserName();//获取用户名
                         String id = String.valueOf(platform.getId());//获取 id
-                        HashMap<String, String> paramsBlog = new HashMap<String, String>();
-
+                        HashMap<String, String> paramsBlog = new HashMap<>();
                         paramsBlog.put("iswb_orwx", "1");
                         paramsBlog.put("wb_name", name);
                         paramsBlog.put("wb_img", head);
@@ -175,7 +160,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                         OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_BUNDLING_URL, paramsBlog, new OkHttpNetHelperListener() {
                             @Override
                             public void requestSucceed(String result, Object bean) {
-
                                 try {
                                     JSONObject object = new JSONObject(result);
                                     String resultCode = object.getString("result");
@@ -199,7 +183,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-
                             }
 
                             @Override
@@ -207,9 +190,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
                             }
                         });
-
                     }
-
                     @Override
                     public void onError(Platform platform, int i, Throwable throwable) {
 
@@ -232,12 +213,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         try {
             final JSONObject object = new JSONObject(result);
-            if (object.getString("result").equals("1")) { //登录成功跳转主页面传值 token 和 uid
-
+            if (object.getString("result").equals("1")) { //登录成功跳转主页面传值 token
                 JSONObject obj = object.getJSONObject("data");
                 token = obj.getString("token");
-                uid = obj.getString("uid");
-
                 if (jumpFromMain) { //如果是主页面跳转过来的跳转回主页面
                     Intent intent = new Intent(this, MainActivity.class);
                     intent.putExtra("token", token);
@@ -256,7 +234,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     public void run() {
                         try {
                             T.showShort(LoginActivity.this, object.getString("msg"));
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -274,9 +251,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-
                 T.showShort(LoginActivity.this, cause);
-
             }
         });
 

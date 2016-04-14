@@ -64,7 +64,7 @@ public class ModifyAddressActivity extends BaseActivity implements UrlListener, 
         params.put("cellphone", numberEt.getText().toString());
         params.put("addr_info", addressEt.getText().toString());
         params.put("addr_id", addressId);
-        OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(UESR_EDIT_ADDRESS_URL, params, new OkHttpNetHelperListener() {
+        OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_EDIT_ADDRESS_URL, params, new OkHttpNetHelperListener() {
             @Override
             public void requestSucceed(String result, Object bean) {
 
@@ -73,7 +73,7 @@ public class ModifyAddressActivity extends BaseActivity implements UrlListener, 
                 Intent intent = new Intent();
                 intent.putExtra("token", token);
                 intent.putExtra("goodsId", goodsId);
-                setResult(667,intent);
+                setResult(667, intent);
                 finish();
             }
 

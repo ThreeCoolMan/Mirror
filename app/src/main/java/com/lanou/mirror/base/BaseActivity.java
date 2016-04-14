@@ -24,6 +24,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initData();//加载数据
 
+    /**
+     *
+     * @param id 组件 id
+     * @param <T> 组件 泛型
+     * @return 返回绑定组件对象
+     */
     protected <T extends View> T bindView(int id) {
         return (T) findViewById(id);
     }

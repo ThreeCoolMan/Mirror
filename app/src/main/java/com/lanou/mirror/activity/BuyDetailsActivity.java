@@ -89,17 +89,12 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         paramsOrder.put("device_type", "3");
         paramsOrder.put("goods_id", goodsId);
         paramsOrder.put("goods_num", "1");
-
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(ORDER_SUB_URL, paramsOrder, OrderBeans.class, new OkHttpNetHelperListener<OrderBeans>() {
             @Override
             public void requestSucceed(String result, final OrderBeans bean) {
                 orderId = bean.getData().getOrder_id();
                 addressId = bean.getData().getAddress().getAddr_id();
                 goodsName = bean.getData().getGoods().getGoods_name();
-//                Log.d("!!!", "roder_id " + order_id);
-//                Log.d("!!!", "token " + token);
-//                Log.d("!!!", "addr_id " + bean.getData().getAddress().getAddr_id());
-//                Log.d("!!!!", "goodsname " + bean.getData().getGoods().getGoods_name());
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -141,8 +136,6 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
             case R.id.activity_buyDetails_confirmOrder_btn:
                 //弹出 dialog下订单请求
                 showDiaLog();
-
-
                 break;
         }
     }
@@ -150,7 +143,8 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     private void showDiaLog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View view = LayoutInflater.from(this).inflate(R.layout.activity_orderdetail_sure_dialog, null);//dialog 载入布局
+        //dialog 载入布局
+        View view = LayoutInflater.from(this).inflate(R.layout.activity_orderdetail_sure_dialog, null);
         builder.setView(view);
         //支付宝支付监听
         view.findViewById(R.id.dialog_orderDetail_ailPay).setOnClickListener(new View.OnClickListener() {
@@ -162,10 +156,8 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                 paramsAilPay.put("addr_id", addressId);
                 paramsAilPay.put("goodsname", goodsName);
                 OkHttpNetHelper.getOkHttpNetHelper().postRequest(PAY_AIL_PAY_SUB_URL, paramsAilPay, AilPayBeans.class, new OkHttpNetHelperListener<AilPayBeans>() {
-
                     @Override
                     public void requestSucceed(String result, AilPayBeans bean) {
-                        Log.d("%%%", result);
                         if (!bean.getData().getStr().equals("")) {
                             str = bean.getData().getStr();
                             //支付宝支付请求
@@ -178,9 +170,6 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
                     }
                 });
-                //OkHttpNetHelper.getOkHttpNetHelper().postRequest();
-
-
             }
         });
         //微信支付监听
@@ -327,7 +316,6 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                     }
                     //设置显示以保存的地址
                     String addressee = bean.getData().getList().get(defaultPosition).getUsername();
-                    String addressId = bean.getData().getList().get(defaultPosition).getAddr_id();
                     String addressPhone = bean.getData().getList().get(defaultPosition).getCellphone();
                     String addressInfo = bean.getData().getList().get(defaultPosition).getAddr_info();
 

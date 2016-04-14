@@ -73,8 +73,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         int list = intent.getIntExtra("list", 0);
         //设置跳转到的几个页面
         verticalPager.setCurrentItem(list);
-
-
     }
 
     @Override
@@ -82,22 +80,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.activity_main_login_tv:
                 if (token == null) {
-
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                     startActivity(intent);
-
+                    startActivity(intent);
                     break;
-
                 }
                 if (token != null) {
-
                     break;
                 }
             case R.id.activity_main_logo_iv:
                 //每设置一次变化一次
                 ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 1.3f, 1.0f, 1.2f, 1.0f).setDuration(500).start();
                 break;
-
         }
     }
 
@@ -107,13 +100,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             exit();
             return false;
         }
-
-
         return super.onKeyDown(keyCode, event);
     }
-
     private void exit() {
-
         if ((System.currentTimeMillis() - exitTime) > 2000) {
             T.showShort(MainActivity.this, "特么的别走");
             exitTime = System.currentTimeMillis();

@@ -1,6 +1,7 @@
 package com.lanou.mirror.tools;
 
 import android.widget.ImageView;
+
 import com.google.gson.Gson;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.squareup.okhttp.Callback;
@@ -8,6 +9,7 @@ import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -15,7 +17,6 @@ import java.util.HashMap;
  * Created by Yi on 16/3/31.
  */
 public class OkHttpNetHelper {
-
 
     public static OkHttpNetHelper okHttpNetHelper;//静态类对象
     private OkHttpClient okHttpClient;//okHttp 对象
@@ -26,14 +27,18 @@ public class OkHttpNetHelper {
     private ImageLoaderHelper imageLoaderHelper;//图片加载工具类
 
     //私有化构造方法
-    private  OkHttpNetHelper() {
+    private OkHttpNetHelper() {
         okHttpClient = new OkHttpClient();
         gson = new Gson();
         formEncodingBuilder = new FormEncodingBuilder();
         imageLoaderHelper = ImageLoaderHelper.getImageLoaderHelper();
     }
 
-    //单例
+    /**
+     * 单例网络请求类对象
+     *
+     * @return 返回网络请求类对象
+     */
     public static OkHttpNetHelper getOkHttpNetHelper() {
         if (okHttpNetHelper == null) {
             synchronized (OkHttpNetHelper.class) {
@@ -45,7 +50,15 @@ public class OkHttpNetHelper {
         return okHttpNetHelper;
     }
 
-    //Post 网络请求
+    /**
+     * Post 网络请求
+     *
+     * @param url      网络地址
+     * @param param    Post 请求参数
+     * @param clazz    实体类对象
+     * @param listener 网络请求类回调的接口
+     * @param <T>      实体类泛型
+     */
     public <T> void postRequest(String url, HashMap<String, String> param, final Class<T> clazz, final OkHttpNetHelperListener listener) {
 
         // Set<String> set = param.keySet();
@@ -53,7 +66,6 @@ public class OkHttpNetHelper {
         for (String key : param.keySet()) {
             formEncodingBuilder.add(key, param.get(key));
         }
-
         request = new Request.Builder().url(url).post(formEncodingBuilder.build()).build();
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
@@ -70,7 +82,13 @@ public class OkHttpNetHelper {
         });
     }
 
-    //返回 String 请求结果 用于手解
+    /**
+     * 返回 String 请求结果 用于手解
+     *
+     * @param url      网址
+     * @param param    请求参数
+     * @param listener 回调接口
+     */
     public void postStringRequest(String url, HashMap<String, String> param, final OkHttpNetHelperListener listener) {
         for (String key : param.keySet()) {
             formEncodingBuilder.add(key, param.get(key));
@@ -91,7 +109,12 @@ public class OkHttpNetHelper {
         });
     }
 
-    //ImageLoader 图片加载方法
+    /**
+     * ImageLoader 图片加载方法
+     *
+     * @param url       图片网址
+     * @param imageView 需要显示图片的 ImageView
+     */
     public void setOkImage(String url, ImageView imageView) {
         imageLoaderHelper.loadImage(url, imageView);
     }
