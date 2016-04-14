@@ -49,8 +49,6 @@ public class WelcomeActivity extends BaseActivity implements UrlListener, OkHttp
                 finish();
             }
         }, SPLASH_LENGTH);
-
-
     }
 
 
@@ -62,8 +60,6 @@ public class WelcomeActivity extends BaseActivity implements UrlListener, OkHttp
                 String url = bean.getImg();
 
                 welcomeIv.setImageURI(Uri.parse(url));
-
-
 //                OkHttpNetHelper.getOkHttpNetHelper().setOkImage("http://pic1.zhimg.com/e1cc747cbf2076a378d2fe0f8c3b2e20.jpg", welcomeIv);
 
             }

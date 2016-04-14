@@ -35,7 +35,7 @@
             android:id="@+id/item_fragmentallbrowsing_price_tv"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/item_fragmentallbrowsing_price_marinRight"
-            android:textColor="@color/item_fragmentallbrowsing_price_color"
+            android:textColor="@color/item_fragmentAllBrowsing_price_color"
             android:textSize="@dimen/item_fragmentallbrowsing_price_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

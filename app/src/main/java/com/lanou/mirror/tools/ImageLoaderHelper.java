@@ -24,14 +24,12 @@ public class ImageLoaderHelper {
     private ImageLoaderConfiguration configuration;//设置缓存属性
     private File cacheDir = BaseApplication.getContext().getFilesDir();//获得磁盘本地储存路径,目标路径 /data/data/工程名/cache
 
-
     private ImageLoaderHelper() {
         init();//配置imageLoader信息
     }
 
     /**
      * 单例
-     *
      * @return ImageLoader 图片加载方法
      */
     public static ImageLoaderHelper getImageLoaderHelper() {

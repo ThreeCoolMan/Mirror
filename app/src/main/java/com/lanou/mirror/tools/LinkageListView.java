@@ -154,7 +154,6 @@ public class LinkageListView extends FrameLayout {
         mTopListView.setOnScrollChangeListener(new OnScrollChangeListener() {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
                 int position = mTopListView.getLastVisiblePosition();
                 if (position >= 4 && limit == true) {
                     relativeLayout.setVisibility(VISIBLE);

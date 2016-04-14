@@ -69,7 +69,7 @@ public class ModifyAddressActivity extends BaseActivity implements UrlListener, 
             public void requestSucceed(String result, Object bean) {
 
 
-//                修改地址成功跳转订单页面
+//               修改地址成功跳转订单页面
                 Intent intent = new Intent();
                 intent.putExtra("token", token);
                 intent.putExtra("goodsId", goodsId);

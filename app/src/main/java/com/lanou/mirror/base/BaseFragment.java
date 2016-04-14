@@ -39,7 +39,12 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void initData();//加载数据抽象方法
 
-    //绑定组件方法 不需要强转
+    /**
+     * 绑定组件方法
+     * @param id 组件 id
+     * @param <T> 组件类型
+     * @return 返回组件绑定
+     */
     protected <T extends View> T bindView(int id) {
         return (T) view.findViewById(id);
     }

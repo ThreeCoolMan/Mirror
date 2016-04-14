@@ -20,6 +20,11 @@ public class BaseApplication extends Application {
         Fresco.initialize(context);
     }
 
+    /**
+     * BaseApplication静态方法
+     *
+     * @return 返回 context 对象
+     */
     public static Context getContext() {
         return context;
     }

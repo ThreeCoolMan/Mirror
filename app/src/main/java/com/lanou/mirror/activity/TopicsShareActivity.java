@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.lanou.mirror.R;
@@ -32,26 +33,29 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
     private List<Fragment> data = new ArrayList<>();//这是复用的 fragment 集合测试使用
     private HashMap<String, String> params;//请求参数
     private TopicsShareBeans beans;//实体类
-    private ImageView backgroundIv;//背景 iv
+    private ImageView backgroundIv, closeIv;
     private int listPosition = 1;//跳转时传递的 position 用来确认显示的数据集合位置
 
     @Override
     protected int setContent() {
         return R.layout.activity_topicsshare;
-
     }
 
     @Override
     protected void initView() {
         verticalPager = bindView(R.id.topicsShare_verticalPager);
         backgroundIv = bindView(R.id.activity_topicsShare_iv_background);
-
-
+        closeIv = bindView(R.id.activity_topicsShare_iv_colse);
+        closeIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
     protected void initData() {
-
         //请求参数
         params = new HashMap<>();
         params.put("token", "");
@@ -61,10 +65,8 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
         params.put("last_time", "");
         //网络请求
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(STORY_LIST_URL, params, TopicsShareBeans.class, this);
-
         adapter = new TopicsShareAdapter(getSupportFragmentManager(), data);
         verticalPager.setAdapter(adapter);
-
         verticalPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -74,7 +76,6 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
             @Override
             public void onPageSelected(int position) {
                 //verticalPager 滑动监听,当改变页面时 更换线性布局背景
-
                 String url = beans.getData().getList().get(listPosition).getStory_data().getImg_array().get(position);
                 OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backgroundIv);
             }
@@ -110,9 +111,13 @@ public class TopicsShareActivity extends BaseActivity implements OkHttpNetHelper
 
     }
 
-    //自定义方法复用 fragment 时进行 bundle 传值
+    /**
+     * 自定义方法复用 fragment 时进行 bundle 传值
+     *
+     * @param position 复用的 Fragment 所在集合的位置
+     * @return 返回复用的 Fragment
+     */
     private Fragment getTopicsShareCaseFragment(int position) {
-
         Bundle bundle = new Bundle();
         bundle.putParcelable("BEANS", beans);
         bundle.putInt("ListPosition", listPosition);

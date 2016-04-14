@@ -33,7 +33,6 @@ public class AllBrowsingFailedFragmentAdapter extends RecyclerView.Adapter<AllBr
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_fragmentallbrowsing, null);
         return new MyViewHolder(view);
-
     }
 
     @Override
@@ -67,7 +66,6 @@ public class AllBrowsingFailedFragmentAdapter extends RecyclerView.Adapter<AllBr
         private RelativeLayout layout;
         private TextView priceTv, nameTv, cityTv, descriptionTv, shareDescriptionTv;
         private RelativeLayout shareRelativeLayout;
-
         public MyViewHolder(View itemView) {
             super(itemView);
             iv = (ImageView) itemView.findViewById(R.id.item_fragmentallbrowsing_iv);

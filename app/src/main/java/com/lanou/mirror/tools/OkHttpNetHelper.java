@@ -60,7 +60,6 @@ public class OkHttpNetHelper {
      * @param <T>      实体类泛型
      */
     public <T> void postRequest(String url, HashMap<String, String> param, final Class<T> clazz, final OkHttpNetHelperListener listener) {
-
         // Set<String> set = param.keySet();
         //使用增强 for 循环遍历参数 map 集合 ,增强 for 循环不能直接遍历集合对象必须转换成 set 对象
         for (String key : param.keySet()) {
@@ -98,9 +97,8 @@ public class OkHttpNetHelper {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-                listener.requestFailed("网络请求失败");
+                listener.requestFailed(String.valueOf(request));
             }
-
             @Override
             public void onResponse(Response response) throws IOException {
                 result = response.body().string();//成功请求获得结果

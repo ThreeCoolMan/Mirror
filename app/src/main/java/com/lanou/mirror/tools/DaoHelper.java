@@ -29,21 +29,14 @@ public class DaoHelper {
         daoSession = daoMaster.newSession();
 //        builder = daoSession.getCacheDao().queryBuilder();
         cacheDao = daoSession.getCacheDao();
-
-
     }
 
     public void addData(Cache cache) {
-
         cacheDao.insert(cache);
-
     }
 
     public void deleteAll() {
-
-
             cacheDao.deleteAll();
-
     }
 
     public List<Cache> loadAll(){

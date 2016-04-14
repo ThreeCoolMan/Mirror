@@ -4,12 +4,10 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.VerticalPagerAdapter;
@@ -38,7 +36,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
-        verticalPager = bindView(R.id.verticalpager);
+        verticalPager = bindView(R.id.verticalPager);
         loginTv = bindView(R.id.activity_main_login_tv);
         logoIv = bindView(R.id.activity_main_logo_iv);
         //登录

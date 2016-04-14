@@ -15,14 +15,14 @@
     <com.lanou.mirror.tools.VerticalPager
         android:id="@+id/topicsShare_verticalPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.lanou.mirror.tools.VerticalPager>
+        android:layout_height="match_parent"></com.lanou.mirror.tools.VerticalPager>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/activity_topicsShare_iv_colse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

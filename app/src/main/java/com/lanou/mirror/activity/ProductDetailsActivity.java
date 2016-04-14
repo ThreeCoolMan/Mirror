@@ -145,7 +145,6 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
         }
     }
 
-
     @Override
     public void requestSucceed(String result, final GoodsListBeans bean) {
         goodsListBeans = bean;

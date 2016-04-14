@@ -1,7 +1,6 @@
 package com.lanou.mirror.activity;
 
 
-import android.content.Context;
 import android.content.Intent;
 
 import android.util.Log;
@@ -18,7 +17,6 @@ import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 import com.lanou.mirror.tools.SwipeListView;
-import com.lanou.mirror.tools.T;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,7 +44,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
 
     @Override
     protected void initView() {
-        closeIv = bindView(R.id.activity_myAlladdress_close_iv);
+        closeIv = bindView(R.id.activity_myAllAddress_close_iv);
         closeIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

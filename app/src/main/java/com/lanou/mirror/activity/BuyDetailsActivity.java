@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +22,6 @@ import com.lanou.mirror.R;
 import com.lanou.mirror.base.BaseActivity;
 import com.lanou.mirror.bean.AddressListBeans;
 import com.lanou.mirror.bean.AilPayBeans;
-import com.lanou.mirror.bean.GoodsListBeans;
 import com.lanou.mirror.bean.OrderBeans;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
@@ -66,10 +63,10 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         goodsNameTv = bindView(R.id.activity_buyDetails_tv_goodsName);
         closeIv = bindView(R.id.activity_buyDetails_iv_close);
         closeIv.setOnClickListener(this);
-        writeAddressTv = (TextView) findViewById(R.id.activity_buydetails_writeaddress_tv);
-        nameTv = (TextView) findViewById(R.id.activity_buydetails_name);
-        numberTv = (TextView) findViewById(R.id.activity_buydetails_number);
-        addressTv = (TextView) findViewById(R.id.activity_buydetails_address);
+        writeAddressTv = (TextView) findViewById(R.id.activity_buyDetails_writeAddress_tv);
+        nameTv = (TextView) findViewById(R.id.activity_buyDetails_name);
+        numberTv = (TextView) findViewById(R.id.activity_buyDetails_number);
+        addressTv = (TextView) findViewById(R.id.activity_buyDetails_address);
         writeAddressTv.setOnClickListener(this);
     }
 
@@ -116,9 +113,9 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.activity_buydetails_writeaddress_tv:
+            case R.id.activity_buyDetails_writeAddress_tv:
                 //没有默认地址点击跳转添加地址页面
-                if (writeAddressTv.getText().toString().equals(getResources().getString(R.string.activity_buydetails_writeaddress))) {
+                if (writeAddressTv.getText().toString().equals(getResources().getString(R.string.activity_buyDetails_writeAddress))) {
                     Intent intent = new Intent(BuyDetailsActivity.this, AddAddressActivity.class);
                     intent.putExtra("token", token);
                     intent.putExtra("goodsId", goodsId);
@@ -305,7 +302,7 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                 if (bean.getData().getList().size() == 0) {//判断如果没有保存的地址
 
                     nameTv.setText("请设置默认地址");
-                    writeAddressTv.setText(R.string.activity_buydetails_writeaddress);
+                    writeAddressTv.setText(R.string.activity_buyDetails_writeAddress);
 
                 } else {//如果有已经保存的地址
                     for (int i = 0; i < bean.getData().getList().size(); i++) {

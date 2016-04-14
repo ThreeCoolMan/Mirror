@@ -3,7 +3,6 @@ package com.lanou.mirror.activity;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,7 +50,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     protected void initView() {
         blogIv = bindView(R.id.activity_login_iv_blog);
         blogIv.setOnClickListener(this);
-        closeIv = bindView(R.id.activity_myAlladdress_close_iv);
+        closeIv = bindView(R.id.activity_myAllAddress_close_iv);
         closeIv.setOnClickListener(this);
         loginBtn = bindView(R.id.activity_login_btn);
         loginBtn.setOnClickListener(this);

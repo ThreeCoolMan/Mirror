@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
-        android:layout_marginTop="@dimen/login_allItem_horizontal_creat_marginTop"
+        android:layout_marginTop="@dimen/login_allItem_horizontal_create_marginTop"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -26,7 +26,7 @@
             android:layout_weight="1" />
 
         <ImageView
-            android:id="@+id/activity_myAlladdress_close_iv"
+            android:id="@+id/activity_myAllAddress_close_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/login_allItem_close_btn_marginRight"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
         android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
-        android:layout_marginTop="@dimen/login_allItem_horizontal_phonenumber_marginTop"
+        android:layout_marginTop="@dimen/login_allItem_horizontal_phoneNumber_marginTop"
         android:text="@string/login_phoneNumber_textView_text"
         android:textColor="@color/login_allTextView_colour"
         android:textSize="@dimen/login_phoneNumber_textView_size" />
@@ -61,7 +61,7 @@
         android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
         android:layout_marginTop="@dimen/login_allItem_horizontal_marginTop"
         android:background="@mipmap/iv_verification_code"
-        android:minLines="1" />
+        android:maxLines="1" />
 
     <TextView
         android:layout_width="match_parent"
@@ -81,7 +81,7 @@
         android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
         android:layout_marginTop="@dimen/login_allItem_horizontal_marginTop"
         android:background="@mipmap/iv_verification_code"
-        android:minLines="1"
+        android:maxLines="1"
         android:password="true" />
 
     <Button
@@ -104,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/login_allItem_horizontal_marginLeft"
         android:layout_marginRight="@dimen/login_allItem_horizontal_marginRight"
-        android:layout_marginTop="@dimen/login_allItem_horizontal_creat_marginTop"
+        android:layout_marginTop="@dimen/login_allItem_horizontal_create_marginTop"
         android:background="@mipmap/btn_create_press"
         android:text="@string/login_btn_register"
         android:textColor="@color/login_all_create_colour"
@@ -117,7 +117,6 @@
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -9,17 +9,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_addaddress_title_relativeLayout_marinTop"
+        android:layout_marginTop="@dimen/activity_addAddress_title_relativeLayout_marinTop"
         android:orientation="horizontal">
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_modifyaddaddress_title_tv"
-            android:textColor="@color/activity_addaddress_title_tv_color"
-            android:textSize="@dimen/activity_addaddress_title_relativeLayout_size" />
-
+            android:text="@string/activity_modifyAddAddress_title_tv"
+            android:textColor="@color/activity_addAddress_title_tv_color"
+            android:textSize="@dimen/activity_addAddress_title_relativeLayout_size" />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,43 +28,43 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_addaddress_line_marinTop"
+        android:layout_marginTop="@dimen/activity_addAddress_line_marinTop"
         android:src="@mipmap/iv_line_below_create" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_addaddress_name_tv_marinTop"
-        android:text="@string/activity_addaddress_name_tv"
-        android:textColor="@color/activity_addaddress_name_tv_color"
-        android:textSize="@dimen/activity_addaddress_name_tv_size" />
+        android:layout_marginTop="@dimen/activity_addAddress_name_tv_marinTop"
+        android:text="@string/activity_addAddress_name_tv"
+        android:textColor="@color/activity_addAddress_name_tv_color"
+        android:textSize="@dimen/activity_addAddress_name_tv_size" />
 
     <EditText
         android:id="@+id/activity_modifyAddress_name_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_addaddress_name_edit_marinTop"
+        android:layout_marginTop="@dimen/activity_addAddress_name_edit_marinTop"
         android:background="@mipmap/iv_phone_number_output" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_addaddress_number_tv_marinTop"
-        android:text="@string/activity_addaddress_number_tv"
-        android:textColor="@color/activity_addaddress_number_tv_color"
+        android:layout_marginTop="@dimen/activity_addAddress_number_tv_marinTop"
+        android:text="@string/activity_addAddress_number_tv"
+        android:textColor="@color/activity_addAddress_number_tv_color"
         android:textSize="@dimen/activity_addaddress_number_tv_size" />
 
     <EditText
         android:id="@+id/activity_modifyAddress_number_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_addaddress_number_edit_marinTop"
+        android:layout_marginTop="@dimen/activity_addAddress_number_edit_marinTop"
         android:background="@mipmap/iv_phone_number_output" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_addaddress_address_tv_marinTop"
+        android:layout_marginTop="@dimen/activity_addAddress_address_tv_marinTop"
         android:text="@string/activity_addaddress_address_tv"
         android:textColor="@color/activity_addaddress_address_tv_color"
         android:textSize="@dimen/activity_addaddress_address_tv_size" />
