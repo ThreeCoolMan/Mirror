@@ -41,9 +41,7 @@ public class WelcomeActivity extends BaseActivity implements UrlListener, OkHttp
     protected void initData() {
         SharedPreferences preferences = getSharedPreferences("imgUrl", Context.MODE_PRIVATE);
         String url = preferences.getString("url","");
-        Log.d("走没",url+"url");
         if (!url.equals("")){
-            Log.d("走没","用到缓存");
             welcomeIv.setImageURI(Uri.parse(url));
             handler.postDelayed(new Runnable() {
                 @Override
@@ -79,7 +77,6 @@ public class WelcomeActivity extends BaseActivity implements UrlListener, OkHttp
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Log.d("走没","第一次进来");
                 String url = bean.getImg();
                 SharedPreferences preferences = getSharedPreferences("imgUrl", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
