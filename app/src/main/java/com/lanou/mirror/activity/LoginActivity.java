@@ -236,7 +236,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             if (object.getString("result").equals("1")) { //登录成功跳转主页面传值 token 和 uid
                 if (object.has("data")) {
                     JSONObject obj = object.getJSONObject("data");
+                    SharedPreferences sharedPreferences = getSharedPreferences("loginUser",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
                     token = obj.getString("token");
+                    editor.putString("token",token);
+                    editor.commit();
                     uid = obj.getString("uid");
                 }
 
