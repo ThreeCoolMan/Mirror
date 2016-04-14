@@ -14,6 +14,8 @@ import com.lanou.mirror.listener.ProductDetailsItemListener;
 import com.lanou.mirror.R;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
+import java.util.List;
+
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 /**
@@ -50,27 +52,29 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ProductDetailsHolder) {
             if (pos == 0) {
-                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(goodsListBeans.getData().getList().get(pos).getWear_video().get(position + 1).getData(),
+                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(getWear_video().get(position + 1).getData(),
                         ((ProductDetailsHolder) holder).detailsIv);
-
-
             } else if (pos == 2) {
-                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(goodsListBeans.getData().getList().get(pos).getWear_video().get(position).getData(),
+                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(getWear_video().get(position).getData(),
                         ((ProductDetailsHolder) holder).detailsIv);
             }
         } else if (holder instanceof HeadProductDetailsHolder) {
             if (pos == 0) {
-                url = goodsListBeans.getData().getList().get(pos).getWear_video().get(0).getData();
+                url = getWear_video().get(0).getData();
                 ((HeadProductDetailsHolder) holder).detailsVv.setUp(url, null);
-                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(goodsListBeans.getData().getList().get(pos).getWear_video().get(position + 1).getData(),
+                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(getWear_video().get(position + 1).getData(),
                         ((HeadProductDetailsHolder) holder).detailsVv.ivThumb);
             } else if (pos == 2) {
-                url = goodsListBeans.getData().getList().get(pos).getWear_video().get(4).getData();
+                url = getWear_video().get(4).getData();
                 ((HeadProductDetailsHolder) holder).detailsVv.setUp(url, null);
-                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(goodsListBeans.getData().getList().get(pos).getWear_video().get(position).getData(),
+                OkHttpNetHelper.getOkHttpNetHelper().setOkImage(getWear_video().get(position).getData(),
                         ((HeadProductDetailsHolder) holder).detailsVv.ivThumb);
             }
         }
+    }
+
+    private List<GoodsListBeans.DataEntity.ListEntity.WearVideoEntity> getWear_video() {
+        return goodsListBeans.getData().getList().get(pos).getWear_video();
     }
 
 
@@ -81,12 +85,10 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public int getItemCount() {
-        return goodsListBeans.getData().getList().get(pos).getWear_video().size() - 1;
+        return getWear_video().size() - 1;
     }
 
     class ProductDetailsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-
         private LinearLayout linearLayout;
         private PhotoView detailsIv;
 

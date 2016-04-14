@@ -219,7 +219,6 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                         daoHelper.addData(cache);
                     }
                 }
-
                 adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext(),token);
                 LinearLayoutManager manager = new LinearLayoutManager(getContext());
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);

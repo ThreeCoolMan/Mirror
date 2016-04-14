@@ -68,7 +68,6 @@ public class WelcomeActivity extends BaseActivity implements UrlListener, OkHttp
 
 
 
-
     }
 
 
@@ -83,9 +82,6 @@ public class WelcomeActivity extends BaseActivity implements UrlListener, OkHttp
                 editor.putString("url",url);
                 editor.commit();
                 welcomeIv.setImageURI(Uri.parse(url));
-
-
-
 
             }
         });

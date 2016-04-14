@@ -19,7 +19,7 @@ import de.greenrobot.dao.query.QueryBuilder;
 public class DaoSingleton {
     private static final String DB_NAME = "cache";
 
-    private volatile static DaoSingleton instance;
+    private volatile static DaoSingleton daoSingleton;//静态类对象
     private SQLiteDatabase db;
     private DaoMaster daoMaster;
     private DaoSession daoSession;
@@ -36,20 +36,20 @@ public class DaoSingleton {
     }
 
     /**
+     * 单利
      * 对外提供一个方法,可以获得这个DaoSingleton实例
-     *
      * @param context
      * @return
      */
     public static DaoSingleton getInstance(Context context) {
-        if (instance == null) {
+        if (daoSingleton == null) {
             synchronized (DaoSingleton.class) {
-                if (instance == null) {
-                    instance = new DaoSingleton();
+                if (daoSingleton == null) {
+                    daoSingleton = new DaoSingleton();
                 }
             }
         }
-        return instance;
+        return daoSingleton;
     }
 
     /**

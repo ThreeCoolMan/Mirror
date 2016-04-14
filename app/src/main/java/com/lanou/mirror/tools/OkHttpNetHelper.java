@@ -25,7 +25,7 @@ public class OkHttpNetHelper {
     private String result;
     private ImageLoaderHelper imageLoaderHelper;//图片加载工具类
 
-    //私有化构造方法
+    //私有化构造方法1
     private  OkHttpNetHelper() {
         okHttpClient = new OkHttpClient();
         gson = new Gson();

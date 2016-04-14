@@ -29,14 +29,18 @@ import java.util.HashMap;
 public class ProductDetailsActivity extends BaseActivity implements UrlListener, ProductDetailsItemListener, View.OnClickListener, OkHttpNetHelperListener<GoodsListBeans> {
     private RecyclerView productDetailsRv;
     private ProductDetailsAdapter detailsAdapter;
+    //上方的FrameLayout 用于包裹点击之后变大的图片及黑色背景
     private View newFl;
+    //用来显示上方FrameLayout背景
     private View newIv;
+    //自定义View 可以实现点击之后变化大小的动画
     private PhotoView deailsPv;
     private ImageButton ibBack, ibShopping;
     private int pos;
     private String token;
     private GoodsListBeans goodsListBeans;
     Info mInfo;
+    //下面两行代码是给上方的FrameLayout颜色渐变的动画
     AlphaAnimation in = new AlphaAnimation(0, 1);
     AlphaAnimation out = new AlphaAnimation(1, 0);
 
@@ -47,7 +51,6 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
 
     @Override
     protected void initView() {
-
 
         in.setDuration(300);
         out.setDuration(300);
@@ -87,11 +90,8 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
     //这里是点击小图变大图
     @Override
     public void productDetailsItemListener(int position, View v, GoodsListBeans beans) {
-
-
         mInfo = ((PhotoView) v).getInfo();
-        if (pos==0){
-
+        if (pos == 0) {
             OkHttpNetHelper.getOkHttpNetHelper().setOkImage
                     (beans.getData().getList().get(pos).getWear_video().get(position + 1).getData(), deailsPv);
             //每次根据接口中的beans参数获得相对应的图片
@@ -99,10 +99,7 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
             newFl.setVisibility(View.VISIBLE);
             newFl.startAnimation(in);
             deailsPv.animaFrom(mInfo);
-        }
-
-
-         else if (pos == 2) {
+        } else if (pos == 2) {
             OkHttpNetHelper.getOkHttpNetHelper().setOkImage
                     (beans.getData().getList().get(pos).getWear_video().get(position).getData(), deailsPv);
             //每次根据接口中的beans参数获得相对应的图片
@@ -113,8 +110,6 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
         }
 
     }
-
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -132,11 +127,10 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
                 this.finish();
                 break;
             case R.id.activity_peoduct_shoping_btn:
-                if (token==null){
-                    Intent intent = new Intent(ProductDetailsActivity.this,LoginActivity.class);
-                    intent.putExtra("guidepost",33);
+                if (token == null) {
+                    Intent intent = new Intent(ProductDetailsActivity.this, LoginActivity.class);
                     startActivity(intent);
-                }else if (goodsListBeans!=null){
+                } else if (goodsListBeans != null) {
                     String goodsId = goodsListBeans.getData().getList().get(pos).getGoods_id();
                     Intent intentBuy = new Intent(ProductDetailsActivity.this, BuyDetailsActivity.class);
                     intentBuy.putExtra("token", token);
@@ -146,7 +140,6 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
                 break;
         }
     }
-
 
     @Override
     public void requestSucceed(String result, final GoodsListBeans bean) {

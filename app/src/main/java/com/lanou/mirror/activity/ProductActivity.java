@@ -25,7 +25,9 @@ import java.util.HashMap;
  * Created by dllo on 16/4/1.
  */
 public class ProductActivity extends BaseActivity implements UrlListener, OkHttpNetHelperListener<GoodsListBeans>, View.OnClickListener {
+    //自定义可实现视差滑动的View.
     private LinkageListView mListView;
+    //自定义View需要两个adapter
     private ProductBottomListViewAdapter bottomAdapter;
     private ProductTopListviewAdapter topAdapter;
     private ImageView backGroundIv, closeIv;
@@ -39,7 +41,6 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
     @Override
     protected int setContent() {
         return R.layout.activity_product;
-
     }
 
     @Override
@@ -82,7 +83,6 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
             public void run() {
                 String url = goodsListBeans.getData().getList().get(position).getGoods_img();
                 OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backGroundIv);
-
                 //自定义组件中的方法 只需要添加两个adapter参数即可
                 bottomAdapter = new ProductBottomListViewAdapter(getApplication(), goodsListBeans, position);
                 topAdapter = new ProductTopListviewAdapter(getApplication(), goodsListBeans, position);
@@ -106,7 +106,6 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
                 finish();
                 break;
             case R.id.activity_product_tv_atlas:
-
                 Intent intent = new Intent(ProductActivity.this, ProductDetailsActivity.class);
                 intent.putExtra("position", position);
                 intent.putExtra("token",token);
@@ -116,12 +115,10 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
             case R.id.activity_product_imageButton_buy:
 
                 if (token == null) {
-                    Log.d("2222", "33333");
                     Intent intentLogin = new Intent(ProductActivity.this, LoginActivity.class);
                     startActivity(intentLogin);
 
                 } else if (passBeans != null) {
-                    Log.d("2222", "2222");
                     String goodsId = passBeans.getData().getList().get(position).getGoods_id();
                     Intent intentBuy = new Intent(ProductActivity.this, BuyDetailsActivity.class);
                     intentBuy.putExtra("token", token);
