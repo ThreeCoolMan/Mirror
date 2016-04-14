@@ -50,10 +50,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initData() {
-        if (token == null ) {
-            token = getSharedPreferences("loginUser", MODE_PRIVATE).getString("token", null);
-        }
-        if (token != null&& token != "") {
+        token = getSharedPreferences("loginUser", MODE_PRIVATE).getString("token", null);
+
+        if (token != null && token != "") {
             loginTv.setText("购物车");
         }
         data = new ArrayList<>();

@@ -216,6 +216,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             if (object.getString("result").equals("1")) { //登录成功跳转主页面传值 token
                 JSONObject obj = object.getJSONObject("data");
                 token = obj.getString("token");
+                SharedPreferences sharedPreferences = getSharedPreferences("loginUser", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("token",token);
+                editor.commit();
                 if (jumpFromMain) { //如果是主页面跳转过来的跳转回主页面
                     Intent intent = new Intent(this, MainActivity.class);
                     startActivity(intent);
