@@ -38,7 +38,6 @@ public class TopicsShareCaseFragment extends BaseFragment {
         descriptionTv = bindView(R.id.topicsShareCase_description_tv);
         insideRelativeLayout = bindView(R.id.fragment_topicsShare_relativeLayout_inside);
         outsideRelativeLayout = bindView(R.id.fragment_topicsShare_relativeLayout_outside);
-
         outsideRelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {//外层布局管理器长按监听隐藏文字组件
             @Override
             public boolean onLongClick(View v) {
@@ -46,11 +45,9 @@ public class TopicsShareCaseFragment extends BaseFragment {
                 return false;
             }
         });
-
         outsideRelativeLayout.setOnTouchListener(new View.OnTouchListener() {  //设置外层布局管理器 touch 监听抬起显示文字组件
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_UP://抬起文字组件显示
                         insideRelativeLayout.setVisibility(View.VISIBLE);
@@ -63,12 +60,10 @@ public class TopicsShareCaseFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-
         Bundle bundle = getArguments();
         beans = bundle.getParcelable("BEANS");
         listPosition = bundle.getInt("ListPosition");
         position = bundle.getInt("Position");
-
         subTv.setText(beans.getData().getList().get(listPosition).getStory_data().getText_array().get(position).getSmallTitle());
         titleTv.setText(beans.getData().getList().get(listPosition).getStory_data().getText_array().get(position).getTitle());
         descriptionTv.setText(beans.getData().getList().get(listPosition).getStory_data().getText_array().get(position).getSubTitle());

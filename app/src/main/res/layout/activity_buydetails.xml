@@ -2,23 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="@dimen/activity_buydetails_linearlayout_marinLeft"
-    android:layout_marginRight="@dimen/activity_buydetails_linearlayout_marinRight"
+    android:layout_marginLeft="@dimen/activity_buyDetails_linearLayout_marinLeft"
+    android:layout_marginRight="@dimen/activity_buyDetails_linearLayout_marinRight"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_buydetails_relativeLayout_marinTop"
+        android:layout_marginTop="@dimen/activity_buyDetails_relativeLayout_marinTop"
         android:orientation="horizontal">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_buydetails_title_tv"
-            android:textColor="@color/activity_buydetails_title_tv"
-            android:textSize="@dimen/activity_buydetails_title_tv" />
+            android:text="@string/activity_buyDetails_title_tv"
+            android:textColor="@color/activity_buyDetails_title_tv"
+            android:textSize="@dimen/activity_buyDetails_title_tv" />
 
         <ImageView
             android:id="@+id/activity_buyDetails_iv_close"
@@ -31,74 +31,75 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_buydetails_line_marinTop"
+        android:layout_marginTop="@dimen/activity_buyDetails_line_marinTop"
         android:src="@mipmap/iv_line_below_create" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_buydetails_linearlayout_marinTop"
+        android:layout_marginTop="@dimen/activity_buyDetails_linearLayout_marinTop"
         android:background="@mipmap/iv_fill_in_address_input"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/activity_buydetails_name"
+            android:id="@+id/activity_buyDetails_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_buydetails_writeaddress_tv_margin"
-            android:text="@string/activity_buydetails_writeaddress_tv"
-            android:textColor="@color/activity_buydetails_writeaddress_tv"
-            android:textSize="@dimen/activity_buydetails_writeaddress_tv" />
+            android:layout_margin="@dimen/activity_buyDetails_writeAddress_tv_margin"
+            android:text="@string/activity_buyDetails_writeAddress_tv"
+            android:textColor="@color/activity_buyDetails_writeAddress_tv"
+            android:textSize="@dimen/activity_buyDetails_writeAddress_tv" />
 
         <TextView
-            android:id="@+id/activity_buydetails_address"
+            android:id="@+id/activity_buyDetails_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_buydetails_writeaddress_tv_margin"
-            android:text="@string/activity_buydetails_writeaddress_tv"
-            android:textColor="@color/activity_buydetails_writeaddress_tv"
-            android:textSize="@dimen/activity_buydetails_writeaddress_tv"
+            android:layout_margin="@dimen/activity_buyDetails_writeAddress_tv_margin"
+            android:text="@string/activity_buyDetails_writeAddress_tv"
+            android:textColor="@color/activity_buyDetails_writeAddress_tv"
+            android:textSize="@dimen/activity_buyDetails_writeAddress_tv"
             android:visibility="invisible" />
 
         <TextView
-            android:id="@+id/activity_buydetails_number"
+            android:id="@+id/activity_buyDetails_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_buydetails_writeaddress_tv_margin"
-            android:text="@string/activity_buydetails_writeaddress_tv"
-            android:textColor="@color/activity_buydetails_writeaddress_tv"
-            android:textSize="@dimen/activity_buydetails_writeaddress_tv"
+            android:layout_margin="@dimen/activity_buyDetails_writeAddress_tv_margin"
+            android:text="@string/activity_buyDetails_writeAddress_tv"
+            android:textColor="@color/activity_buyDetails_writeAddress_tv"
+            android:textSize="@dimen/activity_buyDetails_writeAddress_tv"
             android:textStyle="bold"
             android:visibility="invisible" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/activity_buydetails_view" />
+        android:layout_height="@dimen/activity_buyDetails_view_height"
+        android:background="@color/activity_buyDetails_view" />
 
     <TextView
-        android:id="@+id/activity_buydetails_writeaddress_tv"
+        android:id="@+id/activity_buyDetails_writeAddress_tv"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/activity_buydetails_writeaddress_tv_heigth"
+        android:layout_height="@dimen/activity_buyDetails_writeAddress_tv_height"
         android:background="@mipmap/iv_phone_number_output"
         android:gravity="center"
-        android:hint="@string/activity_buydetails_writeaddress"
-        android:textColor="@color/activity_buydetails_writeaddress_tv"
-        android:textSize="@dimen/activity_buydetails_writeaddress_tv" />
+        android:hint="@string/activity_buyDetails_writeAddress"
+        android:textColor="@color/activity_buyDetails_writeAddress_tv"
+        android:textSize="@dimen/activity_buyDetails_writeAddress_tv" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/activity_buyDetails_linearLayout_margin"
         android:background="@mipmap/iv_fill_in_address_input"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/activity_buyDetails_iv_goods"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/activity_buydetails_pic_iv_heigth"
-            />
+            android:layout_height="@dimen/activity_buyDetails_pic_iv_height"
+            android:src="@mipmap/ic_launcher" />
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -109,22 +110,23 @@
                 android:id="@+id/activity_buyDetails_tv_goodsName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_buydetails_brand_tv_marinTop"
-                android:textColor="@color/activity_buydetails_brand_tv"
-                android:textSize="@dimen/activity_buydetails_brand_tv" />
+                android:layout_marginTop="@dimen/activity_buyDetails_brand_tv_marinTop"
+                android:textColor="@color/activity_buyDetails_brand_tv"
+                android:textSize="@dimen/activity_buyDetails_brand_tv" />
 
             <TextView
                 android:id="@+id/activity_buyDetails_tv_goodsContent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_buydetails_des_tv_marinTop"
-                android:textColor="@color/activity_buydetails_brand_tv"
-                android:textSize="@dimen/activity_buydetails_des_tv_size" />
+                android:layout_marginTop="@dimen/activity_buyDetails_des_tv_marinTop"
+                android:textColor="@color/activity_buyDetails_brand_tv"
+                android:textSize="@dimen/activity_buyDetails_des_tv_size" />
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_buydetails_des_tv_marinTop"
+                android:layout_marginTop="@dimen/activity_buyDetails_des_tv_marinTop"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -137,24 +139,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textColor="@color/activity_buydetails_price_tv"
-                    android:textSize="@dimen/activity_buydetails_price_tv_size" />
+                    android:textColor="@color/activity_buyDetails_price_tv"
+                    android:textSize="@dimen/activity_buyDetails_price_tv_size" />
+
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/activity_buydetails_confirmorder_tv"
+    <Button
+        android:id="@+id/activity_buyDetails_confirmOrder_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_buydetails_confirmorder_tv_marinTop"
+        android:layout_marginTop="@dimen/activity_buyDetails_confirmOrder_tv_marinTop"
         android:background="@mipmap/btn_create_press"
         android:gravity="center"
-        android:text="@string/activity_buydetails_confirmorder"
-        android:textColor="@color/activity_buydetails_confirmorder_tv"
-        android:textSize="@dimen/activity_buydetails_confirmorder_tv_size" />
+        android:text="@string/activity_buyDetails_confirmOrder"
+        android:textColor="@color/activity_buyDetails_confirmOrder_tv"
+        android:textSize="@dimen/activity_buyDetails_confirmOrder_tv_size" />
 
 
 </LinearLayout>

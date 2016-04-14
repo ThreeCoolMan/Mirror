@@ -32,7 +32,7 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
     private String token;
 
 
-    public <T> AllBrowsingFragmentAdapter(T t, int pos, Context context, String token) {
+    public <T> AllBrowsingFragmentAdapter(T t, int pos, Context context,String token) {
         this.pos = pos;
         this.context = context;
         this.token = token;
@@ -51,7 +51,6 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
         if (pos < 3) {
             helper = OkHttpNetHelper.getOkHttpNetHelper();
             helper.setOkImage(goodData.getData().getList().get(pos).getGoods_img(), holder.iv);
@@ -79,7 +78,6 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, TopicsShareActivity.class);
-
                     context.startActivity(intent);
                 }
             });

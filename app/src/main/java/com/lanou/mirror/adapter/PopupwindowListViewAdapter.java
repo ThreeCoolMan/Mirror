@@ -46,7 +46,6 @@ public class PopupwindowListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         MyViewHolder holder = new MyViewHolder();
         if (convertView == null) {
-
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_listview_fragment_popupwindow, null);
             holder.tv = (TextView) convertView.findViewById(R.id.item_fragment_popupwindow_listview_tv);
             holder.iv = (ImageView) convertView.findViewById(R.id.item_fragment_popupwindow_listview_iv);
@@ -57,8 +56,6 @@ public class PopupwindowListViewAdapter extends BaseAdapter {
         holder.tv.setText(titles[position]);
         holder.iv.setVisibility(View.GONE);
         holder.tv.setOnClickListener(new ItemListen(position));
-
-
         return convertView;
     }
 
@@ -69,11 +66,9 @@ public class PopupwindowListViewAdapter extends BaseAdapter {
 
     class ItemListen implements View.OnClickListener {
         private int position;
-
         public ItemListen(int pos) {
             position = pos;
         }
-
         @Override
         public void onClick(View v) {
             if (position < 6) {
@@ -112,6 +107,7 @@ public class PopupwindowListViewAdapter extends BaseAdapter {
                 });
                 builder.create().show();
             }
+
 
         }
     }

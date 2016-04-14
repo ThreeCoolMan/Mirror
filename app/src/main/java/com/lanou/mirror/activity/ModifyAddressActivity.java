@@ -64,15 +64,19 @@ public class ModifyAddressActivity extends BaseActivity implements UrlListener, 
         params.put("cellphone", numberEt.getText().toString());
         params.put("addr_info", addressEt.getText().toString());
         params.put("addr_id", addressId);
-        OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(UESR_EDIT_ADDRESS_URL, params, new OkHttpNetHelperListener() {
+        OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_EDIT_ADDRESS_URL, params, new OkHttpNetHelperListener() {
             @Override
             public void requestSucceed(String result, Object bean) {
-                //修改地址成功跳转订单页面
-                Intent intent = new Intent(ModifyAddressActivity.this, MyAllAddressActivity.class);
+
+
+//               修改地址成功跳转订单页面
+                Intent intent = new Intent();
                 intent.putExtra("token", token);
                 intent.putExtra("goodsId", goodsId);
-                startActivity(intent);
+                setResult(667, intent);
+                finish();
             }
+
 
             @Override
             public void requestFailed(String cause) {

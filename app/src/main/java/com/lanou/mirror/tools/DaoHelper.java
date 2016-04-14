@@ -24,7 +24,6 @@ public class DaoHelper {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(BaseApplication.getContext(), "cache", null);
         daoMaster = new DaoMaster(helper.getWritableDatabase());
         daoSession = daoMaster.newSession();
-//        builder = daoSession.getCacheDao().queryBuilder();
         cacheDao = daoSession.getCacheDao();
     }
 

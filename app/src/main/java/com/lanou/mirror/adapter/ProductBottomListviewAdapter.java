@@ -143,9 +143,7 @@ public class ProductBottomListViewAdapter extends BaseAdapter {
 
     //多行图片的viewHolder
     class ImageViewHolder {
-
         private ImageView imageView;
-
         public ImageViewHolder(View view) {
             imageView = (ImageView) view.findViewById(R.id.item_product_bottom_imageview_iv);
         }
@@ -154,7 +152,6 @@ public class ProductBottomListViewAdapter extends BaseAdapter {
     //商品品牌viewHolder
     class GoodBrandViewHolder {
         private TextView goodsBrandTv;
-
         public GoodBrandViewHolder(View view) {
             goodsBrandTv = (TextView) view.findViewById(R.id.item_product_bottom_tv_goodsname);
         }

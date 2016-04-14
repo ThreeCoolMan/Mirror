@@ -70,10 +70,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
         position = bundle.getInt("position", 0);
         token = bundle.getString("token");
         titleTv.setText(titles[position]);
-
-
         if (position == 3) {
-
             HashMap<String, String> map = new HashMap<>();
             map.put("device_type", "3");
             final OkHttpNetHelper helper = OkHttpNetHelper.getOkHttpNetHelper();
@@ -84,17 +81,12 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                     getPopupWindow();
                     // 这里是位置显示方式
                     popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, 0, 0);
-
-
                 }
             });
             helper.postRequest(STORY_LIST_URL, map, TopicsShareBeans.class, new OkHttpNetHelperListener<TopicsShareBeans>() {
                 @Override
                 public void requestSucceed(String result, final TopicsShareBeans topicsShareBeans) {
-
                     getActivity().runOnUiThread(new Runnable() {
-
-
                         @Override
                         public void run() {
                             adapter = new AllBrowsingFragmentAdapter(topicsShareBeans, position, getContext(), token);
@@ -127,13 +119,9 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                     });
 
                 }
-
-
             });
 
         } else if (position < 3) {
-
-
             HashMap<String, String> map = new HashMap<>();
             map.put("device_type", "3");
             map.put("last_time", "");
@@ -141,19 +129,14 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
             map.put("page", "");
             map.put("category_id", "");
             map.put("version", "");
-
             OkHttpNetHelper.getOkHttpNetHelper().postRequest(PRODUCTS_GOODS_LIST_URL, map, GoodsListBeans.class, this);
-
         }
         linearLayout.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 getPopupWindow();
                 // 这里是位置显示方式
                 popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, 0, 0);
-
-
             }
         });
     }
@@ -170,7 +153,6 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
             initPopuptWindow();
         }
     }
-
     /**
      * 创建PopupWindow
      */
@@ -204,7 +186,6 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
 
     @Override
     public void requestSucceed(String result, final GoodsListBeans goodsListBeans) {
-
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -221,13 +202,12 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                     }
                 }
 
-                adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext(), token);
+                adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext(),token);
                 LinearLayoutManager manager = new LinearLayoutManager(getContext());
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);
                 recyclerView.setAdapter(adapter);
                 cacheList = daoHelper.loadAll();
-
             }
         });
     }
@@ -244,6 +224,5 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                 recyclerView.setAdapter(failedAdapter);
             }
         });
-
     }
 }

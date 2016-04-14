@@ -47,19 +47,15 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     protected void initData() {
         token = getIntent().getStringExtra("token");
         goodsId = getIntent().getStringExtra("goodsId");
-
-
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_addAddress_btn_submitAddress:
-
                 String name = nameEt.getText().toString();
                 String phoneNumber = numberEt.getText().toString();
                 String addressInfo = addressEt.getText().toString();
-
                 if (!name.equals("") & !phoneNumber.equals("") & !addressInfo.equals("")) {
                     //提交数据去服务器
                     HashMap<String, String> params = new HashMap<>();
@@ -71,24 +67,19 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 } else {
                     T.showShort(AddAddressActivity.this, "请填写详细信息");
                 }
-
                 break;
-
             case R.id.activity_addAddress_iv_close:
                 finish();
                 break;
         }
     }
 
-
     @Override
     public void requestSucceed(String result, Object bean) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-
                 T.showShort(AddAddressActivity.this, "添加成功");
-
                 Intent intent = new Intent(AddAddressActivity.this, MyAllAddressActivity.class);
                 intent.putExtra("goodsId", goodsId);
                 intent.putExtra("token", token);

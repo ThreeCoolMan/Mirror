@@ -17,7 +17,6 @@ import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 import com.lanou.mirror.tools.SwipeListView;
-import com.lanou.mirror.tools.T;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,7 +37,6 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
     private String addrId = "";
     private String goodsId = "";
 
-
     @Override
     protected int setContent() {
         return R.layout.activity_myalladdress;
@@ -46,7 +44,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
 
     @Override
     protected void initView() {
-        closeIv = bindView(R.id.activity_myAlladdress_close_iv);
+        closeIv = bindView(R.id.activity_myAllAddress_close_iv);
         closeIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,28 +65,22 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
 
     @Override
     protected void initData() {
-
         goodsId = getIntent().getStringExtra("goodsId");
         token = getIntent().getStringExtra("token");
         HashMap<String, String> params = new HashMap<>();
         params.put("token", token);
         params.put("device_type", "3");
         params.put("page", "");
-
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(USER_ADDRESS_LIST_URL, params, MyAllAddressBeans.class, this);
-
     }
 
     @Override
     public void requestSucceed(String result, final MyAllAddressBeans bean) {
-
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 adapter = new MyAllAddressAdapter((ArrayList<MyAllAddressBeans.DataEntity.ListEntity>) bean.getData().getList(), MyAllAddressActivity.this, listView.getRightViewWidth(), token, goodsId);
-
                 adapter.setOnRightItemClickListener(new MyAllAddressAdapter.onRightItemClickListener() {
-
                     //删除监听
                     @Override
                     public void onRightItemClick(View v, int position) {
@@ -102,7 +94,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
                         HashMap<String, String> paramsDelete = new HashMap<String, String>();
                         paramsDelete.put("token", token);
                         paramsDelete.put("addr_id", addrId);
-                        OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(UESR_DELETE_ADDRESS_URL, paramsDelete, new OkHttpNetHelperListener() {
+                        OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_DELETE_ADDRESS_URL, paramsDelete, new OkHttpNetHelperListener() {
                             @Override
                             public void requestSucceed(final String result, Object bean) {
                                 runOnUiThread(new Runnable() {
@@ -126,14 +118,14 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
                         HashMap<String, String> map = new HashMap<String, String>();
                         //去服务器提交新的默认地址让其更改
                         map.put("token", token);
-                        map.put("addr_id", bean.getData().getList().get(position).getAddr_id());
 
-                        OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(UESR_DEFAULT_ADRESS_URL, map, new OkHttpNetHelperListener() {
+
+                        map.put("addr_id", bean.getData().getList().get(position).getAddr_id());// 获得子布局的addId；
+                        OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_DEFAULT_ADDRESS_URL, map, new OkHttpNetHelperListener() {
+
                             @Override
                             public void requestSucceed(String result, Object bean) {
                                 Intent intent = new Intent(MyAllAddressActivity.this, BuyDetailsActivity.class);
@@ -149,10 +141,8 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
                         });
                     }
                 });
-
             }
         });
-
     }
 
     @Override
@@ -160,5 +150,18 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
 
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case 667:
+                Log.d("走着", "走这");
+                HashMap<String, String> params = new HashMap<>();
+                params.put("token", token);
+                params.put("device_type", "3");
+                params.put("page", "");
+                OkHttpNetHelper.getOkHttpNetHelper().postRequest(USER_ADDRESS_LIST_URL, params, MyAllAddressBeans.class, this);
+                break;
+        }
+    }
 }

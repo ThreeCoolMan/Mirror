@@ -131,7 +131,9 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
             case R.id.activity_peoduct_shoping_btn:
                 if (token == null) {
                     Intent intent = new Intent(ProductDetailsActivity.this, LoginActivity.class);
-                    startActivity(intent);
+                    intent.putExtra("jumpFromMain", false);
+                    startActivityForResult(intent, 777);
+
                 } else if (goodsListBeans != null) {
                     String goodsId = goodsListBeans.getData().getList().get(pos).getGoods_id();
                     Intent intentBuy = new Intent(ProductDetailsActivity.this, BuyDetailsActivity.class);
@@ -142,7 +144,6 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
                 break;
         }
     }
-
 
     @Override
     public void requestSucceed(String result, final GoodsListBeans bean) {
@@ -161,5 +162,15 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
     @Override
     public void requestFailed(String cause) {
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case 888:
+                token = data.getStringExtra("token");
+                break;
+        }
     }
 }

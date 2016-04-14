@@ -21,14 +21,12 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
  */
 public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private Context context;
     private GoodsListBeans goodsListBeans;
     private ProductDetailsItemListener listener;
     private int pos;
     private String url;
 
     public ProductDetailsAdapter(Context context, GoodsListBeans goodsListBeans, int pos) {
-        this.context = context;
         this.goodsListBeans = goodsListBeans;
         this.pos = pos;
         notifyDataSetChanged();

@@ -24,11 +24,14 @@ public class ImageLoaderHelper {
     private ImageLoaderConfiguration configuration;//设置缓存属性
     private File cacheDir = BaseApplication.getContext().getFilesDir();//获得磁盘本地储存路径,目标路径 /data/data/工程名/cache
 
-
     private ImageLoaderHelper() {
         init();//配置imageLoader信息
     }
 
+    /**
+     * 单例
+     * @return ImageLoader 图片加载方法
+     */
     public static ImageLoaderHelper getImageLoaderHelper() {
         if (imageLoaderHelper == null) {
             synchronized (ImageLoaderHelper.class) {
@@ -46,7 +49,6 @@ public class ImageLoaderHelper {
                 .showImageOnLoading(null)//设置加载期间显示的图片
                 .showImageForEmptyUri(R.mipmap.blackmoney)//设置空的网址图片
                 .showImageOnFail(R.mipmap.bg)//设置加载失败图片
-                        //.delayBeforeLoading(200) //下载前的延迟时间加载时间
                 .cacheInMemory(true)//设置是否缓存在内存中
                 .cacheOnDisk(true)//设置是否磁盘缓存
                 .bitmapConfig(Bitmap.Config.RGB_565)//设置图片解码格式
@@ -60,17 +62,25 @@ public class ImageLoaderHelper {
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(configuration);
 
-// 设置默认的缓存属性,不需要磁盘缓存可以用这句
-//        imageLoader = ImageLoader.getInstance();
-//        imageLoader.init(ImageLoaderConfiguration.createDefault(BaseApplication.getContext()));
+/**
+ 设置默认的缓存属性,不需要磁盘缓存可以用这句
+ imageLoader = ImageLoader.getInstance();
+ imageLoader.init(ImageLoaderConfiguration.createDefault(BaseApplication.getContext()));
+ */
+
 
     }
 
-    //加载图片方法
+    /**
+     * 加载图片方法
+     *
+     * @param url       网址
+     * @param imageView 显示图片的 ImageView
+     */
+
     public void loadImage(String url, ImageView imageView) {
         url = url.trim();
         imageLoader.displayImage(url, imageView, options);
-
         //String disPath = imageLoader.getDiskCache().get(url).getPath();//这句话是获取目标图片的本地路径,测试用的
     }
 }

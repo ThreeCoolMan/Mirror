@@ -4,12 +4,10 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.VerticalPagerAdapter;
@@ -38,7 +36,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
-        verticalPager = bindView(R.id.verticalpager);
+        verticalPager = bindView(R.id.verticalPager);
         loginTv = bindView(R.id.activity_main_login_tv);
         logoIv = bindView(R.id.activity_main_logo_iv);
         //登录
@@ -51,8 +49,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void initData() {
         token = getSharedPreferences("loginUser", MODE_PRIVATE).getString("token", null);
-
         if (token != null && token != "") {
+            token = getIntent().getStringExtra("token");
+        }
+        if (token != null) {
             loginTv.setText("购物车");
         }
         data = new ArrayList<>();
@@ -73,20 +73,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         int list = intent.getIntExtra("list", 0);
         //设置跳转到的几个页面
         verticalPager.setCurrentItem(list);
-
-
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_main_login_tv:
-                if (token == null || token == "") {
 
+                if (token == null || token == "") {
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                     break;
-
                 }
                 if (token != null) {
 
@@ -96,7 +93,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 //每设置一次变化一次
                 ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 1.3f, 1.0f, 1.2f, 1.0f).setDuration(500).start();
                 break;
-
         }
     }
 
@@ -106,11 +102,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             exit();
             return false;
         }
-
-
         return super.onKeyDown(keyCode, event);
     }
-
     private void exit() {
 
         if ((System.currentTimeMillis() - exitTime) > 2000) {
@@ -121,4 +114,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             System.exit(0);//退出当前程序
         }
     }
+
+
 }

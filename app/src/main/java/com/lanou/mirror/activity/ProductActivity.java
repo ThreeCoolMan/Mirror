@@ -39,7 +39,6 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
     @Override
     protected int setContent() {
         return R.layout.activity_product;
-
     }
 
     @Override
@@ -68,20 +67,17 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
         params.put("category_id", "");
         params.put("version", "");
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(PRODUCTS_GOODS_LIST_URL, params, GoodsListBeans.class, this);
-
         mListView.setLinkListViewListener(relativeLayout);//对表层 listView 进行监听
     }
 
     @Override
     public void requestSucceed(String result, final GoodsListBeans goodsListBeans) {
-
         passBeans = goodsListBeans;
         runOnUiThread(new Runnable() {//主线程刷新ui
             @Override
             public void run() {
                 String url = goodsListBeans.getData().getList().get(position).getGoods_img();
                 OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backGroundIv);
-
                 //自定义组件中的方法 只需要添加两个adapter参数即可
                 bottomAdapter = new ProductBottomListViewAdapter(getApplication(), goodsListBeans, position);
                 topAdapter = new ProductTopListviewAdapter(getApplication(), goodsListBeans, position);
@@ -97,7 +93,6 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
 
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -105,29 +100,36 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
                 finish();
                 break;
             case R.id.activity_product_tv_atlas:
-
                 Intent intent = new Intent(ProductActivity.this, ProductDetailsActivity.class);
                 intent.putExtra("position", position);
                 intent.putExtra("token", token);
                 startActivity(intent);
                 break;
-
             case R.id.activity_product_imageButton_buy:
-
                 if (token == null) {
                     Intent intentLogin = new Intent(ProductActivity.this, LoginActivity.class);
-                    startActivity(intentLogin);
-
+                    intentLogin.putExtra("jumpFromMain", false);//boolean 值用于判断登录后跳转那个页面
+                    startActivityForResult(intentLogin, 999);
                 } else if (passBeans != null) {
                     String goodsId = passBeans.getData().getList().get(position).getGoods_id();
+                    String price = passBeans.getData().getList().get(position).getGoods_price();
                     Intent intentBuy = new Intent(ProductActivity.this, BuyDetailsActivity.class);
                     intentBuy.putExtra("token", token);
                     intentBuy.putExtra("goodsId", goodsId);
+                    intentBuy.putExtra("price", price);
                     startActivity(intentBuy);
                 }
-
                 break;
+        }
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case 888:
+                token = data.getStringExtra("token");
+                break;
         }
     }
 }

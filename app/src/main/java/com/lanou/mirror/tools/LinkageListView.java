@@ -143,15 +143,18 @@ public class LinkageListView extends FrameLayout {
         this.linkageSpeed = linkageSpeed;
     }
 
-    //自定义方法实现组件滑动监听
+    /**
+     * 自定义方法实现组件滑动监听
+     *
+     * @param relativeLayout 设置隐藏或者显示的相对布局
+     * @author Yi
+     */
     public void setLinkListViewListener(final RelativeLayout relativeLayout) {
         //表层 listView监听 当滑到位置显示动画,滑会位置隐藏动画
         mTopListView.setOnScrollChangeListener(new OnScrollChangeListener() {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
                 int position = mTopListView.getLastVisiblePosition();
-
                 if (position >= 4 && limit == true) {
                     relativeLayout.setVisibility(VISIBLE);
                     ObjectAnimator animator = ObjectAnimator.ofFloat(relativeLayout, "translationX", -1200, 0);
