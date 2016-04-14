@@ -31,7 +31,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private long exitTime = 0;
 
 
-
     @Override
     protected int setContent() {
         return R.layout.activity_main;
@@ -51,9 +50,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initData() {
+        token = getSharedPreferences("loginUser", MODE_PRIVATE).getString("token", null);
 
-        token = getIntent().getStringExtra("token");
-        if (token!=null){
+        if (token != null && token != "") {
             loginTv.setText("购物车");
         }
         data = new ArrayList<>();
@@ -82,14 +81,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_main_login_tv:
-                if (token==null){
+                if (token == null || token == "") {
 
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                     break;
 
                 }
-                if (token!=null){
+                if (token != null) {
 
                     break;
                 }
@@ -103,7 +102,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode==KeyEvent.KEYCODE_BACK){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             exit();
             return false;
         }
@@ -114,10 +113,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private void exit() {
 
-        if ((System.currentTimeMillis()- exitTime)>2000){
-            T.showShort(MainActivity.this,"特么的别走");
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            T.showShort(MainActivity.this, "特么的别走");
             exitTime = System.currentTimeMillis();
-        }else {
+        } else {
             finish();
             System.exit(0);//退出当前程序
         }

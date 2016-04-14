@@ -90,7 +90,7 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
 
 
         mInfo = ((PhotoView) v).getInfo();
-        if (pos==0){
+        if (pos == 0) {
 
             OkHttpNetHelper.getOkHttpNetHelper().setOkImage
                     (beans.getData().getList().get(pos).getWear_video().get(position + 1).getData(), deailsPv);
@@ -99,10 +99,7 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
             newFl.setVisibility(View.VISIBLE);
             newFl.startAnimation(in);
             deailsPv.animaFrom(mInfo);
-        }
-
-
-         else if (pos == 2) {
+        } else if (pos == 2) {
             OkHttpNetHelper.getOkHttpNetHelper().setOkImage
                     (beans.getData().getList().get(pos).getWear_video().get(position).getData(), deailsPv);
             //每次根据接口中的beans参数获得相对应的图片
@@ -132,11 +129,10 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
                 this.finish();
                 break;
             case R.id.activity_peoduct_shoping_btn:
-                if (token==null){
-                    Intent intent = new Intent(ProductDetailsActivity.this,LoginActivity.class);
-                    intent.putExtra("guidepost",33);
+                if (token == null) {
+                    Intent intent = new Intent(ProductDetailsActivity.this, LoginActivity.class);
                     startActivity(intent);
-                }else if (goodsListBeans!=null){
+                } else if (goodsListBeans != null) {
                     String goodsId = goodsListBeans.getData().getList().get(pos).getGoods_id();
                     Intent intentBuy = new Intent(ProductDetailsActivity.this, BuyDetailsActivity.class);
                     intentBuy.putExtra("token", token);

@@ -18,6 +18,7 @@ import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.AllBrowsingFailedFragmentAdapter;
 import com.lanou.mirror.adapter.AllBrowsingFragmentAdapter;
 import com.lanou.mirror.adapter.PopupwindowListViewAdapter;
+import com.lanou.mirror.base.BaseApplication;
 import com.lanou.mirror.base.BaseFragment;
 import com.lanou.mirror.bean.GoodsListBeans;
 import com.lanou.mirror.bean.TopicsShareBeans;
@@ -43,8 +44,8 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
     private PopupWindow popupWindow;
     private int position;
     private DaoHelper daoHelper = new DaoHelper();
-    String[] titles = {"浏览所有分类", "浏览平光眼镜", "浏览太阳眼镜", "专题分享", "我的购物车", "返回首页", "退出"};
     private TextView titleTv;
+    String [] titles = BaseApplication.getContext().getResources().getStringArray(R.array.titles);
     private List<Cache> cacheList;
     private Cache cache;
     private int type = 1;
@@ -96,7 +97,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
 
                         @Override
                         public void run() {
-                            adapter = new AllBrowsingFragmentAdapter(topicsShareBeans, position, getContext(),token);
+                            adapter = new AllBrowsingFragmentAdapter(topicsShareBeans, position, getContext(), token);
                             cache = new Cache();
                             cache.setTitle(topicsShareBeans.getData().getList().get(1).getStory_title());
                             cache.setUrl(topicsShareBeans.getData().getList().get(1).getStory_img());
@@ -220,7 +221,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                     }
                 }
 
-                adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext(),token);
+                adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext(), token);
                 LinearLayoutManager manager = new LinearLayoutManager(getContext());
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);

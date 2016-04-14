@@ -44,10 +44,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         closeIv = bindView(R.id.activity_register_Iv_close);
         closeIv.setOnClickListener(this);
         verificationCodeEd = bindView(R.id.activity_register_et_verification);
-
         phoneNumberEd = bindView(R.id.activity_register_et_phonenumber);
         passWordEd = bindView(R.id.activity_register_et_password);
-
         sendBtn = bindView(R.id.activity_register_btn_send_verification);
         sendBtn.setOnClickListener(this);
         createBtn = bindView(R.id.activity_register_btn_creatnumber);
@@ -127,7 +125,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        T.showShort(RegisterActivity.this,beans.getMsg());
+                        T.showShort(RegisterActivity.this, beans.getMsg());
                     }
                 });
             } else if (!object.get("data").equals("")) {

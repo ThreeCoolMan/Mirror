@@ -1,7 +1,10 @@
 package com.lanou.mirror.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +14,14 @@ import android.widget.TextView;
 
 import com.lanou.mirror.R;
 import com.lanou.mirror.activity.MainActivity;
+import com.lanou.mirror.base.BaseApplication;
 
 /**
  * Created by 何伟东 on 16/3/30.
  */
 public class PopupwindowListViewAdapter extends BaseAdapter {
-    String[] titles = {"浏览所有分类", "浏览平光眼镜", "浏览太阳眼镜", "专题分享", "我的购物车", "返回首页", "退出"};
     private Context context;
+    String [] titles = BaseApplication.getContext().getResources().getStringArray(R.array.titles);
 
     public PopupwindowListViewAdapter(Context context) {
         this.context = context;
@@ -72,9 +76,42 @@ public class PopupwindowListViewAdapter extends BaseAdapter {
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(context, MainActivity.class);
-            intent.putExtra("list", position);
-            context.startActivity(intent);
+            if (position < 6) {
+
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.putExtra("list", position);
+                context.startActivity(intent);
+
+            }
+            if (position == 6) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("确定退出吗?");
+                builder.setTitle("提示");
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        SharedPreferences sharedPreferences = context.getSharedPreferences("loginUser", context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.commit();
+                        Intent intent = new Intent(context, MainActivity.class);
+                        context.startActivity(intent);
+
+
+                        dialog.dismiss();
+
+
+                    }
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.create().show();
+            }
 
         }
     }

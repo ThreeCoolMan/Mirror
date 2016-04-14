@@ -33,6 +33,16 @@
     <string name="activity_buydetails_confirmorder">确认下单</string>
     <string name="activity_buydetails_writeaddress">填写地址</string>
     <string name="activity_buyDetails_writeAdressTV_text_changeAddress">更改地址</string>
+    <string-array name="titles">
+        <item>浏览所有分类</item>
+        <item>浏览平光眼镜</item>
+        <item>浏览太阳眼镜</item>
+        <item>专题分享</item>
+        <item>我的购物车</item>
+        <item>返回首页</item>
+        <item>退出</item>
+    </string-array>
+
 
 </resources>
 

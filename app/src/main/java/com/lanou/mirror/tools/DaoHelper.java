@@ -19,9 +19,6 @@ public class DaoHelper {
     private DaoMaster daoMaster;
     private DaoSession daoSession;
     private CacheDao cacheDao;
-    QueryBuilder builder;
-    private Boolean flag = true;
-
 
     public DaoHelper() {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(BaseApplication.getContext(), "cache", null);
@@ -29,27 +26,21 @@ public class DaoHelper {
         daoSession = daoMaster.newSession();
 //        builder = daoSession.getCacheDao().queryBuilder();
         cacheDao = daoSession.getCacheDao();
-
-
     }
 
     public void addData(Cache cache) {
-
         cacheDao.insert(cache);
-
     }
 
     public void deleteAll() {
-
-
-            cacheDao.deleteAll();
-
+        cacheDao.deleteAll();
     }
 
-    public List<Cache> loadAll(){
-       return cacheDao.loadAll();
+    public List<Cache> loadAll() {
+        return cacheDao.loadAll();
     }
-    public int getSize(){
+
+    public int getSize() {
         return daoSession.getCacheDao().loadAll().size();
     }
 }

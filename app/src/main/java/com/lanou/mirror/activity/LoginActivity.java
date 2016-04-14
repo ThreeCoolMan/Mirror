@@ -1,6 +1,8 @@
 package com.lanou.mirror.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -63,6 +65,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         passWordEt = bindView(R.id.activity_login_passWord_ed);
 
         changeButtonBackground(); //判断输入框都有文字登录按钮就变红,输入框无文字就按钮默认灰色
+
 
     }
 
@@ -189,8 +192,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                         JSONObject data = object.getJSONObject("data");
                                         String token = data.getString("token");
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                        intent.putExtra("token", token);
-                                        notify();
+                                        //intent.putExtra("token", token);
                                         startActivity(intent);
                                     }
 
@@ -236,11 +238,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     JSONObject obj = object.getJSONObject("data");
                     token = obj.getString("token");
                     uid = obj.getString("uid");
-
                 }
 
                 Intent intent = new Intent(this, MainActivity.class);
-                intent.putExtra("token", token);
+                //intent.putExtra("token", token);
                 intent.putExtra("uid", uid);
                 startActivity(intent);
             } else {

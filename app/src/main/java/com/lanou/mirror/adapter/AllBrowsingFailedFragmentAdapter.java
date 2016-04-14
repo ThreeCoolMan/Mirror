@@ -39,7 +39,7 @@ public class AllBrowsingFailedFragmentAdapter extends RecyclerView.Adapter<AllBr
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         if (pos < 3) {
-            OkHttpNetHelper.getOkHttpNetHelper().setOkImage(data.get(pos).getUrl(),holder.iv);
+            OkHttpNetHelper.getOkHttpNetHelper().setOkImage(data.get(pos).getUrl(), holder.iv);
             holder.cityTv.setText(data.get(pos).getCity());
             holder.descriptionTv.setText(data.get(pos).getDescription());
             holder.nameTv.setText(data.get(pos).getBrand());
@@ -50,8 +50,7 @@ public class AllBrowsingFailedFragmentAdapter extends RecyclerView.Adapter<AllBr
             holder.shareDescriptionTv.setText(data.get(pos).getTitle());
             holder.shareRelativeLayout.setVisibility(View.VISIBLE);
             holder.layout.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             holder.layout.setVisibility(View.GONE);
             holder.shareRelativeLayout.setVisibility(View.GONE);
         }

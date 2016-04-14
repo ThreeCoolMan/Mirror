@@ -43,7 +43,7 @@ public class ImageLoaderHelper {
     private void init() {
         //设置网络加载图片
         options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.btn_close)//设置加载期间显示的图片
+                .showImageOnLoading(null)//设置加载期间显示的图片
                 .showImageForEmptyUri(R.mipmap.blackmoney)//设置空的网址图片
                 .showImageOnFail(R.mipmap.bg)//设置加载失败图片
                         //.delayBeforeLoading(200) //下载前的延迟时间加载时间

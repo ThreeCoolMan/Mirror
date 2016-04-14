@@ -131,7 +131,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
                         HashMap<String, String> map = new HashMap<String, String>();
                         //去服务器提交新的默认地址让其更改
                         map.put("token", token);
-                        map.put("addr_id", bean.getData().getList().get(position).getAddr_id());//TODO 获得子布局的addId；
+                        map.put("addr_id", bean.getData().getList().get(position).getAddr_id());
 
                         OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(UESR_DEFAULT_ADRESS_URL, map, new OkHttpNetHelperListener() {
                             @Override

@@ -22,7 +22,7 @@ public class ProductTopListviewAdapter extends BaseAdapter {
     private GoodsListBeans goodsListBeans;
     private int pos;
 
-    public ProductTopListviewAdapter(Context context, GoodsListBeans goodsListBeans,int pos ) {
+    public ProductTopListviewAdapter(Context context, GoodsListBeans goodsListBeans, int pos) {
         this.context = context;
         this.goodsListBeans = goodsListBeans;
         this.pos = pos;
@@ -37,13 +37,13 @@ public class ProductTopListviewAdapter extends BaseAdapter {
 
 
     /**
-     * 这里设置前三行是透明行布局 
+     * 这里设置前三行是透明行布局
      * 余下都是商品介绍的行布局
      */
     @Override
     public int getItemViewType(int position) {
         int p = position;
-        if (p <= 1||p==goodsListBeans.getData().getList().get(0).getGoods_data().size()+2) {
+        if (p <= 1 || p == goodsListBeans.getData().getList().get(0).getGoods_data().size() + 2) {
             return TYPE_F;
         } else if (p == 2) {
             return TYPE_T;
@@ -110,6 +110,7 @@ public class ProductTopListviewAdapter extends BaseAdapter {
     //商品介绍的ViewHolder
     private class GoodsIntroduceHolder {
         private TextView introContentTv, nameTv;
+
         public GoodsIntroduceHolder(View view) {
             introContentTv = (TextView) view.findViewById(R.id.item_product_tv_introcontent);
             nameTv = (TextView) view.findViewById(R.id.item_product_tv_name);

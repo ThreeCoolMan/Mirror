@@ -33,11 +33,11 @@ public class SwipeListView extends ListView {
     private boolean mIsShown;
 
     public SwipeListView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public SwipeListView(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public SwipeListView(Context context, AttributeSet attrs, int defStyle) {
@@ -66,7 +66,7 @@ public class SwipeListView extends ListView {
                 System.out.println("onInterceptTouchEvent----->ACTION_DOWN");
                 mFirstX = lastX;
                 mFirstY = lastY;
-                int motionPosition = pointToPosition((int)mFirstX, (int)mFirstY);
+                int motionPosition = pointToPosition((int) mFirstX, (int) mFirstY);
 
                 if (motionPosition >= 0) {
                     View currentItemView = getChildAt(motionPosition - getFirstVisiblePosition());
@@ -79,7 +79,7 @@ public class SwipeListView extends ListView {
                 float dx = lastX - mFirstX;
                 float dy = lastY - mFirstY;
 
-                if (Math.abs(dx) >= 5&& Math.abs(dy) >= 5) {
+                if (Math.abs(dx) >= 5 && Math.abs(dy) >= 5) {
                     return true;
                 }
                 break;
@@ -177,7 +177,7 @@ public class SwipeListView extends ListView {
 
                     // can't move beyond boundary
                     if (dx < 0 && dx > -mRightViewWidth) {
-                        mCurrentItemView.scrollTo((int)(-dx), 0);
+                        mCurrentItemView.scrollTo((int) (-dx), 0);
                     }
 
                     return true;
@@ -298,10 +298,10 @@ public class SwipeListView extends ListView {
                     return;
                 }
                 mIsInAnimation = true;
-                view = (View)msg.obj;
+                view = (View) msg.obj;
                 fromX = msg.arg1;
                 toX = msg.arg2;
-                stepX = (int)((toX - fromX) * mDurationStep * 1.0 / mDuration);
+                stepX = (int) ((toX - fromX) * mDurationStep * 1.0 / mDuration);
                 if (stepX < 0 && stepX > -1) {
                     stepX = -1;
                 } else if (stepX > 0 && stepX < 1) {

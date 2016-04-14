@@ -1,6 +1,7 @@
 package com.lanou.mirror.tools;
 
 import android.widget.ImageView;
+
 import com.google.gson.Gson;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.squareup.okhttp.Callback;
@@ -8,6 +9,7 @@ import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -26,7 +28,7 @@ public class OkHttpNetHelper {
     private ImageLoaderHelper imageLoaderHelper;//图片加载工具类
 
     //私有化构造方法
-    private  OkHttpNetHelper() {
+    private OkHttpNetHelper() {
         okHttpClient = new OkHttpClient();
         gson = new Gson();
         formEncodingBuilder = new FormEncodingBuilder();

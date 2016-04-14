@@ -32,10 +32,10 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
     private String token;
 
 
-    public <T> AllBrowsingFragmentAdapter(T t, int pos, Context context,String token) {
+    public <T> AllBrowsingFragmentAdapter(T t, int pos, Context context, String token) {
         this.pos = pos;
         this.context = context;
-        this.token =token;
+        this.token = token;
         if (pos == 3) {
             this.shareData = (TopicsShareBeans) t;
         } else {
@@ -65,7 +65,7 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
                 public void onClick(View v) {
                     Intent intent = new Intent(context, ProductActivity.class);
                     intent.putExtra("position", pos);
-                    intent.putExtra("token",token);
+                    intent.putExtra("token", token);
                     context.startActivity(intent);
                 }
             });
@@ -100,7 +100,7 @@ public class AllBrowsingFragmentAdapter extends RecyclerView.Adapter<AllBrowsing
         private ImageView iv;
         private RelativeLayout layout;
         private TextView priceTv, nameTv, cityTv, descriptionTv, shareDescriptionTv;
-private RelativeLayout shareRelativeLayout;
+        private RelativeLayout shareRelativeLayout;
 
         public MyViewHolder(View itemView) {
             super(itemView);

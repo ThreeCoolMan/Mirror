@@ -29,6 +29,7 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     private int defaultPosition;//默认的地址所在集合的位置
     private String goodsId;//商品 Id
     private ImageView closeIv, goodsIv;
+    private String addressee, addressId, addressPhone, addressInfo;
 
     @Override
     protected int setContent() {
@@ -54,6 +55,7 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
     protected void initData() {
         token = getIntent().getStringExtra("token");
         goodsId = getIntent().getStringExtra("goodsId");
+
         //地址列表请求
         HashMap<String, String> params = new HashMap<>();
         params.put("token", token);
@@ -117,7 +119,7 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
                 if (bean.getData().getList().size() == 0) {//判断如果没有保存的地址
 
-                    nameTv.setText("请设置默认地址");
+                    nameTv.setText(R.string.activity_buydetails_writeaddress_tv);
                     writeAddressTv.setText(R.string.activity_buydetails_writeaddress);
 
                 } else {//如果有已经保存的地址
@@ -128,17 +130,17 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                         }
                     }
                     //设置显示以保存的地址
-                    String addressee = bean.getData().getList().get(defaultPosition).getUsername();
-                    String addressId = bean.getData().getList().get(defaultPosition).getAddr_id();
-                    String addressPhone = bean.getData().getList().get(defaultPosition).getCellphone();
-                    String addressInfo = bean.getData().getList().get(defaultPosition).getAddr_info();
-
+                    addressee = bean.getData().getList().get(defaultPosition).getUsername();
+                    addressId = bean.getData().getList().get(defaultPosition).getAddr_id();
+                    addressPhone = bean.getData().getList().get(defaultPosition).getCellphone();
+                    addressInfo = bean.getData().getList().get(defaultPosition).getAddr_info();
                     nameTv.setText("收件人: " + addressee);
                     numberTv.setText("电话: " + addressPhone);
                     numberTv.setVisibility(View.VISIBLE);
                     addressTv.setText("地址: " + addressInfo);
                     addressTv.setVisibility(View.VISIBLE);
                     writeAddressTv.setText(R.string.activity_buyDetails_writeAdressTV_text_changeAddress);
+
                 }
             }
         });
