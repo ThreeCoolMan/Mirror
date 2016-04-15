@@ -110,7 +110,6 @@ public class ProductTopListviewAdapter extends BaseAdapter {
     //商品介绍的ViewHolder
     private class GoodsIntroduceHolder {
         private TextView introContentTv, nameTv;
-
         public GoodsIntroduceHolder(View view) {
             introContentTv = (TextView) view.findViewById(R.id.item_product_tv_introcontent);
             nameTv = (TextView) view.findViewById(R.id.item_product_tv_name);

@@ -16,4 +16,5 @@ public interface ProductDetailsItemListener {
      * @param goodsListBeans  返回的实体类
      */
     void productDetailsItemListener(int position,View view,GoodsListBeans goodsListBeans);
+
 }

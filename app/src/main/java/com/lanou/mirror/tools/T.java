@@ -38,7 +38,6 @@ public class T {
 
     /**
      * 长时间显示Toast
-     *
      * @param context
      * @param message
      */

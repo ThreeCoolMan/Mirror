@@ -39,11 +39,10 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
     private int pos;
     private String token;
     private GoodsListBeans goodsListBeans;
-    Info mInfo;
+    private Info mInfo;
     //下面两行代码是给上方的FrameLayout颜色渐变的动画
     AlphaAnimation in = new AlphaAnimation(0, 1);
     AlphaAnimation out = new AlphaAnimation(1, 0);
-
     @Override
     protected int setContent() {
         return R.layout.activity_product_details;
@@ -51,10 +50,8 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
 
     @Override
     protected void initView() {
-
         in.setDuration(300);
         out.setDuration(300);
-
         ibBack = bindView(R.id.activity_peoduct_back_btn);
         ibShopping = bindView(R.id.activity_peoduct_shoping_btn);
         newFl = bindView(R.id.activity_product_newfl);
@@ -108,7 +105,6 @@ public class ProductDetailsActivity extends BaseActivity implements UrlListener,
             newFl.startAnimation(in);
             deailsPv.animaFrom(mInfo);
         }
-
     }
     @Override
     public void onClick(View v) {

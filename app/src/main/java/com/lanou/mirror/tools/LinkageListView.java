@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.lanou.mirror.R;
+import com.lanou.mirror.adapter.ProductBottomListViewAdapter;
 
 /**
  * Created by dllo on 16/4/1.
@@ -72,6 +73,7 @@ public class LinkageListView extends FrameLayout {
 
     private void initLayout(Context context) {
         mBottomListView = new ListView(mContext);
+        Log.d("宽", "应该空" + mBottomListView);
         mTopListView = new ListView(mContext);
         mBottomListView.setVerticalScrollBarEnabled(true);
         mTopListView.setVerticalFadingEdgeEnabled(true);
@@ -145,7 +147,6 @@ public class LinkageListView extends FrameLayout {
 
     /**
      * 自定义方法实现组件滑动监听
-     *
      * @param relativeLayout 设置隐藏或者显示的相对布局
      * @author Yi
      */
@@ -169,5 +170,20 @@ public class LinkageListView extends FrameLayout {
                 }
             }
         });
+    }
+    /**
+     * 自定义方法获取行布局滑动距离
+     * @return 滑动的距离为负代表向上滑动的距离
+     */
+    public int getMListviewScrollY() {
+
+        View c = mTopListView.getChildAt(0);
+        if (c == null) {
+            return 0;
+        }
+        int firstVisiblePosition = mTopListView.getFirstVisiblePosition();
+        int top = c.getTop();
+        return -top + firstVisiblePosition * c.getHeight();
+
     }
 }
