@@ -18,7 +18,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         initData();
     }
 
-    protected abstract int setContent();//绑定布局
+    /**
+     * 绑定布局
+     * @return 返回布局 id
+     */
+    protected abstract int setContent();
 
     protected abstract void initView();//绑定组件
 
