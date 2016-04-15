@@ -86,7 +86,7 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         return getWear_video().size() - 1;
     }
 
-    class ProductDetailsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class ProductDetailsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private LinearLayout linearLayout;
         private PhotoView detailsIv;
 
@@ -106,7 +106,7 @@ public class ProductDetailsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
     }
 
-    class HeadProductDetailsHolder extends RecyclerView.ViewHolder {
+    private class HeadProductDetailsHolder extends RecyclerView.ViewHolder {
 
         private JCVideoPlayer detailsVv;
 

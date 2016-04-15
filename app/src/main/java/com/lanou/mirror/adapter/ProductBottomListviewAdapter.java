@@ -18,13 +18,13 @@ import com.lanou.mirror.tools.OkHttpNetHelper;
  */
 public class ProductBottomListViewAdapter extends BaseAdapter {
 
-    GoodsListBeans goodsListBeans;
-    Context context;
-    LayoutInflater inflater;
-    final int TYPE_1 = 0;
-    final int TYPE_2 = 1;
-    final int TYPE_3 = 2;
-    final int TYPE_4 = 3;
+    private GoodsListBeans goodsListBeans;
+    private Context context;
+    private LayoutInflater inflater;
+    private final int TYPE_1 = 0;
+    private final int TYPE_2 = 1;
+    private final int TYPE_3 = 2;
+    private final int TYPE_4 = 3;
     private int pos;
 
     public ProductBottomListViewAdapter(Context context, GoodsListBeans goodsListBeans, int pos) {
@@ -113,8 +113,6 @@ public class ProductBottomListViewAdapter extends BaseAdapter {
                 holderGoodName = new GoodBrandViewHolder(convertView);
                 holderGoodName.goodsBrandTv.setText(getListEntity().getBrand());
         }
-
-
         return convertView;
 
     }
@@ -123,30 +121,24 @@ public class ProductBottomListViewAdapter extends BaseAdapter {
         return goodsListBeans.getData().getList().get(pos);
     }
 
-    //想用来设置顶部透明度变化的
-    public FrameLayout getFl(View view) {
-        GoodsDescriptionViewHolder holderF = new GoodsDescriptionViewHolder(view);
-        holderF.fl = (FrameLayout) inflater.inflate(R.layout.item_product_bottom_listview_description, null).findViewById(R.id.item_product_bottom_fl);
-        return holderF.fl;
-    }
 
     //顶部半透明viewHolder
-    class GoodsDescriptionViewHolder {
+   private class GoodsDescriptionViewHolder {
 
         private TextView nameTv, brandTv, infodesTv, priceTv;
         private FrameLayout fl;//用来设置顶部透明度变化
-
         public GoodsDescriptionViewHolder(View view) {
             nameTv = (TextView) view.findViewById(R.id.item_product_bottom_description_tv_name);
             brandTv = (TextView) view.findViewById(R.id.item_product_bottom_description_tv_brand);
             infodesTv = (TextView) view.findViewById(R.id.item_product_bottom_description_tv_info_des);
             priceTv = (TextView) view.findViewById(R.id.item_product_bottom_description_tv_goods_price);
+            fl = (FrameLayout) view.findViewById(R.id.item_product_bottom_fl);
         }
     }
 
 
     //多行图片的viewHolder
-    class ImageViewHolder {
+   private class ImageViewHolder {
         private ImageView imageView;
         public ImageViewHolder(View view) {
             imageView = (ImageView) view.findViewById(R.id.item_product_bottom_imageview_iv);
@@ -154,7 +146,7 @@ public class ProductBottomListViewAdapter extends BaseAdapter {
     }
 
     //商品品牌viewHolder
-    class GoodBrandViewHolder {
+    private class GoodBrandViewHolder {
         private TextView goodsBrandTv;
         public GoodBrandViewHolder(View view) {
             goodsBrandTv = (TextView) view.findViewById(R.id.item_product_bottom_tv_goodsname);

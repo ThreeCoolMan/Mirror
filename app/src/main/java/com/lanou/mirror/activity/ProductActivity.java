@@ -3,6 +3,7 @@ package com.lanou.mirror.activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -37,6 +38,8 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
     private ImageButton buyImageViewButton;
     private String token = "";
     private GoodsListBeans passBeans;
+    private FrameLayout frameLayout = null;
+    private int changeY;
 
     @Override
     protected int setContent() {
@@ -67,24 +70,28 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
         params.put("page", "");
         params.put("last_time", "");
         params.put("category_id", "");
-        params.put("version", "");
+        params.put("version", "1.0.1");
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(PRODUCTS_GOODS_LIST_URL, params, GoodsListBeans.class, this);
         mListView.setLinkListViewListener(relativeLayout);//对表层 listView 进行监听
+
     }
 
     @Override
     public void requestSucceed(String result, final GoodsListBeans goodsListBeans) {
         passBeans = goodsListBeans;
-        runOnUiThread(new Runnable() {//主线程刷新ui
+        runOnUiThread(new Runnable() {
+            private String url;
+
             @Override
             public void run() {
-                String url = goodsListBeans.getData().getList().get(position).getGoods_img();
+                url = goodsListBeans.getData().getList().get(position).getGoods_img();
                 OkHttpNetHelper.getOkHttpNetHelper().setOkImage(url, backGroundIv);
                 //自定义组件中的方法 只需要添加两个adapter参数即可
                 bottomAdapter = new ProductBottomListViewAdapter(getApplication(), goodsListBeans, position);
                 topAdapter = new ProductTopListviewAdapter(getApplication(), goodsListBeans, position);
                 mListView.setAdapter(bottomAdapter, topAdapter);
-                mListView.setLinkageSpeed(1.2f);//设置当前listView的滑动速度,封装好的方法
+                mListView.setLinkageSpeed(1.2f);//设置当前listView的滑动速度
+
             }
         });
 
@@ -134,4 +141,5 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
                 break;
         }
     }
+
 }
