@@ -21,10 +21,12 @@ import com.lanou.mirror.base.BaseApplication;
  */
 public class PopupwindowListViewAdapter extends BaseAdapter {
     private Context context;
+    private int pos;
     String [] titles = BaseApplication.getContext().getResources().getStringArray(R.array.titles);
 
-    public PopupwindowListViewAdapter(Context context) {
+    public PopupwindowListViewAdapter(Context context,int pos) {
         this.context = context;
+        this.pos = pos;
     }
 
     @Override
@@ -49,12 +51,17 @@ public class PopupwindowListViewAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_listview_fragment_popupwindow, null);
             holder.tv = (TextView) convertView.findViewById(R.id.item_fragment_popupwindow_listview_tv);
             holder.iv = (ImageView) convertView.findViewById(R.id.item_fragment_popupwindow_listview_iv);
+
             convertView.setTag(holder);
         } else {
             holder = (MyViewHolder) convertView.getTag();
         }
+
         holder.tv.setText(titles[position]);
         holder.iv.setVisibility(View.GONE);
+        if (pos==position){
+            holder.iv.setVisibility(View.VISIBLE);
+        }
         holder.tv.setOnClickListener(new ItemListen(position));
         return convertView;
     }

@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+
+
     <TextView
     android:id="@+id/item_fragment_popupwindow_listview_tv"
     android:layout_marginTop="@dimen/item_fragmentallbrowsing_popuwindow_listview_tv_marinTop"
@@ -19,7 +21,7 @@
         android:layout_marginTop="@dimen/item_fragmentallbrowsing_popuwindow_listview_iv_marinTop"
         android:src="@mipmap/iv_line_below_title"
         android:id="@+id/item_fragment_popupwindow_listview_iv"
-        android:layout_width="wrap_content"
+        android:layout_width="90dp"
         android:layout_height="wrap_content" />
 
 </LinearLayout>

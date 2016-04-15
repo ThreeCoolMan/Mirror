@@ -11,6 +11,7 @@ import com.lanou.mirror.greendao.DaoSession;
 
 import java.util.List;
 
+import de.greenrobot.dao.query.DeleteQuery;
 import de.greenrobot.dao.query.QueryBuilder;
 
 /**
@@ -141,7 +142,12 @@ public class DaoSingleton {
         return getCacheDao().loadAll();
     }
 
-
+    public void deleteCacheWithCondition(String url){
+        QueryBuilder<Cache> qb = getCacheDao().queryBuilder();
+        DeleteQuery<Cache> bd
+                = qb.where(CacheDao.Properties.Url.eq(url)).buildDelete();
+        bd.executeDeleteWithoutDetachingEntities();
+    }
 
 
 }

@@ -27,6 +27,7 @@ import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
 
 import com.lanou.mirror.tools.DaoHelper;
+import com.lanou.mirror.tools.DaoSingleton;
 import com.lanou.mirror.tools.OkHttpNetHelper;
 
 import java.util.ArrayList;
@@ -89,6 +90,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            DaoSingleton.getInstance(getContext()).deleteCacheWithCondition(topicsShareBeans.getData().getList().get(1).getStory_img());
                             adapter = new AllBrowsingFragmentAdapter(topicsShareBeans, position, getContext(), token);
                             cache = new Cache();
                             cache.setTitle(topicsShareBeans.getData().getList().get(1).getStory_title());
@@ -98,8 +100,6 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                             manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                             recyclerView.setLayoutManager(manager);
                             recyclerView.setAdapter(adapter);
-                            cacheList = daoHelper.loadAll();
-                            type = 2;
                         }
                     });
                 }
@@ -164,13 +164,13 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
         popupWindow = new PopupWindow(popupWindowView, dm.widthPixels, dm.heightPixels - 280, true);
         ListView listView = (ListView) popupWindowView.findViewById(R.id.item_fragment_popupwindow_listview);
-        PopupwindowListViewAdapter adapter = new PopupwindowListViewAdapter(getContext());
+        PopupwindowListViewAdapter adapter = new PopupwindowListViewAdapter(getContext(),position);
         listView.setAdapter(adapter);
 
         // 设置动画效果
         //PopupWindow的动画显示效果是通过setAnimationStyle(int id)方法设置的，
         // 其中id为一个style的id，所以我们要在styles.xml文件中设置一个动画样式
-        //popupWindow.setAnimationStyle(R.style.popWindow_anim);
+        popupWindow.setAnimationStyle(R.style.PopupAnimation);
         // 点击其他地方消失
         popupWindowView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -190,14 +190,15 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
             @Override
             public void run() {
                 if (type == 1) {
-                    daoHelper.deleteAll();
                     for (int i = 0; i < goodsListBeans.getData().getList().size(); i++) {
+                        DaoSingleton.getInstance(getContext()).deleteCacheWithCondition(goodsListBeans.getData().getList().get(i).getGoods_img());
                         cache = new Cache();
                         cache.setCity(goodsListBeans.getData().getList().get(i).getProduct_area());
                         cache.setBrand(goodsListBeans.getData().getList().get(i).getGoods_name());
                         cache.setDescription(goodsListBeans.getData().getList().get(i).getBrand());
                         cache.setPrice(goodsListBeans.getData().getList().get(i).getGoods_price());
                         cache.setUrl(goodsListBeans.getData().getList().get(i).getGoods_img());
+                        Log.d("allBroFragment",i+"");
                         daoHelper.addData(cache);
                     }
                 }
@@ -214,6 +215,8 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
     @Override
     public void requestFailed(String cause) {
         cacheList = daoHelper.loadAll();
+        Log.d("allBroFragment",cacheList.size()+"");
+
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
                 failedAdapter = new AllBrowsingFailedFragmentAdapter((ArrayList<Cache>) cacheList, position);
