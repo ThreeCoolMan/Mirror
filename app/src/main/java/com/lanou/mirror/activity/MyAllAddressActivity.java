@@ -58,6 +58,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
             public void onClick(View v) {
                 Intent intent = new Intent(MyAllAddressActivity.this, AddAddressActivity.class);
                 intent.putExtra("token", token);
+                intent.putExtra("goodsId",goodsId);
                 startActivity(intent);
             }
         });

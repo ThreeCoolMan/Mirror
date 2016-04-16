@@ -96,7 +96,6 @@
             android:name="com.alipay.sdk.pay.demo.PayDemoActivity"
             android:icon="@drawable/msp_icon"
             android:label="@string/app_name">
-           
         </activity>
         <activity
             android:name="com.alipay.sdk.pay.demo.H5PayDemoActivity"

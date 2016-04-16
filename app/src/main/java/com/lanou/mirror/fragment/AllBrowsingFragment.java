@@ -188,7 +188,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (type == 1) {
+
                     for (int i = 0; i < goodsListBeans.getData().getList().size(); i++) {
                         DaoSingleton.getInstance(getContext()).deleteCacheWithCondition(goodsListBeans.getData().getList().get(i).getGoods_img());
                         cache = new Cache();
@@ -197,16 +197,14 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                         cache.setDescription(goodsListBeans.getData().getList().get(i).getBrand());
                         cache.setPrice(goodsListBeans.getData().getList().get(i).getGoods_price());
                         cache.setUrl(goodsListBeans.getData().getList().get(i).getGoods_img());
-                        Log.d("allBroFragment",i+"");
                         daoHelper.addData(cache);
-                    }
+
                 }
                 adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext(), token);
                 LinearLayoutManager manager = new LinearLayoutManager(getContext());
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);
                 recyclerView.setAdapter(adapter);
-                cacheList = daoHelper.loadAll();
             }
         });
     }
