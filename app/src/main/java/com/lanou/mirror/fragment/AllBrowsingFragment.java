@@ -25,11 +25,9 @@ import com.lanou.mirror.bean.TopicsShareBeans;
 import com.lanou.mirror.greendao.Cache;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
-
 import com.lanou.mirror.tools.DaoHelper;
 import com.lanou.mirror.tools.DaoSingleton;
 import com.lanou.mirror.tools.OkHttpNetHelper;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,7 +44,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
     private int position;
     private DaoHelper daoHelper = new DaoHelper();
     private TextView titleTv;
-    String [] titles = BaseApplication.getContext().getResources().getStringArray(R.array.titles);
+    String[] titles = BaseApplication.getContext().getResources().getStringArray(R.array.titles);
     private List<Cache> cacheList;
     private Cache cache;
     private int type = 1;
@@ -153,6 +151,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
             initPopuptWindow();
         }
     }
+
     /**
      * 创建PopupWindow
      */
@@ -202,7 +201,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                         daoHelper.addData(cache);
                     }
                 }
-                adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext(),token);
+                adapter = new AllBrowsingFragmentAdapter(goodsListBeans, position, getContext(), token);
                 LinearLayoutManager manager = new LinearLayoutManager(getContext());
                 manager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(manager);
