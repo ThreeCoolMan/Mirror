@@ -44,14 +44,18 @@ public class AllBrowsingFailedFragmentAdapter extends RecyclerView.Adapter<AllBr
             holder.nameTv.setText(data.get(pos).getBrand());
             holder.priceTv.setText(data.get(pos).getPrice());
             holder.shareRelativeLayout.setVisibility(View.GONE);
+            holder.ivShopCar.setVisibility(View.GONE);
         } else if (pos == 3) {
             OkHttpNetHelper.getOkHttpNetHelper().setOkImage(data.get(pos).getUrl(), holder.iv);
             holder.shareDescriptionTv.setText(data.get(pos).getTitle());
             holder.shareRelativeLayout.setVisibility(View.VISIBLE);
             holder.layout.setVisibility(View.GONE);
-        } else {
+            holder.ivShopCar.setVisibility(View.GONE);
+        }
+        else {
             holder.layout.setVisibility(View.GONE);
             holder.shareRelativeLayout.setVisibility(View.GONE);
+            holder.ivShopCar.setVisibility(View.GONE);
         }
     }
 
@@ -61,10 +65,11 @@ public class AllBrowsingFailedFragmentAdapter extends RecyclerView.Adapter<AllBr
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        private ImageView iv;
+        private ImageView iv,ivShopCar;
         private RelativeLayout layout;
         private TextView priceTv, nameTv, cityTv, descriptionTv, shareDescriptionTv;
         private RelativeLayout shareRelativeLayout;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             iv = (ImageView) itemView.findViewById(R.id.item_fragmentallbrowsing_iv);
@@ -75,6 +80,7 @@ public class AllBrowsingFailedFragmentAdapter extends RecyclerView.Adapter<AllBr
             layout = (RelativeLayout) itemView.findViewById(R.id.item_fragmentallbrowsing_relativelayout);
             shareDescriptionTv = (TextView) itemView.findViewById(R.id.item_fragmentallbrowsing_share_descripsion_tv);
             shareRelativeLayout = (RelativeLayout) itemView.findViewById(R.id.fragment_allbrowsing_share_relativelayout);
+            ivShopCar = (ImageView) itemView.findViewById(R.id.item_fragmentallbrowsing_iv_shoppingcar);
         }
     }
 }

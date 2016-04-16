@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lanou.mirror.R;
@@ -51,6 +52,7 @@ public class PopupwindowListViewAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_listview_fragment_popupwindow, null);
             holder.tv = (TextView) convertView.findViewById(R.id.item_fragment_popupwindow_listview_tv);
             holder.iv = (ImageView) convertView.findViewById(R.id.item_fragment_popupwindow_listview_iv);
+            holder.linearLayout = (LinearLayout) convertView.findViewById(R.id.item_listview_fragment_linearlayout);
 
             convertView.setTag(holder);
         } else {
@@ -62,13 +64,14 @@ public class PopupwindowListViewAdapter extends BaseAdapter {
         if (pos==position){
             holder.iv.setVisibility(View.VISIBLE);
         }
-        holder.tv.setOnClickListener(new ItemListen(position));
+        holder.linearLayout.setOnClickListener(new ItemListen(position));
         return convertView;
     }
 
     class MyViewHolder {
         private TextView tv;
         private ImageView iv;
+        private LinearLayout linearLayout;
     }
 
     class ItemListen implements View.OnClickListener {

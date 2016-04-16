@@ -104,7 +104,8 @@ public class LinkageListView extends FrameLayout {
                  * 否则返回false,表示当前view不是目标view,需要继续向下分发寻找目标view.
                  * 这个方法也可以被重载，手动分配事件。
                  */
-                return mBottomListView.dispatchTouchEvent(event);//点击传递给下一个view 即下一个listview
+                //点击传递给下一个view 即下一个listview
+                return mBottomListView.dispatchTouchEvent(event);
             }
         });
 
@@ -151,9 +152,15 @@ public class LinkageListView extends FrameLayout {
      */
     public void setLinkListViewListener(final RelativeLayout relativeLayout) {
         //表层 listView监听 当滑到位置显示动画,滑会位置隐藏动画
-        mTopListView.setOnScrollChangeListener(new OnScrollChangeListener() {
+        mTopListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
                 int position = mTopListView.getLastVisiblePosition();
                 if (position >= 4 && limit == true) {
                     relativeLayout.setVisibility(VISIBLE);
@@ -167,6 +174,7 @@ public class LinkageListView extends FrameLayout {
                     animator.start();
                     limit = true;
                 }
+
             }
         });
     }

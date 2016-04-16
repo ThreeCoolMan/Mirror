@@ -72,8 +72,13 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initData() {
-        token = getIntent().getStringExtra("token");
-        goodsId = getIntent().getStringExtra("goodsId");
+        try {
+
+            token = getIntent().getStringExtra("token");
+            goodsId = getIntent().getStringExtra("goodsId");
+        } catch (Exception e) {
+
+        }
 
         //地址列表请求
         HashMap<String, String> params = new HashMap<>();

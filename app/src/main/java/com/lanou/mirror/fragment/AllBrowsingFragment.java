@@ -1,11 +1,9 @@
 package com.lanou.mirror.fragment;
 
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-
 import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.AllBrowsingFailedFragmentAdapter;
 import com.lanou.mirror.adapter.AllBrowsingFragmentAdapter;
@@ -25,11 +22,9 @@ import com.lanou.mirror.bean.TopicsShareBeans;
 import com.lanou.mirror.greendao.Cache;
 import com.lanou.mirror.listener.OkHttpNetHelperListener;
 import com.lanou.mirror.listener.UrlListener;
-
 import com.lanou.mirror.tools.DaoHelper;
 import com.lanou.mirror.tools.DaoSingleton;
 import com.lanou.mirror.tools.OkHttpNetHelper;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -198,7 +193,6 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
                         cache.setDescription(goodsListBeans.getData().getList().get(i).getBrand());
                         cache.setPrice(goodsListBeans.getData().getList().get(i).getGoods_price());
                         cache.setUrl(goodsListBeans.getData().getList().get(i).getGoods_img());
-                        Log.d("allBroFragment",i+"");
                         daoHelper.addData(cache);
                     }
                 }
@@ -215,8 +209,6 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
     @Override
     public void requestFailed(String cause) {
         cacheList = daoHelper.loadAll();
-        Log.d("allBroFragment",cacheList.size()+"");
-
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
                 failedAdapter = new AllBrowsingFailedFragmentAdapter((ArrayList<Cache>) cacheList, position);

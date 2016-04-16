@@ -58,7 +58,9 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
             public void onClick(View v) {
                 Intent intent = new Intent(MyAllAddressActivity.this, AddAddressActivity.class);
                 intent.putExtra("token", token);
+                intent.putExtra("goodsId", goodsId);
                 startActivity(intent);
+
             }
         });
     }
@@ -121,8 +123,6 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
                         HashMap<String, String> map = new HashMap<String, String>();
                         //去服务器提交新的默认地址让其更改
                         map.put("token", token);
-
-
                         map.put("addr_id", bean.getData().getList().get(position).getAddr_id());// 获得子布局的addId；
                         OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_DEFAULT_ADDRESS_URL, map, new OkHttpNetHelperListener() {
 
