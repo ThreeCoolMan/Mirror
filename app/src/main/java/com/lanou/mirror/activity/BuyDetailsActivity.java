@@ -121,11 +121,13 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                     intent.putExtra("token", token);
                     intent.putExtra("goodsId", goodsId);
                     startActivity(intent);
+                    finish();
                 } else {//有默认地址就跳转我的所有地址页面
                     Intent intent = new Intent(BuyDetailsActivity.this, MyAllAddressActivity.class);
                     intent.putExtra("token", token);
                     intent.putExtra("goodsId", goodsId);
                     startActivity(intent);
+                    finish();
                 }
                 break;
             case R.id.activity_buyDetails_iv_close:

@@ -120,6 +120,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             case R.id.activity_login_create_btn:
                 Intent intentRegister = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intentRegister);
+                finish();
                 break;
             case R.id.activity_login_btn:
                 passWord = passWordEt.getText().toString();
@@ -177,6 +178,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         //intent.putExtra("token", token);
                                         startActivity(intent);
+                                        finish();
                                     }
 
                                 } catch (JSONException e) {

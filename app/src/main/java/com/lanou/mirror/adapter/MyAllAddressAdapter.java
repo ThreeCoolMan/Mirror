@@ -45,12 +45,6 @@ public class MyAllAddressAdapter extends BaseAdapter {
         this.data = data;
     }
 
-//    public void setListData(ArrayList<MyAllAddressBeans.DataEntity.ListEntity> lists) {
-//        data =  lists;
-//        notifyDataSetChanged();
-//    }
-
-
     @Override
     public int getCount() {
         return data.size();
@@ -124,9 +118,7 @@ public class MyAllAddressAdapter extends BaseAdapter {
             itemRight.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Log.d("click", v.toString());
                     if (mListener != null) {
-
                         mListener.onRightItemClick(v, position);
                     }
                 }

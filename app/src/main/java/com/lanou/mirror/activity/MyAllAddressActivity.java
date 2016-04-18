@@ -60,6 +60,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
                 intent.putExtra("token", token);
                 intent.putExtra("goodsId",goodsId);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -133,6 +134,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
                                 intent.putExtra("goodsId", goodsId);
                                 intent.putExtra("token", token);
                                 startActivity(intent);
+                                finish();
                             }
 
                             @Override

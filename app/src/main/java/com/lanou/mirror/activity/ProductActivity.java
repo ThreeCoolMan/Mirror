@@ -38,8 +38,6 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
     private ImageButton buyImageViewButton;
     private String token = "";
     private GoodsListBeans passBeans;
-    private FrameLayout frameLayout = null;
-    private int changeY;
 
     @Override
     protected int setContent() {
@@ -72,7 +70,8 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
         params.put("category_id", "");
         params.put("version", "1.0.1");
         OkHttpNetHelper.getOkHttpNetHelper().postRequest(PRODUCTS_GOODS_LIST_URL, params, GoodsListBeans.class, this);
-        mListView.setLinkListViewListener(relativeLayout);//对表层 listView 进行监听
+        //对表层 listView 进行监听
+        mListView.setLinkListViewListener(relativeLayout);
 
     }
 
@@ -90,7 +89,8 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
                 bottomAdapter = new ProductBottomListViewAdapter(getApplication(), goodsListBeans, position);
                 topAdapter = new ProductTopListviewAdapter(getApplication(), goodsListBeans, position);
                 mListView.setAdapter(bottomAdapter, topAdapter);
-                mListView.setLinkageSpeed(1.2f);//设置当前listView的滑动速度
+                //设置当前listView的滑动速度
+                mListView.setLinkageSpeed(1.2f);
 
             }
         });
@@ -117,7 +117,8 @@ public class ProductActivity extends BaseActivity implements UrlListener, OkHttp
             case R.id.activity_product_imageButton_buy:
                 if (token == null) {
                     Intent intentLogin = new Intent(ProductActivity.this, LoginActivity.class);
-                    intentLogin.putExtra("jumpFromMain", false);//boolean 值用于判断登录后跳转那个页面
+                    //boolean 值用于判断登录后跳转那个页面
+                    intentLogin.putExtra("jumpFromMain", false);
                     startActivityForResult(intentLogin, 999);
                 } else if (passBeans != null) {
                     String goodsId = passBeans.getData().getList().get(position).getGoods_id();

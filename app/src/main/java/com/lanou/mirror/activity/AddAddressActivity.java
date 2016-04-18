@@ -84,6 +84,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 intent.putExtra("goodsId", goodsId);
                 intent.putExtra("token", token);
                 startActivity(intent);
+                finish();
             }
         });
     }
