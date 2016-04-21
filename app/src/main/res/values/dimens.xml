@@ -171,6 +171,7 @@
     <dimen name="activity_myaddress_listview_marginTop">25dp</dimen>
     <dimen name="activity_buyDetails_view_height">1dp</dimen>
     <dimen name="activity_buyDetails_linearLayout_margin">20dp</dimen>
+    <dimen name="activity_myaddress_layout_height">80dp</dimen>
 
 
 </resources>

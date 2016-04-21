@@ -74,23 +74,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         //从popupwindow的adapter传过来的
         Intent intent = getIntent();
         int list = intent.getIntExtra("list", 0);
-        //设置跳转到的几个页面
-        verticalPager.setCurrentItem(list);
+        if (list == 5){
+            verticalPager.setCurrentItem(0);
+        }
+        else {
+            //设置跳转到的几个页面
+            verticalPager.setCurrentItem(list);
+        }
 
 
-        OkHttpNetHelper.getOkHttpNetHelper().postRequest("http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=狗&step_word=&pn=1&spn=0&di=99000601150&pi=&rn=1&tn=baiduimagedetail&is=&istype=2&ie=utf-8&oe=utf-8&in=&cl=2&lm=-1&st=-1&cs=2172041622%2C3819068822&os=3482871129%2C3554888365&simid=429856%2C664502570&adpicid=0&ln=1000&fr=&fmq=1460723505529_R_D&fm=detail&ic=0&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&ist=&jit=&cg=&bdtype=10&oriquery=&objurl=http%3A%2F%2Fpic4.nipic.com%2F20091118%2F3047572_163336087407_2.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bgtrtv_z%26e3Bv54AzdH3Ffi5oAzdH3F8AzdH3Fm9AzdH3Fwk9vkjwluvmw9dld_z%26e3Bip4s&gsm=0&rpstart=0&rpnum=0", new OkHttpNetHelperListener() {
-            @Override
-            public void requestSucceed(String result, Object bean) {
-                Looper.prepare();
-                Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
-                Looper.loop();
-            }
-
-            @Override
-            public void requestFailed(String cause) {
-
-            }
-        });
     }
 
     @Override
@@ -104,6 +96,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     break;
                 }
                 if (token != null) {
+                   verticalPager.setCurrentItem(4);
 
                     break;
                 }

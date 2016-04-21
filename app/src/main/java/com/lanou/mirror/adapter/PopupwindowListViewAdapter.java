@@ -19,12 +19,12 @@ import com.lanou.mirror.base.BaseApplication;
 /**
  * Created by 何伟东 on 16/3/30.
  */
-public class PopupwindowListViewAdapter extends BaseAdapter {
+public class PopupWindowListViewAdapter extends BaseAdapter {
     private Context context;
     private int pos;
     String [] titles = BaseApplication.getContext().getResources().getStringArray(R.array.titles);
 
-    public PopupwindowListViewAdapter(Context context,int pos) {
+    public PopupWindowListViewAdapter(Context context,int pos) {
         this.context = context;
         this.pos = pos;
     }

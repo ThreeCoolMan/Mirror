@@ -1,19 +1,15 @@
 package com.lanou.mirror.adapter;
 
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.lanou.mirror.R;
 import com.lanou.mirror.greendao.Cache;
 import com.lanou.mirror.tools.OkHttpNetHelper;
-
 import java.util.ArrayList;
 import java.util.List;
 

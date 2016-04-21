@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.lanou.mirror.R;
 import com.lanou.mirror.adapter.AllBrowsingFailedFragmentAdapter;
 import com.lanou.mirror.adapter.AllBrowsingFragmentAdapter;
-import com.lanou.mirror.adapter.PopupwindowListViewAdapter;
+import com.lanou.mirror.adapter.PopupWindowListViewAdapter;
 import com.lanou.mirror.base.BaseApplication;
 import com.lanou.mirror.base.BaseFragment;
 import com.lanou.mirror.bean.GoodsListBeans;
@@ -159,7 +159,7 @@ public class AllBrowsingFragment extends BaseFragment implements OkHttpNetHelper
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
         popupWindow = new PopupWindow(popupWindowView, dm.widthPixels, dm.heightPixels - 280, true);
         ListView listView = (ListView) popupWindowView.findViewById(R.id.item_fragment_popupwindow_listview);
-        PopupwindowListViewAdapter adapter = new PopupwindowListViewAdapter(getContext(),position);
+        PopupWindowListViewAdapter adapter = new PopupWindowListViewAdapter(getContext(),position);
         listView.setAdapter(adapter);
 
         // 设置动画效果

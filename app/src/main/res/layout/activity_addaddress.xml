@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp"
+    android:layout_marginLeft="@dimen/activity_addAddress_address_tv_marinTop"
+    android:layout_marginRight="@dimen/activity_addAddress_address_tv_marinTop"
     android:orientation="vertical">
 
     <RelativeLayout

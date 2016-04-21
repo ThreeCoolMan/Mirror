@@ -53,10 +53,10 @@
             android:gravity="center"
             android:text="添加地址"
             android:textSize="15sp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="@dimen/activity_myaddress_listview_marginTop"
             android:background="@mipmap/iv_fill_in_address_input"
             android:layout_width="match_parent"
-            android:layout_height="80dp" />
+            android:layout_height="@dimen/activity_myaddress_layout_height" />
 
 
 
