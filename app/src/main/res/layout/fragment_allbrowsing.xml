@@ -59,8 +59,8 @@
         android:id="@+id/fragment_allbrowsing_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="11dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginLeft="@dimen/fragment_allBrowsing_recycview_tv_marinLeft"
+        android:layout_marginTop="@dimen/fragment_allBrowsing_recycview_tv_marinTop"
         />
 
 

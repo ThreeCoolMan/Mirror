@@ -34,15 +34,15 @@ public class AllBrowsingFailedFragmentAdapter extends RecyclerView.Adapter<AllBr
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         if (pos < 3) {
-            OkHttpNetHelper.getOkHttpNetHelper().setOkImage(data.get(pos).getUrl(), holder.iv);
-            holder.cityTv.setText(data.get(pos).getCity());
-            holder.descriptionTv.setText(data.get(pos).getDescription());
-            holder.nameTv.setText(data.get(pos).getBrand());
-            holder.priceTv.setText(data.get(pos).getPrice());
+            OkHttpNetHelper.getOkHttpNetHelper().setOkImage(data.get(pos+1).getUrl(), holder.iv);
+            holder.cityTv.setText(data.get(pos+1).getCity());
+            holder.descriptionTv.setText(data.get(pos+1).getDescription());
+            holder.nameTv.setText(data.get(pos+1).getBrand());
+            holder.priceTv.setText(data.get(pos+1).getPrice());
             holder.shareRelativeLayout.setVisibility(View.GONE);
-        } else if (pos == 3) {
-            OkHttpNetHelper.getOkHttpNetHelper().setOkImage(data.get(pos).getUrl(), holder.iv);
-            holder.shareDescriptionTv.setText(data.get(pos).getTitle());
+        } else if (pos + 1 == 4) {
+            OkHttpNetHelper.getOkHttpNetHelper().setOkImage(data.get(0).getUrl(), holder.iv);
+            holder.shareDescriptionTv.setText(data.get(0).getTitle());
             holder.shareRelativeLayout.setVisibility(View.VISIBLE);
             holder.layout.setVisibility(View.GONE);
         } else {

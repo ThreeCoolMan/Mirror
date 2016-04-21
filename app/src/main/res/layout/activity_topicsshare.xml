@@ -41,8 +41,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginBottom="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginBottom="@dimen/activity_topicsShare_iv_close_margin"
+                android:layout_marginRight="@dimen/activity_topicsShare_iv_close_margin"
                 android:src="@mipmap/btn_share" />
 
         </RelativeLayout>
