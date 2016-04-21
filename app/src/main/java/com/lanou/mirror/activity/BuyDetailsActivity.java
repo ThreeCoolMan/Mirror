@@ -147,7 +147,7 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         View view = LayoutInflater.from(this).inflate(R.layout.activity_orderdetail_sure_dialog, null);
         builder.setView(view);
         //支付宝支付监听
-        view.findViewById(R.id.dialog_orderDetail_ailPay).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.activity_orderDetail_dialog_relative_alipay).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 HashMap<String, String> paramsAilPay = new HashMap<>();
@@ -173,7 +173,7 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
             }
         });
         //微信支付监听
-        view.findViewById(R.id.dialog_orderDetail_weixinPay).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.activity_orderDetail_dialog_relativeLayout_wechat).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -188,7 +188,6 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
      * @param str 这是请求需要的协议以及账户内容
      */
     private void requestAilPay(String str) {
-
         String sign = sign(str);
 
         /**

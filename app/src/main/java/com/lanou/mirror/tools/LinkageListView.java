@@ -152,9 +152,33 @@ public class LinkageListView extends FrameLayout {
      */
     public void setLinkListViewListener(final RelativeLayout relativeLayout) {
         //表层 listView监听 当滑到位置显示动画,滑会位置隐藏动画
-        mTopListView.setOnScrollChangeListener(new OnScrollChangeListener() {
+//        mTopListView.setOnScrollChangeListener(new OnScrollChangeListener() {
+//            @Override
+//            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//                int position = mTopListView.getLastVisiblePosition();
+//                if (position >= 4 && limit == true) {
+//                    relativeLayout.setVisibility(VISIBLE);
+//                    ObjectAnimator animator = ObjectAnimator.ofFloat(relativeLayout, "translationX", -1200, 0);
+//                    animator.setDuration(500);
+//                    animator.start();
+//                    limit = false;
+//                } else if (position < 4 && limit == false) {
+//                    ObjectAnimator animator = ObjectAnimator.ofFloat(relativeLayout, "translationX", 0, -1200);
+//                    animator.setDuration(500);
+//                    animator.start();
+//                    limit = true;
+//                }
+//            }
+//        });
+
+        mTopListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
                 int position = mTopListView.getLastVisiblePosition();
                 if (position >= 4 && limit == true) {
                     relativeLayout.setVisibility(VISIBLE);

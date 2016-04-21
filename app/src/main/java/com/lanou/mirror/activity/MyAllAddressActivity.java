@@ -67,6 +67,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
 
     @Override
     protected void initData() {
+
         goodsId = getIntent().getStringExtra("goodsId");
         token = getIntent().getStringExtra("token");
         HashMap<String, String> params = new HashMap<>();
@@ -82,6 +83,7 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
             @Override
             public void run() {
                 adapter = new MyAllAddressAdapter((ArrayList<MyAllAddressBeans.DataEntity.ListEntity>) bean.getData().getList(), MyAllAddressActivity.this, listView.getRightViewWidth(), token, goodsId);
+
                 adapter.setOnRightItemClickListener(new MyAllAddressAdapter.onRightItemClickListener() {
                     //删除监听
                     @Override

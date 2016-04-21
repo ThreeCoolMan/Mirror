@@ -28,7 +28,7 @@ public class OkHttpNetHelper {
 
 
     //私有化构造方法1
-    private  OkHttpNetHelper() {
+    private OkHttpNetHelper() {
         okHttpClient = new OkHttpClient();
         gson = new Gson();
         formEncodingBuilder = new FormEncodingBuilder();
@@ -83,6 +83,30 @@ public class OkHttpNetHelper {
     }
 
     /**
+
+.     * 重载方法
+     * @param url
+     * @param listener
+     */
+    public void postRequest(String url, final OkHttpNetHelperListener listener){
+
+        request = new Request.Builder().url(url).build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                listener.requestFailed(String.valueOf(request));
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                result = response.body().string();//成功请求获得结果
+                listener.requestSucceed(result, null);//接口传递结果和实体类
+            }
+        });
+
+    }
+
+    /**
      * 返回 String 请求结果 用于手解
      *
      * @param url      网址
@@ -100,6 +124,7 @@ public class OkHttpNetHelper {
             public void onFailure(Request request, IOException e) {
                 listener.requestFailed(String.valueOf(request));
             }
+
             @Override
             public void onResponse(Response response) throws IOException {
                 result = response.body().string();//成功请求获得结果

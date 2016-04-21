@@ -10,7 +10,6 @@ import com.facebook.drawee.backends.pipeline.Fresco;
  */
 public class BaseApplication extends Application {
 
-
     private static Context context;
 
     @Override
@@ -28,5 +27,4 @@ public class BaseApplication extends Application {
     public static Context getContext() {
         return context;
     }
-
 }

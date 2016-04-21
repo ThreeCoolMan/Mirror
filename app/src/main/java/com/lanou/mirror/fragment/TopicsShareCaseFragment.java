@@ -37,6 +37,7 @@ public class TopicsShareCaseFragment extends BaseFragment {
         descriptionTv = bindView(R.id.topicsShareCase_description_tv);
         insideRelativeLayout = bindView(R.id.fragment_topicsShare_relativeLayout_inside);
         outsideRelativeLayout = bindView(R.id.fragment_topicsShare_relativeLayout_outside);
+
         outsideRelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {//外层布局管理器长按监听隐藏文字组件
             @Override
             public boolean onLongClick(View v) {
@@ -44,6 +45,7 @@ public class TopicsShareCaseFragment extends BaseFragment {
                 return false;
             }
         });
+
         outsideRelativeLayout.setOnTouchListener(new View.OnTouchListener() {  //设置外层布局管理器 touch 监听抬起显示文字组件
             @Override
             public boolean onTouch(View v, MotionEvent event) {
