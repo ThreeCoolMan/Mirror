@@ -11,46 +11,46 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@mipmap/iv_fill_in_address_input"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="5dp" >
+        android:paddingBottom="@dimen/activity_myaddress_layout_heightaak"
+        android:paddingLeft="@dimen/activity_register_et_password_margintop"
+        android:paddingRight="@dimen/activity_register_et_password_margintop"
+        android:paddingTop="@dimen/activity_myaddress_layout_heightaak" >
 
 
         <TextView
             android:id="@+id/item_listview_activity_myaddress_receiveman"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="20dp"
-            android:textColor="#333"
-            android:textSize="13sp"
+            android:layout_marginLeft="@dimen/activity_myaddress_layout_heightaaj"
+            android:layout_marginTop="@dimen/activity_buyDetails_brand_tv_marinTop"
+            android:textColor="@color/activity_buyDetails_title_tv"
+            android:textSize="@dimen/activity_buyDetails_writeAddress_tv"
             android:text="1"
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
-            android:textColor="#333"
+            android:textColor="@color/activity_buyDetails_title_tv"
             android:id="@+id/item_listview_activity_myaddress_address"
             android:layout_below="@+id/item_listview_activity_myaddress_receiveman"
             android:layout_width="match_parent"
-            android:textSize="12sp"
+            android:textSize="@dimen/login_phoneNumber_textView_size"
             android:text="2"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/activity_myaddress_layout_heightaaj"
+            android:layout_marginTop="@dimen/activity_register_et_password_margintop"
             android:layout_height="wrap_content" />
         <TextView
-            android:textColor="#333"
+            android:textColor="@color/activity_buyDetails_title_tv"
             android:text="3"
             android:id="@+id/item_listview_activity_myaddress_number"
             android:layout_below="@+id/item_listview_activity_myaddress_address"
-            android:layout_marginLeft="12dp"
-            android:textSize="12sp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="@dimen/activity_myaddress_layout_heightaaj"
+            android:textSize="@dimen/login_phoneNumber_textView_size"
+            android:layout_marginTop="@dimen/activity_register_et_password_margintop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <ImageView
             android:id="@+id/item_listview_activity_myaddress_edit"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="@dimen/activity_myaddress_layout_heightaal"
             android:layout_centerVertical="true"
             android:src="@mipmap/edit"
             android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="删除"
+            android:text="@string/activity_buyDetails_writeAddressTV_text_changeAddresk"
             android:textColor="@android:color/holo_blue_dark" />
     </RelativeLayout>
 

@@ -174,6 +174,16 @@
     <dimen name="activity_buyDetails_view_height">1dp</dimen>
     <dimen name="activity_buyDetails_linearLayout_margin">20dp</dimen>
     <dimen name="activity_myaddress_layout_height">80dp</dimen>
+    <dimen name="activity_myaddress_layout_heightaa">194dp</dimen>
+    <dimen name="activity_myaddress_layout_heightaaw">43dp</dimen>
 
-
+    <dimen name="activity_myaddress_layout_heightaaf">1dp</dimen>
+    <dimen name="activity_myaddress_layout_heightaag">40dp</dimen>
+    <dimen name="activity_myaddress_layout_heightaah">51dp</dimen>
+    <dimen name="activity_myaddress_layout_heightaai">12dp</dimen>
+    <dimen name="activity_myaddress_layout_heightaaj">12dp</dimen>
+    <dimen name="activity_myaddress_layout_heightaak">5dp</dimen>
+    <dimen name="activity_myaddress_layout_heightaal">30dp</dimen>
+    <dimen name="activity_myaddress_layout_heightaam">0dp</dimen>
+    <dimen name="activity_myaddress_layout_heightaan">1dp</dimen> 
 </resources>

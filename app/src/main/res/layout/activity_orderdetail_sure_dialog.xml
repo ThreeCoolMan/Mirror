@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="194dp"
+    android:layout_height="@dimen/activity_myaddress_layout_heightaa"
     android:orientation="vertical">
 
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="43dp">
+        android:layout_height="@dimen/activity_myaddress_layout_heightaaw">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="选择支付方式"
-            android:textColor="#333"
-            android:textSize="15sp" />
+            android:textColor="@color/color_activity_details_iv_line_sa"
+            android:textSize="@dimen/activity_addaddress_submitaddress_size" />
     </RelativeLayout>
 
     <!-- 灰线 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#ddd" />
+        android:layout_height="@dimen/activity_myaddress_layout_heightaaf"
+        android:background="@color/color_activity_details_iv_line_suv" />
 
     <RelativeLayout
         android:id="@+id/activity_orderDetail_dialog_relativeLayout_wechat"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="51dp"
-        android:layout_marginRight="51dp"
-        android:layout_marginTop="25dp"
+        android:layout_height="@dimen/activity_myaddress_layout_heightaag"
+        android:layout_marginLeft="@dimen/activity_myaddress_layout_heightaah"
+        android:layout_marginRight="@dimen/activity_myaddress_layout_heightaah"
+        android:layout_marginTop="@dimen/activity_addaddress_submitaddress_marinTop"
         android:background="@mipmap/iv_creat_num">
 
         <LinearLayout
@@ -48,20 +48,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:text="微信支付"
-                android:textColor="#fff"
-                android:textSize="15sp" />
+                android:layout_marginLeft="@dimen/activity_myaddress_layout_heightaai"
+                android:text="@string/activity_buyDetails_writeAddressTV_text_changeAddressdd"
+                android:textColor="@color/fragment_topicssharecase_Title_tv_color"
+                android:textSize="@dimen/item_fragmentallbrowsing_price_size" />
         </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/activity_orderDetail_dialog_relative_alipay"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="51dp"
-        android:layout_marginRight="51dp"
-        android:layout_marginTop="25dp"
+        android:layout_height="@dimen/activity_buyDetails_writeAddress_tv_height"
+        android:layout_marginLeft="@dimen/activity_myaddress_layout_heightaah"
+        android:layout_marginRight="@dimen/activity_myaddress_layout_heightaah"
+        android:layout_marginTop="@dimen/activity_addaddress_submitaddress_marinTop"
         android:background="@mipmap/iv_creat_num">
 
         <LinearLayout
@@ -78,15 +78,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:text="支付宝支付"
-                android:textColor="#fff"
-                android:textSize="15sp" />
+                android:layout_marginLeft="@dimen/activity_myaddress_layout_heightaai"
+                android:text="@string/activity_buyDetails_writeAddressTV_text_changeAddresszhifu"
+                android:textColor="@color/fragment_topicssharecase_Title_tv_color"
+                android:textSize="@dimen/activity_buyDetails_confirmOrder_tv_size" />
         </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp" />
+        android:layout_height="@dimen/activity_buyDetails_confirmOrder_tv_marinTop" />
 
 </LinearLayout>

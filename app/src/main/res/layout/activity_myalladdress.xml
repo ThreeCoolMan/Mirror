@@ -16,13 +16,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="我的所有地址"
+            android:text="@string/activity_buyDetails_writeAddressTV_text_changeAddresl"
             android:textColor="@color/login_allTextView_colour"
             android:textSize="@dimen/login_title_textView_size" />
 
         <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
+            android:layout_width="@dimen/activity_myaddress_layout_heightaam"
+            android:layout_height="@dimen/activity_myaddress_layout_heightaan"
             android:layout_weight="1" />
 
         <ImageView
@@ -48,24 +48,22 @@
 
         <TextView
             android:id="@+id/activity_myAddress_tv_add"
-            android:textStyle="bold"
-            android:textColor="#333"
-            android:gravity="center"
-            android:text="添加地址"
-            android:textSize="@dimen/item_fragmentallbrowsing_des_size"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_myaddress_layout_height"
             android:layout_marginTop="@dimen/activity_myaddress_listview_marginTop"
             android:background="@mipmap/iv_fill_in_address_input"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/activity_myaddress_layout_height" />
-
+            android:gravity="center"
+            android:text="@string/activity_buyDetails_writeAddressTV_text_changeAddressm"
+            android:textColor="#333"
+            android:textSize="@dimen/item_fragmentallbrowsing_des_size"
+            android:textStyle="bold" />
 
 
         <com.lanou.mirror.tools.SwipeListView
             android:id="@+id/activity_myaddress_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_myaddress_listview_marginTop">
-        </com.lanou.mirror.tools.SwipeListView>
+            android:layout_marginTop="@dimen/activity_myaddress_listview_marginTop"></com.lanou.mirror.tools.SwipeListView>
 
     </LinearLayout>
 

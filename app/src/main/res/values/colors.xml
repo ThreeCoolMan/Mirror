@@ -32,6 +32,7 @@
     <color name="activity_addaddress_submitaddress_color">#fff</color>
     <color name="color_item_product_bottom_listview_description">#500e0e0e</color>
     <color name="color_activity_details_iv_line">#ff000000</color>
-
+    <color name="color_activity_details_iv_line_sa">#333</color>
+    <color name="color_activity_details_iv_line_suv">#ddd</color>
 
 </resources>

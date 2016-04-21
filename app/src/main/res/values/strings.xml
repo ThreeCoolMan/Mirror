@@ -32,11 +32,16 @@
     <string name="activity_buyDetails_writeAddress_tv">请填写收件人信息</string>
     <string name="activity_buyDetails_confirmOrder">确认下单</string>
     <string name="activity_buyDetails_writeAddress">填写地址</string>
+    <string name="activity_buyDetails_writeAddressTV_text_changeAddressdd">微信支付</string>
+    <string name="activity_buyDetails_writeAddressTV_text_changeAddresszhifu">支付宝支付</string>
     <string name="activity_buyDetails_writeAddressTV_text_changeAddress">更改地址</string>
+    <string name="activity_buyDetails_writeAddressTV_text_changeAddressm">添加地址</string>
+    <string name="activity_buyDetails_writeAddressTV_text_changeAddresk">删除</string>
+    <string name="activity_buyDetails_writeAddressTV_text_changeAddresl">我的所有地址</string>
     <string-array name="titles">
         <item>浏览所有分类</item>
         <item>浏览平光眼镜</item>
-        <item>浏览太阳眼镜</item>
+        <item>浏览太阳眼镜</item>dd
         <item>专题分享</item>
         <item>我的购物车</item>
         <item>返回首页</item>
