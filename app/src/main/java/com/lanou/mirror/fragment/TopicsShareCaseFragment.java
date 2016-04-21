@@ -25,7 +25,6 @@ public class TopicsShareCaseFragment extends BaseFragment {
     private TextView subTv, titleTv, descriptionTv;
     private int listPosition;
     private int position;
-
     @Override
     protected int setContent() {
         return R.layout.fragment_topicssharecase;
