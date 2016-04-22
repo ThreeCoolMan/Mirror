@@ -125,8 +125,6 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
                         HashMap<String, String> map = new HashMap<String, String>();
                         //去服务器提交新的默认地址让其更改
                         map.put("token", token);
-
-
                         map.put("addr_id", bean.getData().getList().get(position).getAddr_id());// 获得子布局的addId；
                         OkHttpNetHelper.getOkHttpNetHelper().postStringRequest(USER_DEFAULT_ADDRESS_URL, map, new OkHttpNetHelperListener() {
 
@@ -160,7 +158,6 @@ public class MyAllAddressActivity extends BaseActivity implements UrlListener, O
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 667:
-                Log.d("走着", "走这");
                 HashMap<String, String> params = new HashMap<>();
                 params.put("token", token);
                 params.put("device_type", "3");
