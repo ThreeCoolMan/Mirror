@@ -123,5 +123,9 @@ public interface UrlListener {
      */
     String SYS_CHECK_URL = SERVER_SIDE_URL + "index.php/sys";
 
+    /**
+     * 分享网址
+     */
+     String SHARE_URL = "http://api101.test.mirroreye.cn/index.php/goodweb/info?id=";
 
 }
